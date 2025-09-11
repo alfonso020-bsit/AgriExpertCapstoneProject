@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mag-login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Full-screen background */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url("{% static 'css/images/bgto.png' %}") no-repeat center center;
+            background-size: cover;
+        }
+
+        /* Card container */
+        .card-container {
+            display: flex;
+            width: 80%;
+            max-width: 900px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+        }
+
+        /* Logo side */
+        .logo-side {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:rgb(232, 255, 233);
+            padding: 20px;
+        }
+
+        .logo-side img {
+            max-width: 80%;
+            height: auto;
+        }
+
+        /* Form side */
+        .form-side {
+            width: 50%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-side h2 {
+            margin-bottom: 20px;
+            color: #388e3c;
+        }
+
+        .form-label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 8px rgba(0, 128, 0, 0.6);
+        }
+
+        .btn-custom {
+            margin-top: 20px;
+            padding: 10px;
+            background: #388e3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background: #2e7d32;
+        }
+
+        .form-side p {
+            margin-top: 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .card-container {
+                flex-direction: column;
+                width: 90%;
+            }
+            .logo-side, .form-side {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="logo-side">
+            <img src="{% static 'css/images/LOGO.jpg' %}" alt="Logo">
+        </div>
+        <div class="form-side">
+            <h2>Mag-login</h2>
+            {% comment %} <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                
+                <label class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" required>
+            
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" required>
+            
+                <label class="form-label">Gampanin (Role)</label>
+                <select name="role" class="form-control">
+                    <option value="Magsasaka" {% if request.POST.role == "Magsasaka" %}selected{% endif %}>Magsasaka</option>
+                    <option value="Eksperto" {% if request.POST.role == "Eksperto" %}selected{% endif %}>Eksperto</option>
+                    <option value="Admin" {% if request.POST.role == "Admin" %}selected{% endif %}>Admin</option>
+                </select>
+                
+                <button type="submit" class="btn-custom">Login</button>
+                <p><a href="{% url 'password_reset' %}">Nakalimutan ang Password?</a></p>
+            </form> {% endcomment %}
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+            
+                <label class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" required value="{{ request.POST.username }}">
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if 'username_error' in message.tags %}
+                            <p style="color: red; font-size: 14px;">{{ message }}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" required>
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if 'password_error' in message.tags %}
+                            <p style="color: red; font-size: 14px;">{{ message }}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            
+                <label class="form-label">Gampanin (Role)</label>
+                <select name="role" class="form-control">
+                    <option value="Magsasaka" {% if request.POST.role == "Magsasaka" %}selected{% endif %}>Magsasaka</option>
+                    <option value="Eksperto" {% if request.POST.role == "Eksperto" %}selected{% endif %}>Eksperto</option>
+                    <option value="Admin" {% if request.POST.role == "Admin" %}selected{% endif %}>Admin</option>
+                </select>
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if 'role_error' in message.tags %}
+                            <p style="color: red; font-size: 14px;">{{ message }}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            
+                <button type="submit" class="btn-custom">Login</button>
+                <p><a href="{% url 'password_reset' %}">Nakalimutan ang Password?</a></p>
+            </form>
+            
+            <p>Wala pang account? <a href="{% url 'signup' %}">Mag-signup dito</a></p>
+            
+            {% if messages %}
+                {% for message in messages %}
+                    {% if 'pending_error' in message.tags %}
+                        <p style="color: red; font-size: 14px; text-align: center;">{{ message }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            
+            {% comment %} <p>Wala pang account? <a href="{% url 'signup' %}">Mag-signup dito</a></p> {% endcomment %}
+        </div>
+    </div>
+</body>
+</html>

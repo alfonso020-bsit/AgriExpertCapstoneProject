@@ -1,0 +1,667 @@
+{% extends 'adminako/base_admin.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Mga Ulat sa Demograpiko</h2>
+    <!-- Role Selection Buttons -->
+    <div class="text-center mb-3">
+        <button class="btn btn-success" onclick="showTable('experts')">Eksperto</button>
+        <button class="btn btn-primary" onclick="showTable('farmers')">Magsasaka</button>
+    </div>
+    <!-- Search Bar for Eksperto & Magsasaka -->
+    <div id="table-search-bar" class="mb-3" style="display: none;">
+        <input type="text" id="reportSearchInput" class="form-control" placeholder="Maghanap sa eksperto o magsasaka...">
+    </div>
+
+    <!-- Eksperto Status Filters -->
+    <div id="expert-filters" class="text-center mb-3" style="display: none;">
+        <button class="btn btn-secondary" onclick="showAllExperts()">Lahat</button>
+        <button class="btn btn-warning" onclick="filterTable('Pending')">Pending</button>
+        <button class="btn btn-success" onclick="filterTable('Approved')">Approved</button>
+        <button class="btn btn-danger" onclick="filterTable('Rejected')">Rejected</button>
+    </div>
+
+<!-- Eksperto Table -->
+<div id="experts-table" style="display: none;">
+    <div class="d-flex justify-content-between align-items-center">
+        <h4 class="text-center">Eksperto Table</h4>
+        <a href="{% url 'generate_expert_pdf' %}" class="btn btn-primary">
+            <i class="fas fa-file-pdf"></i> I-print ang Ulat ng Eksperto
+        </a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>Barangay</th>
+                    <th>Phone</th>
+                    <th>Profile</th>
+                    <th>Role</th>
+                    <th>Proof of Expertise</th>
+                    <th>License Number</th>
+                    <th>Position</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for expert in experts %}
+                <tr class="expert-row" data-status="{{ expert.status }}">
+                    <td>{{ expert.id }}</td>
+                    <td>{{ expert.username }}</td>
+                    <td>{{ expert.email }}</td>
+                    <td>{{ expert.first_name }}</td>
+                    <td>{{ expert.middle_name }}</td>
+                    <td>{{ expert.last_name }}</td>
+                    <td>{{ expert.barangay }}</td>
+                    <td>{{ expert.phone_number }}</td>
+                    <td><img src="{{ expert.profile_picture }}" class="rounded-circle img-fluid" width="40"></td>
+                    <td>{{ expert.role }}</td>
+                    <td>
+                        {% if expert.proof_of_expertise %}
+                            <button class="btn btn-info btn-sm" onclick="previewFile('{{ expert.proof_of_expertise }}')">
+                                View
+                            </button>
+                        {% else %}
+                            <span class="text-muted">No File</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ expert.license_number }}</td>
+                    <td>{{ expert.position }}</td>
+                    <td>{{ expert.status }}</td>
+                    <td>
+                        <a href="{% url 'view_expert' expert.id %}" class="btn btn-info btn-sm">VIEW</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Magsasaka Table -->
+<div id="farmers-table" style="display: none;">
+    <div class="d-flex justify-content-between align-items-center">
+        <h4 class="text-center">Magsasaka Table</h4>
+        <a href="{% url 'generate_farmer_pdf' %}" class="btn btn-success">
+            <i class="fas fa-file-pdf"></i> Print Farmer Report
+        </a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>Barangay</th>
+                    <th>Phone</th>
+                    <th>Profile</th>
+                    <th>Role</th>
+                    <th>Farm Size</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for farmer in farmers %}
+                <tr>
+                    <td>{{ farmer.id }}</td>
+                    <td>{{ farmer.username }}</td>
+                    <td>{{ farmer.email }}</td>
+                    <td>{{ farmer.first_name }}</td>
+                    <td>{{ farmer.middle_name }}</td>
+                    <td>{{ farmer.last_name }}</td>
+                    <td>{{ farmer.barangay }}</td>
+                    <td>{{ farmer.phone_number }}</td>
+                    <td><img src="{{ farmer.profile_picture }}" class="rounded-circle img-fluid" width="40"></td>
+                    <td>{{ farmer.role }}</td>
+                    <td>{{ farmer.farm_size }} hectares</td>
+                    <td>
+                        <a href="{% url 'view_farmer' farmer.id %}" class="btn btn-info btn-sm">VIEW</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- Modal for Viewing Proof of Expertise -->
+<div class="modal fade" id="proofModal" tabindex="-1" aria-labelledby="proofModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="proofModalLabel">Proof of Expertise</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div id="proofContent">
+                    <!-- File preview will be loaded here dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% comment %} ULAT NG ADMIN PARA SA KONSULTASYON {% endcomment %}
+<style>
+    .filter-btn.active {
+        border-width: 2px;
+        font-weight: bold;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+<div class="container mt-5">
+    <h2 class="text-center fw-bold mb-4">Ulat ng Konsultasyon</h2>
+
+    <!-- Search Bar -->
+    <div class="mb-3">
+        <input type="text" id="consultationSearchInput" class="form-control" placeholder="Paghahanap ayon sa eksperto, magsasaka, klasipikasyon, solusyon, o address...">
+    </div>
+
+    <div class="mb-3 text-end">
+        <button class="btn btn-outline-primary me-2 filter-btn" data-filter="all">Lahat</button>
+        <button class="btn btn-outline-success me-2 filter-btn" data-filter="solved">Nalutas</button>
+        <button class="btn btn-outline-warning filter-btn" data-filter="unsolved">Hindi pa Nalulutas</button>
+    </div>
+    
+    <div class="text-end mb-3">
+        <button class="btn btn-success" onclick="printConsultation()">I-print ang Konsultasyon</button>
+    </div>
+
+    <div id="consultationPrintSection">
+        <div class="print-header">
+            <h2 class="text-center fw-bold">Ulat ng Konsultasyon</h2>
+            <p>Petsa ng Ulat: <span id="consultationReportDate"></span></p>
+            <div class="print-header">
+                <h3>Municipal Agricultural Office</h3>
+                <p>Municipality of Victoria</p>
+                <p>San Gelacio, Victoria, Oriental Mindoro</p>
+            </div>
+            <hr>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Pangalan ng Eksperto</th>
+                        <th>Posisyon</th>
+                        <th>Barangay ng Eksperto</th>
+                        <th>Pangalan ng Magsasaka</th>
+                        <th>Barangay ng Magsasaka</th>
+                        <th>Status</th>
+                        <th>Klasipikasyon</th>
+                        <th>Solusyon</th>
+                        <th>Petsa ng Konsultasyon</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for message in consultations %}
+                    <tr data-status="{% if message.is_solved %}solved{% else %}unsolved{% endif %}">
+                        <td>{{ forloop.counter }}</td>
+
+                        <!-- Expert Info -->
+                        <td>
+                            {% if message.receiver_expert %}
+                                {{ message.receiver_expert.first_name }} {{ message.receiver_expert.last_name }}
+                            {% elif message.sender_expert %}
+                                {{ message.sender_expert.first_name }} {{ message.sender_expert.last_name }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if message.receiver_expert %}
+                                {{ message.receiver_expert.position|default:"N/A" }}
+                            {% elif message.sender_expert %}
+                                {{ message.sender_expert.position|default:"N/A" }}
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if message.receiver_expert %}
+                                {{ message.receiver_expert.barangay }}
+                            {% elif message.sender_expert %}
+                                {{ message.sender_expert.barangay }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+
+                        <!-- Farmer Info -->
+                        <td>
+                            {% if message.sender_farmer %}
+                                {{ message.sender_farmer.first_name }} {{ message.sender_farmer.last_name }}
+                            {% elif message.receiver_farmer %}
+                                {{ message.receiver_farmer.first_name }} {{ message.receiver_farmer.last_name }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if message.sender_farmer %}
+                                {{ message.sender_farmer.barangay }}
+                            {% elif message.receiver_farmer %}
+                                {{ message.receiver_farmer.barangay }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+
+                        <!-- Solved Status -->
+                        <td>
+                            {% if message.is_solved %}
+                                <span style="color:green;">&#10004;</span> <!-- checkmark -->
+                            {% else %}
+                                <span style="color:orange;">&#9203;</span> <!-- clock icon -->
+                            {% endif %}
+                        </td>
+
+                        <!-- Classification -->
+                        <td>
+                            {% if message.is_solved %}
+                                {{ message.classification|default:"-" }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+
+                        <!-- Solution Description -->
+                        <td>
+                            {% if message.is_solved %}
+                                {{ message.solution_description|default:"-" }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+
+                        <!-- Date -->
+                        <td>{{ message.timestamp|date:"F j, Y - g:i A" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="10" class="text-center">Walang ulat ng konsultasyon.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="print-footer">
+            <hr>
+            <p class="text-center">Wala ng sumunod na Impormasyon</p>
+            <p class="text-center">AgriExpert@2025</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showAllExperts() {
+        // 👇 Show the Eksperto table and filters
+        document.getElementById('experts-table').style.display = 'block';
+        document.getElementById('expert-filters').style.display = 'block';
+        document.getElementById('farmers-table').style.display = 'none';
+        document.getElementById('table-search-bar').style.display = 'block';
+
+        // 👇 Show all expert rows regardless of status
+        const rows = document.querySelectorAll('.expert-row');
+        rows.forEach(row => {
+            row.style.display = ''; // show all rows
+        });
+    }
+
+    function showTable(table) {
+        document.getElementById('experts-table').style.display = (table === 'experts') ? 'block' : 'none';
+        document.getElementById('farmers-table').style.display = (table === 'farmers') ? 'block' : 'none';
+        document.getElementById('expert-filters').style.display = (table === 'experts') ? 'block' : 'none';
+    }
+
+    function filterTable(status) {
+        const rows = document.querySelectorAll('.expert-row');
+        document.getElementById('experts-table').style.display = 'block';
+        document.getElementById('expert-filters').style.display = 'block';
+        document.getElementById('farmers-table').style.display = 'none';
+
+        rows.forEach(row => {
+            const rowStatus = row.getAttribute('data-status')?.trim();
+            row.style.display = (rowStatus === status) ? '' : 'none';
+        });
+    }
+
+    // Load all by default
+    window.onload = function () {
+        showAllExperts();
+    };
+</script>
+<script>
+    function previewFile(fileUrl) {
+        console.log("Opening file:", fileUrl);
+        let proofContent = document.getElementById("proofContent");
+        proofContent.innerHTML = "";
+    
+        if (!fileUrl) {
+            alert("No file available!");
+            return;
+        }
+    
+        let fileExtension = fileUrl.split('.').pop().toLowerCase();
+    
+        if (['jpg', 'jpeg', 'png', 'gif'].includes(fileExtension)) {
+            proofContent.innerHTML = `<img src="${fileUrl}" class="img-fluid" alt="Proof of Expertise">`;
+        } else if (fileExtension === 'pdf') {
+            proofContent.innerHTML = `<iframe src="${fileUrl}" width="100%" height="600px" style="border:none;"></iframe>`;
+        } else if (['doc', 'docx'].includes(fileExtension)) {
+            let convertUrl = `/convert_docx_to_pdf/?file_url=${encodeURIComponent(fileUrl)}`;
+    
+            fetch(convertUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.pdf_url) {
+                    console.log("Using PDF URL:", data.pdf_url);
+                    proofContent.innerHTML = `<iframe src="${data.pdf_url}" width="100%" height="600px" style="border:none;"></iframe>`;
+                } else {
+                    proofContent.innerHTML = `<p class="text-danger">Could not preview this document. <a href="${fileUrl}" target="_blank">Download here</a></p>`;
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching PDF:", error);
+                proofContent.innerHTML = `<p class="text-danger">Could not preview this document. <a href="${fileUrl}" target="_blank">Download here</a></p>`;
+            });
+        } else {
+            proofContent.innerHTML = `<p class="text-danger">File format not supported. <a href="${fileUrl}" target="_blank">Download here</a></p>`;
+        }
+    
+        let proofModal = new bootstrap.Modal(document.getElementById('proofModal'));
+        proofModal.show();
+    }
+    
+</script>
+
+{% comment %} PARA SA ULAT NG KONSULTASYON {% endcomment %}
+
+<!-- Print & Search Scripts -->
+<style>
+    .print-header, .print-footer {
+        display: none;
+    }
+
+    @media print {
+        body * {
+            visibility: hidden;
+        }
+
+        #consultationPrintSection, #consultationPrintSection * {
+            visibility: visible;
+        }
+
+        #consultationPrintSection {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+
+        .print-header, .print-footer {
+            display: block;
+        }
+    }
+    </style>
+    
+    <!-- JS -->
+    <script>
+        function printConsultation() {
+            var printContents = document.getElementById("consultationPrintSection").innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    
+        document.addEventListener("DOMContentLoaded", function () {
+            // Set today's date in the report
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString("en-PH", {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            });
+            document.getElementById("consultationReportDate").textContent = formattedDate;
+    
+            // Search functionality
+            const searchInput = document.getElementById("consultationSearchInput");
+            const rows = document.querySelectorAll("#consultationPrintSection tbody tr");
+    
+            searchInput.addEventListener("keyup", function () {
+                const filter = searchInput.value.toLowerCase();
+    
+                rows.forEach(row => {
+                    const cells = row.getElementsByTagName("td");
+                    const expert = cells[1].textContent.toLowerCase();
+                    const position = cells[2].textContent.toLowerCase();
+                    const expertBarangay = cells[3].textContent.toLowerCase();
+                    const farmer = cells[4].textContent.toLowerCase();
+                    const farmerBarangay = cells[5].textContent.toLowerCase();
+                    const status = cells[6].textContent.toLowerCase();
+                    const classification = cells[7].textContent.toLowerCase();
+                    const solution = cells[8].textContent.toLowerCase();
+                    const date = cells[9].textContent.toLowerCase();
+    
+                    if (
+                        expert.includes(filter) ||
+                        position.includes(filter) ||
+                        expertBarangay.includes(filter) ||
+                        farmer.includes(filter) ||
+                        farmerBarangay.includes(filter) ||
+                        status.includes(filter) ||
+                        classification.includes(filter) ||
+                        solution.includes(filter) ||
+                        date.includes(filter)
+                    ) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            });
+    
+            // Filter by status buttons
+            const filterButtons = document.querySelectorAll(".filter-btn");
+    
+            filterButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const filter = button.getAttribute("data-filter");
+    
+                    rows.forEach(row => {
+                        const status = row.getAttribute("data-status");
+    
+                        if (filter === "all" || status === filter) {
+                            row.style.display = "";
+                        } else {
+                            row.style.display = "none";
+                        }
+                    });
+    
+                    // Highlight active button
+                    filterButtons.forEach(btn => btn.classList.remove("active"));
+                    button.classList.add("active");
+                });
+            });
+        });
+    </script>
+    
+    {% comment %} <script>
+        function printConsultation() {
+            var printContents = document.getElementById("consultationPrintSection").innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    
+        document.addEventListener("DOMContentLoaded", function () {
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString("en-PH", {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            });
+            document.getElementById("consultationReportDate").textContent = formattedDate;
+        });
+    
+        document.addEventListener("DOMContentLoaded", function () {
+            let searchInput = document.getElementById("consultationSearchInput");
+            searchInput.addEventListener("keyup", function () {
+                let filter = searchInput.value.toLowerCase();
+                let rows = document.querySelectorAll("#consultationPrintSection tbody tr");
+        
+                rows.forEach(row => {
+                    let expert = row.cells[1].textContent.toLowerCase();
+                    let position = row.cells[2].textContent.toLowerCase();
+                    let expertBarangay = row.cells[3].textContent.toLowerCase();
+                    let farmer = row.cells[4].textContent.toLowerCase();
+                    let farmerBarangay = row.cells[5].textContent.toLowerCase();
+                    let status = row.cells[6].textContent.toLowerCase();
+                    let classification = row.cells[7].textContent.toLowerCase();
+                    let solution = row.cells[8].textContent.toLowerCase();
+                    let date = row.cells[9].textContent.toLowerCase(); // ✅ include date
+        
+                    if (
+                        expert.includes(filter) ||
+                        position.includes(filter) ||
+                        expertBarangay.includes(filter) ||
+                        farmer.includes(filter) ||
+                        farmerBarangay.includes(filter) ||
+                        status.includes(filter) ||
+                        classification.includes(filter) ||    // ✅ klasipikasyon
+                        solution.includes(filter) ||          // ✅ solusyon
+                        date.includes(filter)                 // ✅ petsa ng konsultasyon
+                    ) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            });
+        });
+
+    let position = row.cells[2].textContent.toLowerCase();
+    let expertBarangay = row.cells[3].textContent.toLowerCase();
+    let farmerBarangay = row.cells[5].textContent.toLowerCase();
+
+    if (
+        expert.includes(filter) ||
+        position.includes(filter) ||
+        expertBarangay.includes(filter) ||
+        farmer.includes(filter) ||
+        farmerBarangay.includes(filter) ||
+        classification.includes(filter) ||
+        solution.includes(filter)
+    ) {
+        row.style.display = "";
+    } else {
+        row.style.display = "none";
+    } 
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const rows = document.querySelectorAll("tbody tr[data-status]");
+
+        filterButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const filter = button.getAttribute("data-filter");
+
+                rows.forEach(row => {
+                    const status = row.getAttribute("data-status");
+
+                    if (filter === "all" || status === filter) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+
+                // Optional: Highlight the active button
+                filterButtons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+            });
+        });
+    });
+</script> {% endcomment %}
+{% comment %} SCRIPT SA SEARCH NG REPORT SA DEMOGRAPHICS {% endcomment %}
+<script>
+    function showTable(role) {
+    const expertTable = document.getElementById("experts-table");
+    const farmerTable = document.getElementById("farmers-table");
+    const filters = document.getElementById("expert-filters");
+    const searchBar = document.getElementById("table-search-bar");
+
+    if (role === "experts") {
+        expertTable.style.display = "block";
+        farmerTable.style.display = "none";
+        filters.style.display = "block";
+        searchBar.style.display = "block"; // Ensure search bar is shown for Eksperto
+    } else if (role === "farmers") {
+        expertTable.style.display = "none";
+        farmerTable.style.display = "block";
+        filters.style.display = "none";
+        searchBar.style.display = "block"; // Ensure search bar is shown for Magsasaka
+    }
+
+    // Clear search field and reset rows
+    document.getElementById("reportSearchInput").value = "";
+    showAllRows();
+}
+</script>
+
+
+<script>
+    document.getElementById("reportSearchInput").addEventListener("keyup", function () {
+        const value = this.value.toLowerCase();
+
+        let visibleTable = null;
+
+        if (document.getElementById("experts-table").style.display === "block") {
+            visibleTable = document.querySelectorAll("#experts-table tbody tr");
+        } else if (document.getElementById("farmers-table").style.display === "block") {
+            visibleTable = document.querySelectorAll("#farmers-table tbody tr");
+        }
+
+        if (visibleTable) {
+            visibleTable.forEach(row => {
+                const rowText = row.textContent.toLowerCase();
+                row.style.display = rowText.includes(value) ? "" : "none";
+            });
+        }
+    });
+
+    function showAllRows() {
+        document.querySelectorAll("#experts-table tbody tr, #farmers-table tbody tr").forEach(row => {
+            row.style.display = "";
+        });
+    }
+
+    function filterTable(status) {
+        const rows = document.querySelectorAll("#experts-table .expert-row");
+        rows.forEach(row => {
+            row.style.display = (row.dataset.status === status) ? "" : "none";
+        });
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .info-table {
+            max-width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card shadow-lg">
+            <div class="card-header bg-success text-white text-center">
+                <h3>Farmer Profile</h3>
+            </div>
+            <div class="card-body text-center">
+                <img src="{{ farmer.profile_picture }}" alt="Profile Picture" class="profile-img mb-3">
+                <h4>{{ farmer.first_name }} {{ farmer.middle_name }} {{ farmer.last_name }}</h4>
+                <p class="text-muted">Magsasaka</p>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-bordered info-table">
+                    <tbody>
+                        <tr><th>Farmer ID:</th><td>{{ farmer.id }}</td></tr>
+                        <tr><th>Username:</th><td>{{ farmer.username }}</td></tr>
+                        <tr><th>Email:</th><td>{{ farmer.email }}</td></tr>
+                        <tr><th>Barangay:</th><td>{{ farmer.barangay }}</td></tr>
+                        <tr><th>Phone Number:</th><td>{{ farmer.phone_number }}</td></tr>
+                        <tr><th>Farm Size (Hectares):</th><td>{{ farmer.farm_size }}</td></tr>        
+                    </tbody>
+                </table>
+
+                <div class="text-center mt-3">
+                    <a href="{% url 'admin_reports' %}" class="btn btn-secondary">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

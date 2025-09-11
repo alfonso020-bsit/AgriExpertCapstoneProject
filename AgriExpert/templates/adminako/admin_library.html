@@ -1,0 +1,172 @@
+{% extends 'adminako/base_admin.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .library-wrapper {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .toggle-buttons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+        gap: 20px;
+    }
+
+    .toggle-buttons button {
+        padding: 12px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        border: 2px solid #4CAF50;
+        background-color: white;
+        color: #4CAF50;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+
+    .toggle-buttons button.active {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+    }
+
+    .image-card {
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        overflow: hidden;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .image-card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .image-card h4 {
+        font-size: 16px;
+        color: #333;
+        margin-top: 10px;
+    }
+</style>
+
+<div class="library-wrapper">
+    <div class="toggle-buttons">
+        <button id="grainBtn" class="active" onclick="toggleLibrary('grain')">Grain</button>
+        <button id="leafBtn" onclick="toggleLibrary('leaf')">Leaf</button>
+        <button id="pestBtn" onclick="toggleLibrary('pest')">Pest</button>
+        <button id="stemBtn" onclick="toggleLibrary('stem')">Stem</button>
+    </div>
+
+    <div id="imageContainer" class="image-grid">
+        <!-- Placeholder for images, initially Grain category shown -->
+        <!-- Example for Grain -->
+        <div class="image-card grain">
+            <img src="{% static 'css/libraryimages/Grain/deadheart.png' %}" alt="Dead Heart">
+            <h4>Dead Heart</h4>
+        </div>
+        <div class="image-card grain">
+            <img src="{% static 'css/libraryimages/Grain/FalseSmut.png' %}" alt="False Smut">
+            <h4>False Smut</h4>
+        </div>
+        <div class="image-card grain">
+            <img src="{% static 'css/libraryimages/Grain/GrainDiscoloration.png' %}" alt="Grain Discoloration">
+            <h4>Grain Discoloration</h4>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleLibrary(category) {
+        const categories = ['grain', 'leaf', 'pest', 'stem'];
+        
+        // Remove the active class from all buttons
+        categories.forEach(cat => {
+            const button = document.getElementById(cat + 'Btn');
+            button.classList.remove('active');
+        });
+        
+        // Add the active class to the clicked button
+        document.getElementById(category + 'Btn').classList.add('active');
+        
+        // Hide all images and show the ones relevant to the selected category
+        const imageContainer = document.getElementById('imageContainer');
+        imageContainer.innerHTML = ''; // Clear existing images
+        
+        // Add the corresponding images based on the category
+        if (category === 'grain') {
+            addImages([
+                { src: 'Grain/deadheart.png', alt: 'Dead Heart', label: 'Dead Heart' },
+                { src: 'Grain/FalseSmut.png', alt: 'False Smut', label: 'False Smut' },
+                { src: 'Grain/GrainDiscoloration.png', alt: 'Grain Discoloration', label: 'Grain Discoloration' }
+            ]);
+        } else if (category === 'leaf') {
+            addImages([
+                { src: 'Leaf/bakanae.png', alt: 'Bakanae', label: 'Bakanae' },
+                { src: 'Leaf/grassystuntvirus.png', alt: 'Grassy Stunt Virus', label: 'Grassy Stunt Virus' },
+                { src: 'Leaf/ricestripes.png', alt: 'Rice Stripes', label: 'Rice Stripes' },
+                { src: 'Leaf/tungrovirus.png', alt: 'Tungro Virus', label: 'Tungro Virus' },
+                { src: 'Leaf/leafscald.png', alt: 'Leaf Scald', label: 'Leaf Scald' },
+                { src: 'Leaf/narrowbrownspot.png', alt: 'Narrow Brown Spot', label: 'Narrow Brown Spot' },
+                { src: 'Leaf/leafblast.png', alt: 'Leaf Blast', label: 'Leaf Blast' },
+                { src: 'Leaf/leafblight.png', alt: 'Leaf Blight', label: 'Leaf Blight' }
+            ]);
+        } else if (category === 'pest') {
+            addImages([
+                { src: 'Pest/riceborrer.png', alt: 'Rice Borrer', label: 'Rice Borrer' },
+                { src: 'Pest/thrips.png', alt: 'Thrips', label: 'Thrips' },
+                { src: 'Pest/waterweevil.png', alt: 'Water Weevil', label: 'Water Weevil' },
+                { src: 'Pest/stemfly.png', alt: 'Stem Fly', label: 'Stem Fly' },
+                { src: 'Pest/leafroller.png', alt: 'Leaf Roller', label: 'Leaf Roller' },
+                { src: 'Pest/leafhopper.png', alt: 'Leaf Hopper', label: 'Leaf Hopper' },
+                { src: 'Pest/caterpillar.png', alt: 'Caterpillar', label: 'Caterpillar' },
+                { src: 'Pest/gallmidge.png', alt: 'Gall Midge', label: 'Gall Midge' },
+                { src: 'Pest/bugs.png', alt: 'Bugs', label: 'Bugs' },
+                { src: 'Pest/blackbugs.png', alt: 'Black Bugs', label: 'Black Bugs' },
+                { src: 'Pest/paddystemmagotfly.png', alt: 'Paddy Stem Maggot Fly', label: 'Paddy Stem Maggot Fly' },
+                { src: 'Pest/maya.png', alt: 'Maya', label: 'Maya' },
+                { src: 'Pest/munia.png', alt: 'Munia', label: 'Munia' },
+                { src: 'Pest/hispa.png', alt: 'Hispa', label: 'Hispa' },
+                { src: 'Pest/goldenapplesnailegg.png', alt: 'Golden Apple Snail Egg', label: 'Golden Apple Snail Egg' },
+                { src: 'Pest/goldenapplesnail.png', alt: 'Golden Apple Snail', label: 'Golden Apple Snail' },
+                { src: 'Pest/asiaticriceborer.png', alt: 'Asiatic Rice Borer', label: 'Asiatic Rice Borer' },
+                { src: 'Pest/bluebettle.png', alt: 'Blue Bettle', label: 'Blue Bettle' },
+                { src: 'Pest/brownplanthopper.png', alt: 'Brown Plant Hopper', label: 'Brown Plant Hopper' },
+                { src: 'Pest/stemborer.png', alt: 'Stem Borer', label: 'Stem Borer' }
+            ]);
+        } else if (category === 'stem') {
+            addImages([
+                { src: 'Stem/StemRot.png', alt: 'Rot Stem', label: 'Rot Stem' },
+                { src: 'Stem/stemblight.png', alt: 'Stem Blight', label: 'Stem Blight' },
+                { src: 'Stem/StemRust.png', alt: 'Stem Rust', label: 'Stem Rust' }
+            ]);
+        }
+    }
+
+    function addImages(images) {
+        const container = document.getElementById('imageContainer');
+        images.forEach(image => {
+            const card = document.createElement('div');
+            card.classList.add('image-card');
+            card.innerHTML = `
+                <img src="/static/css/libraryimages/${image.src}" alt="${image.alt}">
+                <h4>${image.label}</h4>
+            `;
+            container.appendChild(card);
+        });
+    }    
+</script>
+
+{% endblock %}

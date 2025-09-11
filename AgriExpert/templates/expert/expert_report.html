@@ -1,0 +1,272 @@
+{% extends "expert/base_expert.html" %}
+
+{% block content %}
+{% comment %} <div class="container mt-5">
+    <h2 class="text-center fw-bold mb-4">Ulat ng Eksperto</h2>
+    
+    <div class="row justify-content-center">
+        <!-- Farmers Contacted Card -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-primary shadow-lg rounded-4 border-0">
+                <div class="card-header text-center fw-bold">Kabuuang Mga Magsasaka na Nakipag-ugnay</div>
+                <div class="card-body text-center py-4">
+                    <h1 class="display-4 fw-bold">{{ unique_farmers }}</h1>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Solved Consultations Card -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-success shadow-lg rounded-4 border-0">
+                <div class="card-header text-center fw-bold">Nalutas na Mga Konsultasyon</div>
+                <div class="card-body text-center py-4">
+                    <h1 class="display-4 fw-bold">{{ solved_consultations }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart Section -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg rounded-4 border-0 p-3">
+                <div class="card-body">
+                    <h6 class="card-title text-center fw-bold">Mga Istatistika ng Eksperto</h6>
+                    <div style="width: 100%; height: 300px;">
+                        <canvas id="expertChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var ctx = document.getElementById("expertChart").getContext("2d");
+        new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: ["Farmers Contacted", "Solved Consultations"],
+                datasets: [{
+                    label: "Expert Stats",
+                    data: [{{ unique_farmers }}, {{ solved_consultations }}],
+                    backgroundColor: ["#007bff", "#28a745"],
+                    borderColor: ["#0056b3", "#1e7e34"],
+                    borderWidth: 1,
+                    barThickness: 50
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: Math.max({{ unique_farmers }}, {{ solved_consultations }}) + 2,
+                        ticks: { stepSize: 1 }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    });
+</script> {% endcomment %}
+<!-- Expert Report Table -->
+{% comment %} <div class="container mt-5">
+    <h2 class="text-center fw-bold mb-4">Ulat ng Eksperto</h2>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Pangalan</th>
+                    <th>Mensahe</th>
+                    <th>Petsa at Oras na Kumunsulta</th>
+                    <th>Klasipikasyon</th>
+                    <th>Paglalarawan</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in expert_reports %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ report.sender_farmer.first_name }} {{ report.sender_farmer.last_name }}</td>
+                    <td>{{ report.message_text }}</td>
+                    <td>{{ report.timestamp }}</td>
+                    <td>{{ report.classification }}</td>
+                    <td>{{ report.solution_description }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center">Walang natagpuang ulat.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %} {% endcomment %}
+
+<!-- Expert Report Table -->
+<div class="container mt-5">
+    <h2 class="text-center fw-bold mb-4">Ulat ng Eksperto</h2>
+
+    <!-- Search Bar -->
+    <div class="mb-3">
+        <input type="text" id="searchInput" class="form-control" placeholder="Paghahanap ayon sa pangalan, pag-uuri, o paglalarawan ng solusyon ...">
+    </div>
+
+    <!-- Print Button -->
+    <div class="text-end mb-3">
+        <button class="btn btn-primary" onclick="printReport()">I-print ang Ulat</button>
+    </div>
+
+  <!-- Table Wrapper for Print -->
+<div id="printSection">
+    <!-- PRINT-ONLY HEADER (Hidden on Screen) -->
+    <div class="print-header">
+        <h2 class="text-center fw-bold">Ulat ng Eksperto</h2>
+        <p>Report Date: <span id="reportDate"></span></p>
+        <hr>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center" id="expertTable">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Pangalan</th>
+                    <th>Mensahe</th>
+                    <th>Petsa at Oras na Kumunsulta</th>
+                    <th>Klasipikasyon</th>
+                    <th>Paglalarawan</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in expert_reports %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ report.sender_farmer.first_name }} {{ report.sender_farmer.last_name }}</td>
+                    <td>{{ report.message_text }}</td>
+                    <td>{{ report.timestamp }}</td>
+                    <td>{{ report.classification }}</td>
+                    <td>{{ report.solution_description }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center">Walang natagpuang ulat.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- PRINT-ONLY FOOTER (Hidden on Screen) -->
+    <div class="print-footer">
+        <hr>
+        <p class="text-center">Wala ng sumunod na Impormasyon</p>
+        <p class="text-center">AgriExpert@2025</p>
+    </div>
+</div>
+
+<!-- CSS to Hide Header/Footer on Screen but Show in Print -->
+<style>
+    .print-header, .print-footer {
+        display: none;
+    }
+
+    @media print {
+        body * {
+            visibility: hidden; /* Hide everything by default */
+        }
+
+        #printSection, #printSection * {
+            visibility: visible; /* Show only the print section */
+        }
+
+        #printSection {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+
+        .print-header, .print-footer {
+            display: block; /* Show only in print mode */
+        }
+    }
+</style>
+
+<!-- JavaScript for Printing -->
+<script>
+    function printReport() {
+        // ✅ Get current date & time
+        let now = new Date();
+        let formattedDate = now.toLocaleString("tl-PH", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true
+        });
+    
+        document.getElementById("reportDate").innerText = formattedDate;
+        // ✅ Print the report
+        window.print();
+    }
+    
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let searchInput = document.getElementById("searchInput");
+
+        searchInput.addEventListener("keyup", function () {
+            let filter = searchInput.value.toLowerCase();
+            let rows = document.querySelectorAll("#expertTable tbody tr");
+
+            rows.forEach(row => {
+                let name = row.cells[1].textContent.toLowerCase();
+                let rawDateTime = row.cells[3].textContent.trim();  // Date & Time text from table
+                let classification = row.cells[4].textContent.toLowerCase();
+                let solution = row.cells[5].textContent.toLowerCase();
+
+                // ✅ Extract month, day, year, and time from formatted date
+                let dateParts = rawDateTime.match(/(\w+)\s+(\d+),\s+(\d+),\s+([\d:apm\s]+)/i);
+                let formattedDate = "";
+                
+                if (dateParts) {
+                    let month = dateParts[1]; // Example: "March"
+                    let day = dateParts[2];   // Example: "29"
+                    let year = dateParts[3];  // Example: "2025"
+                    let time = dateParts[4];  // Example: "12:01 p.m."
+
+                    formattedDate = `${month} ${day} ${year} ${time}`.toLowerCase();  
+                }
+
+                // ✅ Search by name, formatted date, classification, or solution
+                if (
+                    name.includes(filter) ||
+                    (formattedDate && formattedDate.includes(filter)) ||  
+                    classification.includes(filter) || 
+                    solution.includes(filter)
+                ) {
+                    row.style.display = "";  // Show row if it matches
+                } else {
+                    row.style.display = "none";  // Hide row if it doesn't match
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

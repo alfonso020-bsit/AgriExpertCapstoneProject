@@ -1,0 +1,141 @@
+{% extends 'expert/base_expert.html' %}
+
+{% block content %}
+<div class="container mt-5 mb-5 p-4 rounded shadow-sm" style="background-color: #e6f4ea;">
+    <h2 class="text-success mb-4 fw-bold">Gumawa ng Expert Post</h2>
+    <form id="postForm" action="{% url 'create_expert_post' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Pamagat -->
+        <div class="form-group mb-3">
+            <label for="id_title" class="form-label text-success fw-semibold">Pamagat</label>
+            <input type="text" name="title" id="id_title" class="form-control fw-bold border-success" placeholder="Ilagay ang pamagat..." required>
+        </div>
+
+        <!-- Kapisyon -->
+        <div class="form-group mb-3">
+            <label for="id_caption" class="form-label text-success fw-semibold">Kapisyon</label>
+            <textarea name="caption" id="id_caption" class="form-control border-success" rows="5" placeholder="Isulat ang iyong kapisyon..." required style="text-align: justify;"></textarea>
+        </div>
+
+        <!-- Pag-upload ng Mga Larawan -->
+        <div class="form-group mb-3">
+            <label for="imageInput" class="form-label text-success fw-semibold">Mag-upload ng Mga Larawan (Hanggang 4):</label>
+            <input type="file" id="imageInput" class="form-control border-success" accept="image/*" multiple>
+            <div id="image-preview" class="d-flex flex-wrap mt-3 gap-2"></div>
+        </div>
+
+        <!-- Nakatagong container para sa aktwal na image inputs -->
+        <div id="hidden-images-container"></div>
+
+        <!-- Mga Button -->
+        <button type="submit" class="btn btn-success">I-upload ang Post</button>
+        <a href="{% url 'expert_collaboration' %}" class="btn btn-secondary">Kanselahin</a>
+    </form>
+</div>
+
+<!-- Modal Warning -->
+<div class="modal fade" id="warningModal" tabindex="-1" aria-labelledby="warningModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-danger">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="warningModalLabel">Babala</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Isara"></button>
+        </div>
+        <div class="modal-body text-dark fw-semibold" id="warningMessage">
+          <!-- Message goes here -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Naiintindihan</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+    let selectedImages = [];
+    const maxImages = 4;
+
+    // Show warning modal
+    function showWarningModal(message) {
+        const warningModal = new bootstrap.Modal(document.getElementById('warningModal'));
+        document.getElementById('warningMessage').textContent = message;
+        warningModal.show();
+    }
+
+    // Event listener for file input
+    document.getElementById('imageInput').addEventListener('change', function(event) {
+        const files = Array.from(event.target.files);
+
+        if ((selectedImages.length + files.length) > maxImages) {
+            showWarningModal(`Hanggang ${maxImages} larawan lamang ang maaaring i-upload.`);
+            event.target.value = ''; // Clear selected files
+            return;
+        }
+
+        files.forEach((file) => {
+            selectedImages.push(file);
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const previewDiv = document.getElementById('image-preview');
+
+                const wrapper = document.createElement('div');
+                wrapper.style.position = 'relative';
+                wrapper.classList.add('position-relative');
+
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.style.maxWidth = '100px';
+                img.style.margin = '5px';
+                img.className = 'border border-success rounded';
+
+                const delBtn = document.createElement('button');
+                delBtn.innerHTML = '&times;';
+                delBtn.type = 'button';
+                delBtn.style.position = 'absolute';
+                delBtn.style.top = '0';
+                delBtn.style.right = '0';
+                delBtn.style.border = 'none';
+                delBtn.style.background = 'rgba(255,0,0,0.7)';
+                delBtn.style.color = 'white';
+                delBtn.style.borderRadius = '50%';
+                delBtn.style.cursor = 'pointer';
+                delBtn.onclick = () => {
+                    previewDiv.removeChild(wrapper);
+                    selectedImages = selectedImages.filter(imgFile => imgFile !== file);
+                    updateHiddenInputs();
+                };
+
+                wrapper.appendChild(img);
+                wrapper.appendChild(delBtn);
+                previewDiv.appendChild(wrapper);
+            };
+            reader.readAsDataURL(file);
+        });
+
+        updateHiddenInputs();
+        event.target.value = ''; // reset input field para sa susunod na batch
+    });
+
+    // Update hidden image inputs
+    function updateHiddenInputs() {
+        const container = document.getElementById('hidden-images-container');
+        container.innerHTML = ''; // Alisin ang mga naunang inputs
+
+        selectedImages.forEach((file) => {
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.name = 'images';
+            input.className = 'd-none'; // itago ang input
+            input.files = dataTransfer.files;
+
+            container.appendChild(input);
+        });
+    }
+</script>
+
+{% endblock %}

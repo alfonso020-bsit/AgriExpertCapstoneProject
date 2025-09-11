@@ -1,0 +1,1082 @@
+{% extends 'farmer/base_farmer.html' %}
+{% block content %}
+<style> 
+    /* Ensure that the modal content is responsive */
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Text justification */
+.modal-body p {
+    text-align: justify;
+    line-height: 1.6;  /* Better line spacing for readability */
+}
+
+/* Adjust modal image to be responsive */
+#pestPreviewImage {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;  /* Ensures the image scales properly */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .modal-dialog {
+        max-width: 90%;  /* Modal width on smaller screens */
+    }
+    .modal-body {
+        padding: 1.5rem; /* Slightly reduce padding on small screens */
+    }
+    .modal-title {
+        font-size: 1.5rem;  /* Adjust title size on mobile */
+    }
+    .btn {
+        font-size: 1rem;  /* Adjust button size */
+    }
+}
+
+</style>
+<div class="container mt-3">
+    <button id="viewHistoryBtn" class="btn btn-info">📜 View History</button>
+</div>
+
+<div class="container mt-4">
+
+    <!-- Disease Section -->
+    <h2 class="mb-3 text-danger">🦠 Disease Detection</h2>
+    <div class="row g-4">
+
+        <!-- Disease Upload -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-danger text-white fw-bold">📤 Upload Image</div>
+                <div class="card-body">
+                    <form id="diseasePredictForm" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" name="image" id="diseaseImageInput" class="form-control mb-3" required>
+                        <button type="submit" class="btn btn-danger w-100">Predict Disease</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disease Camera -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-danger text-white fw-bold">📸 Use Camera</div>
+                <div class="card-body text-center">
+                    <video id="diseaseCameraStream" width="100%" height="auto" autoplay class="mb-3 d-none"></video>
+                    <canvas id="diseaseCameraCanvas" class="d-none"></canvas>
+                    <img id="diseasePreviewCapturedImage" class="img-fluid mb-3 d-none" style="max-height: 300px;" />
+                    <button type="button" class="btn btn-outline-danger mb-2" id="startDiseaseCameraButton">Start Camera</button>
+                    <button type="button" class="btn btn-secondary d-none" id="captureDiseaseImageButton">Capture Image</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disease Real-Time -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-danger text-white fw-bold">📷 Real-Time Detection</div>
+                <div class="card-body text-center">
+                    <video id="diseaseVideo" width="100%" height="auto" autoplay muted class="border rounded d-none mb-2"></video>
+                    <canvas id="diseaseCanvas" class="d-none"></canvas>
+                    <button id="startDiseaseButton" class="btn btn-danger mb-2">Start</button>
+                    <button id="stopDiseaseButton" class="btn btn-outline-secondary d-none">Stop</button>
+                    <p id="rtDiseasePredictionText" class="fw-bold mt-3">Waiting for prediction...</p>
+                    <p><strong>Deskripsyon:</strong></p>
+                    <p id="rtDiseaseDeskripsyon">N/A</p>
+                    <p><strong>Ano ang Nagagawa Nito:</strong></p>
+                    <p id="rtDiseaseAnoNagagawa">N/A</p>
+                    <p><strong>Paano Ito Pangangasiwaan:</strong></p>
+                    <p id="rtDiseasePaanoPangangasiwaan">N/A</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pest Section -->
+<h2 class="mt-5 mb-3 text-success">🐛 Pest Detection</h2>
+<div class="row g-4">
+
+    <!-- Pest Upload -->
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-header bg-success text-white fw-bold">📤 Upload Image</div>
+            <div class="card-body">
+                <form id="pestPredictForm" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="pest_image" id="pestImageInput" class="form-control mb-3">
+                    <button type="submit" class="btn btn-success w-100">Predict Pest</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pest Camera -->
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-header bg-success text-white fw-bold">📸 Use Camera</div>
+            <div class="card-body text-center">
+                <video id="cameraStream" width="100%" height="auto" autoplay class="mb-3 d-none"></video>
+                <canvas id="cameraCanvas" class="d-none"></canvas>
+                <img id="previewCapturedImage" class="img-fluid mb-3 d-none" style="max-height: 300px;" />
+                <button type="button" class="btn btn-outline-success mb-2" id="startCameraButton">Start Camera</button>
+                <button type="button" class="btn btn-secondary d-none" id="captureImageButton">Capture Image</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pest Real-Time -->
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-header bg-success text-white fw-bold">📷 Real-Time Detection</div>
+            <div class="card-body text-center">
+                <video id="liveVideo" width="100%" height="auto" autoplay muted class="border rounded d-none mb-2"></video>
+                <canvas id="hiddenCanvas" class="d-none"></canvas>
+                <button id="startRealtimeButton" class="btn btn-success mb-2">Start</button>
+                <button id="stopRealtimeButton" class="btn btn-outline-secondary d-none">Stop</button>
+                <p id="rtPestPredictionText" class="fw-bold mt-3">Waiting for prediction...</p>
+                <p><strong>Deskripsyon:</strong> <span id="rtLibraryDeskripsyon">N/A</span></p>
+                <p><strong>Ano ang Nagagawa Nito:</strong> <span id="rtLibraryAnoNagagawa">N/A</span></p>
+                <p><strong>Paano Ito Pangangasiwaan:</strong> <span id="rtLibraryPaanoPangangasiwaan">N/A</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pest Result Modal (must be outside the cards) -->
+<div class="modal fade" id="pestResultModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Pest Prediction</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="pestPreviewImage" class="img-fluid mb-3" style="max-height: 300px;" />
+                <p id="pestPredictionText" class="fs-5 fw-bold"></p>
+                <p><strong>Deskripsyon:</strong> <span id="libraryDeskripsyon"></span></p>
+                <p><strong>Ano ang Nagagawa Nito:</strong> <span id="libraryAnoNagagawa"></span></p>
+                <p><strong>Paano Ito Pangangasiwaan:</strong> <span id="libraryPaanoPangangasiwaan"></span></p>
+                <button id="savePestButton" class="btn btn-primary">Save Image</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+{% comment %} <div class="container mt-3">
+    <button id="viewHistoryBtn" class="btn btn-info">📜 View History</button>
+</div>
+
+<div class="container mt-5">
+    <h2>Disease Image Upload</h2>
+    <video id="diseaseCameraStream" width="100%" height="auto" autoplay class="mb-3 d-none"></video>
+    <canvas id="diseaseCameraCanvas" class="d-none"></canvas>
+    <img id="diseasePreviewCapturedImage" class="img-fluid mb-3 d-none" style="max-height: 300px;" />
+
+    <div class="mb-3">
+        <button type="button" class="btn btn-outline-danger mb-2" id="startDiseaseCameraButton">📸 Use Camera</button>
+        <button type="button" class="btn btn-secondary d-none" id="captureDiseaseImageButton">Capture Image</button>
+    </div>
+
+    <form id="diseasePredictForm" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image" id="diseaseImageInput" class="form-control mb-3" required>
+        <button type="submit" class="btn btn-success">Predict Disease</button>
+    </form> {% endcomment %}
+
+    <!-- Modal -->
+    <div class="modal fade" id="diseaseResultModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Disease Prediction</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="diseasePreviewImage" class="img-fluid mb-3" style="max-height: 300px;" />
+                    <p id="diseasePredictionText" class="fs-5 fw-bold"></p>
+                    
+                    <!-- 🔽 DETAILED DISEASE INFORMATION -->
+                    <div id="diseaseLibraryInfo" class="text-start mt-4 px-3"></div>
+
+                    <button id="saveDiseaseButton" class="btn btn-primary mt-3">Save Image</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% comment %} Farmer Scan Modal of History {% endcomment %}
+<div class="modal fade" id="historyModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">📜 Kasaysayan ng Suri ng Magsasaka</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Filters -->
+        <div class="row g-2 mb-3">
+          <div class="col-md-3">
+            <input type="date" id="filterStartDate" class="form-control" placeholder="Start Date">
+          </div>
+          <div class="col-md-3">
+            <input type="date" id="filterEndDate" class="form-control" placeholder="End Date">
+          </div>
+          <div class="col-md-3">
+            <select id="filterClassification" class="form-select">
+            <option value="">Lahat</option>
+            <option value="peste">Peste</option>
+            <option value="sakit">Sakit</option>
+            </select>
+
+          </div>
+          <div class="col-md-3">
+            <button id="applyFiltersBtn" class="btn btn-primary w-100">Mag-apply ng Mga Filter</button>
+          </div>
+        </div>
+
+        <!-- History Cards -->
+        <div id="historyCards" class="row g-3"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById("viewHistoryBtn").addEventListener("click", function(){
+    loadHistory();
+    new bootstrap.Modal(document.getElementById("historyModal")).show();
+});
+
+document.getElementById("applyFiltersBtn").addEventListener("click", function(){
+    loadHistory();
+});
+
+function loadHistory() {
+    let start = document.getElementById("filterStartDate").value;
+    let end = document.getElementById("filterEndDate").value;
+    let classification = document.getElementById("filterClassification").value;
+
+    let url = `/get_prediction_history/?start_date=${start}&end_date=${end}&classification=${classification}`;
+
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        let container = document.getElementById("historyCards");
+        container.innerHTML = "";
+
+        if (!data.history || data.history.length === 0) {
+            container.innerHTML = `<p class="text-center text-muted">No history found.</p>`;
+            return;
+        }
+
+        data.history.forEach(item => {
+            let card = `
+            <div class="col-md-6">
+                <div class="card shadow-sm h-100">
+                    <div class="row g-0">
+                        <div class="col-4">
+                            <img src="${item.image_url}" class="img-fluid rounded-start" alt="Scan Image">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body">
+                                <h5 class="card-title">${item.predicted_class}</h5>
+                                <p class="card-text mb-1"><strong>Kumpiyansa:</strong> ${item.confidence}%</p>
+                                <p class="card-text"><small class="text-muted">${item.uploaded_at}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+            container.innerHTML += card;
+        });
+    })
+    .catch(err => {
+        console.error("Error fetching history:", err);
+    });
+}
+</script>
+
+
+<script>
+// Add these variable declarations at the very top of your JavaScript section
+let diseaseImageFile = null;
+let diseasePredictionData = null;
+
+// Disease Form Submission (Upload) - FIXED VERSION
+document.getElementById('diseasePredictForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Check if we're using a file from the file input or a camera capture
+    if (!diseaseImageFile) {
+        diseaseImageFile = document.getElementById('diseaseImageInput').files[0];
+    }
+    
+    if (!diseaseImageFile) {
+        alert('Please select or capture an image first');
+        return;
+    }
+
+    const formData = new FormData();
+    // Use 'disease_image' to match the updated view function parameter
+    formData.append('disease_image', diseaseImageFile);
+
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    fetch('/predict/', {
+        method: 'POST',
+        body: formData,
+        headers: { 'X-CSRFToken': csrfToken }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Disease prediction response:', data); // Debug log
+        
+        diseasePredictionData = data;
+
+        // Create an object URL from the local file we already have
+        const imageUrl = URL.createObjectURL(diseaseImageFile);
+        
+        // Set preview image
+        document.getElementById('diseasePreviewImage').src = imageUrl;
+        
+        // Set prediction summary - FIXED to use correct property names
+        document.getElementById('diseasePredictionText').innerText =
+            `Prediction: ${data.predicted_class || 'Unknown'} (Confidence: ${data.confidence || 0}%)`;
+
+        // Display detailed Library information if available
+        const infoDiv = document.getElementById('diseaseLibraryInfo');
+        if (data.library_data) {
+            infoDiv.innerHTML = `
+                <h5>Deskripsyon</h5><p>${(data.library_data.deskripsyon || 'N/A').replace(/\n/g, '<br>')}</p>
+                <h5>Ano ang nagagawa nito</h5><p>${(data.library_data.ano_ang_nagagawa_nito || 'N/A').replace(/\n/g, '<br>')}</p>
+                <h5>Bakit at saan ito nangyayari</h5><p>${(data.library_data.bakit_at_saan_ito_nangyayari || 'N/A').replace(/\n/g, '<br>')}</p>
+                <h5>Paano ito matutukoy</h5><p>${(data.library_data.paano_ito_matutukoy || 'N/A').replace(/\n/g, '<br>')}</p>
+                <h5>Bakit ito mahalaga</h5><p>${(data.library_data.bakit_ito_mahalaga || 'N/A').replace(/\n/g, '<br>')}</p>
+                <h5>Paano ito pangangasiwaan</h5><p>${(data.library_data.paano_ito_pangangasiwaan || 'N/A').replace(/\n/g, '<br>')}</p>
+            `;
+        } else {
+            infoDiv.innerHTML = `<p class="text-danger">No additional information found for this disease.</p>`;
+        }
+
+        // Show modal
+        new bootstrap.Modal(document.getElementById('diseaseResultModal')).show();
+    })
+    .catch(err => {
+        console.error('Prediction error:', err);
+        alert('Prediction failed: ' + err.message);
+    });
+});
+
+// Disease Camera Capture - FIXED
+let diseaseCameraTrack = null;
+
+document.getElementById('startDiseaseCameraButton').addEventListener('click', async () => {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const video = document.getElementById('diseaseCameraStream');
+        video.srcObject = stream;
+        diseaseCameraTrack = stream.getTracks()[0];
+        video.classList.remove('d-none');
+        document.getElementById('captureDiseaseImageButton').classList.remove('d-none');
+    } catch (err) {
+        alert("Unable to access camera: " + err.message);
+    }
+});
+
+document.getElementById('captureDiseaseImageButton').addEventListener('click', () => {
+    const video = document.getElementById('diseaseCameraStream');
+    const canvas = document.getElementById('diseaseCameraCanvas');
+    const context = canvas.getContext('2d');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    canvas.toBlob(blob => {
+        const previewImg = document.getElementById('diseasePreviewCapturedImage');
+        diseaseImageFile = new File([blob], 'captured_disease.jpg', { type: 'image/jpeg' });
+        previewImg.src = URL.createObjectURL(blob);
+        previewImg.classList.remove('d-none');
+
+        // Simulate a submit
+        document.getElementById('diseasePredictForm').dispatchEvent(new Event('submit'));
+    }, 'image/jpeg');
+
+    if (diseaseCameraTrack) diseaseCameraTrack.stop();
+    video.classList.add('d-none');
+    document.getElementById('captureDiseaseImageButton').classList.add('d-none');
+});
+
+// Real-Time Disease Detection - FIXED
+let diseaseVideo = document.getElementById('diseaseVideo');
+let diseaseCanvas = document.getElementById('diseaseCanvas');
+let startDiseaseBtn = document.getElementById('startDiseaseButton');
+let stopDiseaseBtn = document.getElementById('stopDiseaseButton');
+let diseaseStreamTrack = null;
+let diseaseIntervalId = null;
+
+startDiseaseBtn.addEventListener('click', async () => {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        diseaseVideo.srcObject = stream;
+        diseaseStreamTrack = stream.getTracks()[0];
+        diseaseVideo.classList.remove('d-none');
+        startDiseaseBtn.classList.add('d-none');
+        stopDiseaseBtn.classList.remove('d-none');
+
+        diseaseIntervalId = setInterval(captureAndPredictDisease, 2000);
+    } catch (err) {
+        alert("Camera access denied.");
+    }
+});
+
+stopDiseaseBtn.addEventListener('click', () => {
+    if (diseaseStreamTrack) diseaseStreamTrack.stop();
+    clearInterval(diseaseIntervalId);
+    diseaseVideo.classList.add('d-none');
+    stopDiseaseBtn.classList.add('d-none');
+    startDiseaseBtn.classList.remove('d-none');
+});
+
+function captureAndPredictDisease() {
+    const context = diseaseCanvas.getContext('2d');
+    diseaseCanvas.width = diseaseVideo.videoWidth;
+    diseaseCanvas.height = diseaseVideo.videoHeight;
+    context.drawImage(diseaseVideo, 0, 0, diseaseCanvas.width, diseaseCanvas.height);
+
+    diseaseCanvas.toBlob(blob => {
+        const formData = new FormData();
+        formData.append('disease_image', blob, 'frame.jpg');
+
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        fetch('/predict/', {
+            method: 'POST',
+            body: formData,
+            headers: { 'X-CSRFToken': csrfToken }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Real-time disease prediction:', data); // Debug log
+
+            if (data && data.predicted_class) {
+                document.getElementById('rtDiseasePredictionText').innerText = `Prediksyon: ${data.predicted_class}\nConfidence: ${parseFloat(data.confidence || 0).toFixed(2)}%`;
+            } else {
+                document.getElementById('rtDiseasePredictionText').innerText = 'Waiting for prediction...';
+            }
+
+            // Update real-time display with library data - FIXED property access
+            document.getElementById('rtDiseaseDeskripsyon').innerText = data.library_data?.deskripsyon || 'N/A';
+            document.getElementById('rtDiseaseAnoNagagawa').innerText = data.library_data?.ano_ang_nagagawa_nito || 'N/A';
+            document.getElementById('rtDiseasePaanoPangangasiwaan').innerText = data.library_data?.paano_ito_pangangasiwaan || 'N/A';
+        })
+        .catch(err => {
+            console.error('Disease prediction failed:', err);
+            document.getElementById('rtDiseasePredictionText').innerText = 'Error fetching prediction.';
+        });
+    }, 'image/jpeg');
+}
+
+// Save Disease Button - FIXED
+document.getElementById('saveDiseaseButton').addEventListener('click', function () {
+    if (!diseaseImageFile || !diseasePredictionData) {
+        alert('No prediction data to save.');
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('image', diseaseImageFile);
+    formData.append('predicted_class', diseasePredictionData.predicted_class || 'Unknown');
+    formData.append('confidence', diseasePredictionData.confidence || 0);
+    formData.append('library_id', diseasePredictionData.library_data?.id || '');
+
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    fetch('/upload_to_supabase_and_save/', {
+        method: 'POST',
+        body: formData,
+        headers: { 'X-CSRFToken': csrfToken }
+    })
+    .then(res => res.json())
+    .then(data => alert(data.success ? 'Image saved successfully!' : 'Failed to save.'))
+    .catch(err => alert('Save error: ' + err.message));
+});
+
+</script>
+{% comment %} UNAHAN NG DISEASE DATI BINAGO NG SEPTEMBER 4 {% endcomment %}
+{% comment %} <script>
+    let diseaseImageFile = null;
+    let diseasePredictionData = null;
+
+    document.getElementById('diseasePredictForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+    
+        // Check if we're using a file from the file input or a camera capture
+        // If diseaseImageFile is already set by the camera, use that instead
+        if (!diseaseImageFile) {
+            diseaseImageFile = document.getElementById('diseaseImageInput').files[0];
+        }
+        
+        if (!diseaseImageFile) {
+            alert('Please select or capture an image first');
+            return;
+        }
+    
+        const formData = new FormData();
+        formData.append('image', diseaseImageFile);
+    
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    
+        fetch('/predict/', {
+            method: 'POST',
+            body: formData,
+            headers: { 'X-CSRFToken': csrfToken }
+        })
+        .then(response => response.json())
+        .then(data => {
+            diseasePredictionData = data;
+    
+            // Create an object URL from the local file we already have
+            const imageUrl = URL.createObjectURL(diseaseImageFile);
+            
+            // Set preview image
+            document.getElementById('diseasePreviewImage').src = imageUrl;
+            
+            // Set prediction summary
+            document.getElementById('diseasePredictionText').innerText =
+                `Prediction: ${data.predicted_class} (Confidence: ${data.confidence}%)`;
+    
+            // Display detailed Library information if available
+            const infoDiv = document.getElementById('diseaseLibraryInfo');
+            if (data.library_data) {
+                infoDiv.innerHTML = `
+                    <h5>Deskripsyon</h5><p>${data.library_data.deskripsyon.replace(/\n/g, '<br>')}</p>
+                    <h5>Ano ang nagagawa nito</h5><p>${data.library_data.ano_ang_nagagawa_nito.replace(/\n/g, '<br>')}</p>
+                    <h5>Paano ito pangangasiwaan</h5><p>${data.library_data.paano_ito_pangangasiwaan.replace(/\n/g, '<br>')}</p>
+                `;
+            } else {
+                infoDiv.innerHTML = `<p class="text-danger">No additional information found for this disease.</p>`;
+            }
+    
+            // Show modal
+            new bootstrap.Modal(document.getElementById('diseaseResultModal')).show();
+        })
+        .catch(err => {
+            console.error('Prediction error:', err);
+            alert('Prediction failed: ' + err.message);
+        });
+    });
+    document.getElementById('saveDiseaseButton').addEventListener('click', function () {
+        if (!diseaseImageFile || !diseasePredictionData) return;
+
+        const formData = new FormData();
+        formData.append('image', diseaseImageFile);
+        formData.append('predicted_class', diseasePredictionData.predicted_class);
+        formData.append('confidence', diseasePredictionData.confidence);
+        formData.append('library_id', diseasePredictionData.library?.id || '');
+
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        fetch('/upload_to_supabase_and_save/', {
+            method: 'POST',
+            body: formData,
+            headers: { 'X-CSRFToken': csrfToken }
+        })
+        .then(res => res.json())
+        .then(data => alert(data.success ? 'Image saved successfully!' : 'Failed to save.'))
+        .catch(err => alert('Save error: ' + err.message));
+    });
+</script>
+<script>
+    let diseaseCameraTrack = null;
+
+    document.getElementById('startDiseaseCameraButton').addEventListener('click', async () => {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            const video = document.getElementById('diseaseCameraStream');
+            video.srcObject = stream;
+            diseaseCameraTrack = stream.getTracks()[0];
+            video.classList.remove('d-none');
+            document.getElementById('captureDiseaseImageButton').classList.remove('d-none');
+        } catch (err) {
+            alert("Unable to access camera: " + err.message);
+        }
+    });
+
+    document.getElementById('captureDiseaseImageButton').addEventListener('click', () => {
+        const video = document.getElementById('diseaseCameraStream');
+        const canvas = document.getElementById('diseaseCameraCanvas');
+        const context = canvas.getContext('2d');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        canvas.toBlob(blob => {
+            const previewImg = document.getElementById('diseasePreviewCapturedImage');
+            diseaseImageFile = new File([blob], 'captured_disease.jpg', { type: 'image/jpeg' });
+            previewImg.src = URL.createObjectURL(blob);
+            previewImg.classList.remove('d-none');
+
+            // Simulate a submit
+            document.getElementById('diseasePredictForm').dispatchEvent(new Event('submit'));
+        }, 'image/jpeg');
+
+        if (diseaseCameraTrack) diseaseCameraTrack.stop();
+        video.classList.add('d-none');
+        document.getElementById('captureDiseaseImageButton').classList.add('d-none');
+    });
+</scrip> {% endcomment %}
+{% comment %} HULIHAN NG DISEASE DATI BINAGO NG SEPTEMBER 4 {% endcomment %}
+{% comment %} DISEASE PARIN {% endcomment %}
+ {% comment %} <div class="container mt-5">
+    <h2>📷 Real-Time Disease Detection</h2>
+
+    <div class="row">
+        <!-- Left: Camera Feed -->
+        <div class="col-md-6 mb-3">
+            <button id="startDiseaseButton" class="btn btn-primary mb-2">Start Real-Time Detection</button>
+            <button id="stopDiseaseButton" class="btn btn-danger mb-2 d-none">Stop Detection</button>
+            <video id="diseaseVideo" width="100%" height="auto" autoplay muted class="border rounded d-none"></video>
+        </div>
+
+        <!-- Right: Prediction Result -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    🔍 Disease Prediction Result
+                </div>
+                <div class="card-body">
+                    <p id="rtDiseasePredictionText" class="fs-5 fw-bold">Waiting for prediction...</p>
+                    <p><strong>Deskripsyon:</strong></p>
+                    <p id="rtDiseaseDeskripsyon">N/A</p>
+                    <p><strong>Ano ang Nagagawa Nito:</strong></p>
+                    <p id="rtDiseaseAnoNagagawa">N/A</p>
+                    <p><strong>Paano Ito Pangangasiwaan:</strong></p>
+                    <p id="rtDiseasePaanoPangangasiwaan">N/A</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden canvas for disease -->
+    <canvas id="diseaseCanvas" class="d-none"></canvas>
+</div> {% endcomment %}
+{% comment %} UNAHAN NG REALTIME DISEASE DATI BINAGO NG SEPT 4 {% endcomment %}
+{% comment %} <script>
+    let diseaseVideo = document.getElementById('diseaseVideo');
+    let diseaseCanvas = document.getElementById('diseaseCanvas');
+    let startDiseaseBtn = document.getElementById('startDiseaseButton');
+    let stopDiseaseBtn = document.getElementById('stopDiseaseButton');
+    let diseaseStreamTrack = null;
+    let diseaseIntervalId = null;
+    
+    startDiseaseBtn.addEventListener('click', async () => {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            diseaseVideo.srcObject = stream;
+            diseaseStreamTrack = stream.getTracks()[0];
+            diseaseVideo.classList.remove('d-none');
+            startDiseaseBtn.classList.add('d-none');
+            stopDiseaseBtn.classList.remove('d-none');
+    
+            diseaseIntervalId = setInterval(captureAndPredictDisease, 2000);
+        } catch (err) {
+            alert("Camera access denied.");
+        }
+    });
+    
+    stopDiseaseBtn.addEventListener('click', () => {
+        if (diseaseStreamTrack) diseaseStreamTrack.stop();
+        clearInterval(diseaseIntervalId);
+        diseaseVideo.classList.add('d-none');
+        stopDiseaseBtn.classList.add('d-none');
+        startDiseaseBtn.classList.remove('d-none');
+    });
+    
+    function captureAndPredictDisease() {
+        const context = diseaseCanvas.getContext('2d');
+        diseaseCanvas.width = diseaseVideo.videoWidth;
+        diseaseCanvas.height = diseaseVideo.videoHeight;
+        context.drawImage(diseaseVideo, 0, 0, diseaseCanvas.width, diseaseCanvas.height);
+    
+        diseaseCanvas.toBlob(blob => {
+            const formData = new FormData();
+            formData.append('disease_image', blob, 'frame.jpg');
+    
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    
+            fetch('/predict/', {
+                method: 'POST',
+                body: formData,
+                headers: { 'X-CSRFToken': csrfToken }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+    
+                if (data && data.predicted_class) {
+                    document.getElementById('rtDiseasePredictionText').innerText = `Prediksyon: ${data.predicted_class}\nConfidence: ${parseFloat(data.confidence).toFixed(2)}%`;
+                } else {
+                    document.getElementById('rtDiseasePredictionText').innerText = 'Waiting for prediction...';
+                }
+
+                // Log the library data to ensure it's being passed
+                console.log("Library Data:", data.library_data);
+                document.getElementById('rtDiseaseDeskripsyon').innerText = data.library_data?.deskripsyon || 'N/A';
+                document.getElementById('rtDiseaseAnoNagagawa').innerText = data.library_data?.ano_ang_nagagawa_nito || 'N/A';
+                document.getElementById('rtDiseasePaanoPangangasiwaan').innerText = data.library_data?.paano_ito_pangangasiwaan || 'N/A';
+            })
+            .catch(err => {
+                console.error('Disease prediction failed:', err);
+                document.getElementById('rtDiseasePredictionText').innerText = 'Error fetching prediction.';
+            });
+        }, 'image/jpeg');
+    }
+    </Script> {% endcomment %}
+{% comment %} HULIHAN NG REAL TIME DISEASE DATI BINAGO NG SEPTEMBER 4 {% endcomment %}
+
+
+{% comment %} PEST {% endcomment %}
+<!-- Pest Prediction Section -->
+{% comment %} <div class="container mt-5">
+    <h2>Pest Image Upload or Capture</h2>
+    <video id="cameraStream" width="100%" height="auto" autoplay class="mb-3 d-none"></video>
+    <canvas id="cameraCanvas" class="d-none"></canvas>
+    <img id="previewCapturedImage" class="img-fluid mb-3 d-none" style="max-height: 300px;" />
+
+    <div class="mb-3">
+        <button type="button" class="btn btn-outline-primary mb-2" id="startCameraButton">📷 Use Camera</button>
+        <button type="button" class="btn btn-secondary d-none" id="captureImageButton">Capture Image</button>
+    </div>
+
+    <form id="pestPredictForm" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="pest_image" id="pestImageInput" class="form-control mb-3">
+        <button type="submit" class="btn btn-success">Predict Pest</button>
+    </form>
+
+    <div class="modal fade" id="pestResultModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Pest Prediction</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="pestPreviewImage" class="img-fluid mb-3" style="max-height: 300px;" />
+                    <p id="pestPredictionText" class="fs-5 fw-bold"></p>
+                    <p><strong>Deskripsyon:</strong> <span id="libraryDeskripsyon"></span></p>
+                    <p><strong>Ano ang Nagagawa Nito:</strong> <span id="libraryAnoNagagawa"></span></p>
+                    <p><strong>Paano Ito Pangangasiwaan:</strong> <span id="libraryPaanoPangangasiwaan"></span></p>
+                    <button id="savePestButton" class="btn btn-primary">Save Image</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> {% endcomment %}
+
+<script>
+    let pestImageFile = null;
+    let pestPredictionData = null;
+
+    document.getElementById('pestPredictForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const input = document.getElementById('pestImageInput');
+        if (!pestImageFile && !input.files.length) {
+            alert('Please select or capture an image.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('pest_image', pestImageFile || input.files[0]);
+
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        fetch('/predict_pest/', {
+            method: 'POST',
+            body: formData,
+            headers: { 'X-CSRFToken': csrfToken }
+        })
+        .then(res => res.json())
+        .then(data => {
+            pestPredictionData = data;
+            document.getElementById('pestPreviewImage').src = data.file_url || '';
+            document.getElementById('pestPredictionText').innerText = `Prediksyon: ${data.predicted_class}\nConfidence: ${parseFloat(data.confidence).toFixed(2)}%`;
+
+            document.getElementById('libraryDeskripsyon').innerText = data.library_data?.deskripsyon || 'Wala.';
+            document.getElementById('libraryAnoNagagawa').innerText = data.library_data?.ano_ang_nagagawa_nito || 'Wala.';
+            document.getElementById('libraryPaanoPangangasiwaan').innerText = data.library_data?.paano_ito_pangangasiwaan || 'Wala.';
+
+            new bootstrap.Modal(document.getElementById('pestResultModal')).show();
+        })
+        .catch(err => alert('Prediction failed: ' + err.message));
+    });
+
+    document.getElementById('savePestButton').addEventListener('click', function () {
+        if (!pestImageFile || !pestPredictionData) return;
+
+        const formData = new FormData();
+        formData.append('pest_image', pestImageFile);
+        formData.append('predicted_class', pestPredictionData.predicted_class);
+        formData.append('confidence', pestPredictionData.confidence);
+
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        fetch('/save_pest_prediction/', {
+            method: 'POST',
+            body: formData,
+            headers: { 'X-CSRFToken': csrfToken }
+        })
+        .then(res => res.json())
+        .then(data => alert(data.success ? 'Saved successfully!' : 'Failed to save.'))
+        .catch(err => alert('Save error: ' + err.message));
+    });
+</script>
+
+<!-- JS Scripts -->
+<script>
+    let pestImageFile = null;
+
+    document.getElementById('pestPredictForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const inputElement = document.getElementById('pestImageInput');
+
+        if (!pestImageFile && (!inputElement.files.length || !inputElement.files[0])) {
+            alert('Please select or capture an image.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('pest_image', pestImageFile || inputElement.files[0]);
+
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        fetch('/predict_pest/', {
+            method: 'POST',
+            body: formData,
+            headers: { 'X-CSRFToken': csrfToken }
+        })
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('pestPreviewImage').src = data.file_url || '';
+            document.getElementById('pestPredictionText').innerText = `Prediksyon: ${data.predicted_class}\nConfidence: ${parseFloat(data.confidence).toFixed(2)}%`;
+
+            const lib = data.library_data;
+            document.getElementById('libraryDeskripsyon').innerText = lib?.deskripsyon || 'No additional information available.';
+            document.getElementById('libraryAnoNagagawa').innerText = lib?.ano_ang_nagagawa_nito || 'No additional information available.';
+            document.getElementById('libraryPaanoPangangasiwaan').innerText = lib?.paano_ito_pangangasiwaan || 'No additional information available.';
+
+            new bootstrap.Modal(document.getElementById('pestResultModal')).show();
+        })
+        .catch(err => {
+            alert('Prediction failed: ' + err.message);
+        });
+    });
+
+    document.getElementById('savePestButton').addEventListener('click', () => {
+        const predictionText = document.getElementById('pestPredictionText').innerText;
+        if (!predictionText || !pestImageFile) {
+            alert('No prediction to save.');
+            return;
+        }
+
+        const [predictedLine, confidenceLine] = predictionText.split('\n');
+        const predictedClass = predictedLine?.replace('Prediksyon: ', '').trim();
+        const confidence = parseFloat(confidenceLine?.replace('Confidence: ', '').replace('%', '').trim() || 0);
+
+        const saveFormData = new FormData();
+        saveFormData.append('pest_image', pestImageFile);
+        saveFormData.append('predicted_class', predictedClass);
+        saveFormData.append('confidence', confidence);
+
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        fetch('/save_pest_prediction/', {
+            method: 'POST',
+            body: saveFormData,
+            headers: { 'X-CSRFToken': csrfToken }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                alert('Pest image and prediction successfully saved!');
+            } else {
+                alert(data.error || 'Failed to save the prediction.');
+            }
+        })
+        .catch(err => {
+            alert('Save failed: ' + err.message);
+        });
+    });
+</script>
+
+<!-- Camera Script -->
+<script>
+    const cameraStream = document.getElementById('cameraStream');
+    const cameraCanvas = document.getElementById('cameraCanvas');
+    const startCameraButton = document.getElementById('startCameraButton');
+    const captureImageButton = document.getElementById('captureImageButton');
+    const previewCapturedImage = document.getElementById('previewCapturedImage');
+    let cameraStreamTrack = null;
+
+    startCameraButton.addEventListener('click', async () => {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            cameraStream.srcObject = stream;
+            cameraStream.classList.remove('d-none');
+            captureImageButton.classList.remove('d-none');
+            startCameraButton.classList.add('d-none');
+            cameraStreamTrack = stream.getTracks()[0];
+        } catch (err) {
+            alert("Camera access denied or not available.");
+        }
+    });
+
+    captureImageButton.addEventListener('click', () => {
+        const context = cameraCanvas.getContext('2d');
+        cameraCanvas.width = cameraStream.videoWidth;
+        cameraCanvas.height = cameraStream.videoHeight;
+        context.drawImage(cameraStream, 0, 0, cameraCanvas.width, cameraCanvas.height);
+
+        // Create blob and convert to file
+        cameraCanvas.toBlob(blob => {
+            pestImageFile = new File([blob], 'captured_pest.jpg', { type: 'image/jpeg' });
+
+            // Show preview
+            previewCapturedImage.src = URL.createObjectURL(blob);
+            previewCapturedImage.classList.remove('d-none');
+
+            // Auto-submit for prediction
+            document.getElementById('pestPredictForm').dispatchEvent(new Event('submit'));
+        }, 'image/jpeg');
+
+        // Stop the camera
+        if (cameraStreamTrack) cameraStreamTrack.stop();
+
+        // Reset UI
+        cameraStream.classList.add('d-none');
+        captureImageButton.classList.add('d-none');
+        startCameraButton.classList.remove('d-none');
+    });
+</script>
+
+
+
+{% comment %} <div class="container mt-5">
+    <h2>📷 Real-Time Pest Detection</h2>
+
+    <div class="row">
+        <!-- Left: Camera Feed -->
+        <div class="col-md-6 mb-3">
+            <button id="startRealtimeButton" class="btn btn-primary mb-2">Start Real-Time Detection</button>
+            <button id="stopRealtimeButton" class="btn btn-danger mb-2 d-none">Stop Detection</button>
+            <video id="liveVideo" width="100%" height="auto" autoplay muted class="border rounded d-none"></video>
+        </div>
+
+        <!-- Right: Prediction Result -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    🔍 Pest Prediction Result
+                </div>
+                <!-- Right: Real-Time Prediction Result -->
+                    <div class="card-body">
+                        <p id="rtPestPredictionText" class="fs-5 fw-bold">Waiting for prediction...</p>
+                        <p><strong>Deskripsyon:</strong></p>
+                        <p id="rtLibraryDeskripsyon">N/A</p>
+                        <p><strong>Ano ang Nagagawa Nito:</strong></p>
+                        <p id="rtLibraryAnoNagagawa">N/A</p>
+                        <p><strong>Paano Ito Pangangasiwaan:</strong></p>
+                        <p id="rtLibraryPaanoPangangasiwaan">N/A</p>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden canvas -->
+    <canvas id="hiddenCanvas" class="d-none"></canvas>
+</div> {% endcomment %}
+
+<script>
+let video = document.getElementById('liveVideo');
+let canvas = document.getElementById('hiddenCanvas');
+let startBtn = document.getElementById('startRealtimeButton');
+let stopBtn = document.getElementById('stopRealtimeButton');
+let streamTrack = null;
+let intervalId = null;
+
+startBtn.addEventListener('click', async () => {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+        streamTrack = stream.getTracks()[0];
+        video.classList.remove('d-none');
+        startBtn.classList.add('d-none');
+        stopBtn.classList.remove('d-none');
+
+        intervalId = setInterval(captureAndPredict, 2000);
+    } catch (err) {
+        alert("Camera access denied.");
+    }
+});
+
+stopBtn.addEventListener('click', () => {
+    if (streamTrack) streamTrack.stop();
+    clearInterval(intervalId);
+    video.classList.add('d-none');
+    stopBtn.classList.add('d-none');
+    startBtn.classList.remove('d-none');
+});
+
+function captureAndPredict() {
+    const context = canvas.getContext('2d');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    canvas.toBlob(blob => {
+        const formData = new FormData();
+        formData.append('pest_image', blob, 'frame.jpg');
+
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        fetch('/predict_pest/', {
+            method: 'POST',
+            body: formData,
+            headers: { 'X-CSRFToken': csrfToken }
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Debugging: Log the prediction result to see what's returned
+            console.log(data);
+
+            // Check if the necessary data is present and update the elements
+            if (data && data.predicted_class) {
+                document.getElementById('pestPredictionText').innerText = `Prediksyon: ${data.predicted_class}\nConfidence: ${parseFloat(data.confidence).toFixed(2)}%`;
+            } else {
+                document.getElementById('pestPredictionText').innerText = 'Waiting for prediction...';
+            }
+
+            document.getElementById('rtPestPredictionText').innerText = `Prediksyon: ${data.predicted_class}\nConfidence: ${parseFloat(data.confidence).toFixed(2)}%`;
+
+            document.getElementById('rtLibraryDeskripsyon').innerText = data.library_data?.deskripsyon || 'N/A';
+            document.getElementById('rtLibraryAnoNagagawa').innerText = data.library_data?.ano_ang_nagagawa_nito || 'N/A';
+            document.getElementById('rtLibraryPaanoPangangasiwaan').innerText = data.library_data?.paano_ito_pangangasiwaan || 'N/A';
+        })
+        .catch(err => {
+            console.error('Prediction failed:', err);
+            document.getElementById('pestPredictionText').innerText = 'Error fetching prediction.';
+        });
+    }, 'image/jpeg');
+}
+</script>
+{% endblock %}

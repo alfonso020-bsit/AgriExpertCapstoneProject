@@ -1,0 +1,1275 @@
+Watching for file changes with StatReloader
+Waiting for apps ready_event.
+Apps ready_event triggered. Sending autoreload_started signal.
+Watching dir C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates with glob **/*.
+Watching dir C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\locale with glob **/*.mo.
+Watching dir C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\widget_tweaks\locale with glob **/*.mo.
+Watching dir C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\locale with glob **/*.mo.
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\functools.py first seen with mtime 1732672598.5743659
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\__init__.py first seen with mtime 1741498499.5596306
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\manage.py first seen with mtime 1741498344.5106754
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\html.py first seen with mtime 1741498499.941353
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\password_validation.py first seen with mtime 1741498497.0671415
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_sync\http2.py first seen with mtime 1741498917.2580166
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\util\response.py first seen with mtime 1741501952.1517167
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dateutil\relativedelta.py first seen with mtime 1741498915.5216968
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_sync\interfaces.py first seen with mtime 1741498917.260232
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\dates.py first seen with mtime 1741498499.9323153
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\abc\_subprocesses.py first seen with mtime 1741498917.7976558
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\fields\json.py first seen with mtime 1741498499.741172
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\__init__.py first seen with mtime 1741498499.7212355
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\importlib\resources.py first seen with mtime 1732672609.9132507
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h11\__init__.py first seen with mtime 1741498914.4502635
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\idna\core.py first seen with mtime 1741498914.101884
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\translation\__init__.py first seen with mtime 1741498499.961176
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\storage3\__init__.py first seen with mtime 1741498919.7372122
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\quopri.py first seen with mtime 1732672615.0750258
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\uri.py first seen with mtime 1741498913.0935116
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\frames.py first seen with mtime 1741498913.0840876
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\views\autocomplete.py first seen with mtime 1741498496.72578
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\engine\statement_splitter.py first seen with mtime 1741498495.0935986
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\cache\backends\filebased.py first seen with mtime 1741498499.5561335
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\html\__init__.py first seen with mtime 1732672598.5928776
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supafunc\_async\__init__.py first seen with mtime 1741498919.6500633
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic_core\__init__.py first seen with mtime 1741498913.7002845
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\cache.py first seen with mtime 1741498499.926316
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h2\connection.py first seen with mtime 1741498917.5724478
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\__init__.py first seen with mtime 1741498497.0545712
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\log.py first seen with mtime 1741498499.94817
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\site.py first seen with mtime 1732672646.4839382
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\security\base.py first seen with mtime 1741498499.572965
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\_core\_exceptions.py first seen with mtime 1741498917.78137
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\psycopg2\_range.py first seen with mtime 1741498872.0485103
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\strenum\_name_mangler.py first seen with mtime 1741498913.0182445
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\connection.py first seen with mtime 1741498499.9283166
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_multipart.py first seen with mtime 1741498918.2950633
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supabase\types.py first seen with mtime 1741498920.3462682
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\generator.py first seen with mtime 1732672585.8875916
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\json\decoder.py first seen with mtime 1732672609.9661524
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\util\ssl_.py first seen with mtime 1741501952.1539342
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\_core\_testing.py first seen with mtime 1741498917.790102
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h11\_writers.py first seen with mtime 1741498914.4576385
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\files\storage\mixins.py first seen with mtime 1741498499.5908816
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\forms\utils.py first seen with mtime 1741498499.772018
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\templatetags\__init__.py first seen with mtime 1741498499.898641
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\_async\gotrue_mfa_api.py first seen with mtime 1741498920.055063
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py first seen with mtime 1732672609.9221816
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\logging\config.py first seen with mtime 1732672610.3376439
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\contenttypes\forms.py first seen with mtime 1741498497.3331857
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\types.py first seen with mtime 1741498919.500454
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\version.py first seen with mtime 1741498920.0691242
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supabase\lib\client_options.py first seen with mtime 1741498920.343903
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\utils.py first seen with mtime 1741498913.0935116
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\base\schema.py first seen with mtime 1741498499.6587348
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\heapq.py first seen with mtime 1732672598.5878825
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\errors.py first seen with mtime 1741498920.0635657
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\_core\_signals.py first seen with mtime 1741498917.7847006
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\contextlib.py first seen with mtime 1732672585.5327692
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\http\multipartparser.py first seen with mtime 1741498499.8582847
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\options.py first seen with mtime 1741498496.1391344
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dotenv\__init__.py first seen with mtime 1741498785.4807334
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\postgrest\_async\request_builder.py first seen with mtime 1741498919.8615606
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\_async\gotrue_admin_api.py first seen with mtime 1741498920.0515628
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\streams.py first seen with mtime 1732672576.737303
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\datetime.py first seen with mtime 1732672585.613011
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\storage3\_async\__init__.py first seen with mtime 1741498919.7382317
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\postgrest\types.py first seen with mtime 1741498919.8707802
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_typing_extra.py first seen with mtime 1741498915.848292
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\postgresql\__init__.py first seen with mtime 1741498499.6848495
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\annotated_types\__init__.py first seen with mtime 1741498915.2506335
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\migrations\__init__.py first seen with mtime 1741498499.703818
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dateutil\parser\_parser.py first seen with mtime 1741498915.5290637
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_api.py first seen with mtime 1741498918.2860591
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\streams\stapled.py first seen with mtime 1741498917.8040707
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\protocols.py first seen with mtime 1732672576.7301254
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\poolmanager.py first seen with mtime 1741501952.1343806
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\serializers\__init__.py first seen with mtime 1741498499.6370893
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\genericpath.py first seen with mtime 1732672598.5755923
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\wsgiref\headers.py first seen with mtime 1732672657.9416132
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\handlers\base.py first seen with mtime 1741498499.5938969
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\DLLs\_decimal.pyd first seen with mtime 1732672576.4435084
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\sql\__init__.py first seen with mtime 1741498499.7541678
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\uu.py first seen with mtime 1732672657.913466
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supabase\_async\client.py first seen with mtime 1741498920.33775
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\plugin\_schema_validator.py first seen with mtime 1741498915.8643577
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_import_utils.py first seen with mtime 1741498915.8363147
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\response.py first seen with mtime 1741501952.1354651
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\caches.py first seen with mtime 1741498499.5610812
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\exceptions.py first seen with mtime 1741498496.1336067
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\lookups.py first seen with mtime 1741498499.7308872
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\management\commands\__init__.py first seen with mtime 1741498499.6140337
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\log.py first seen with mtime 1732672576.7262652
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h2\stream.py first seen with mtime 1741498917.577706
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic_core\_pydantic_core.cp310-win_amd64.pyd first seen with mtime 1741498913.718896
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\importlib\metadata\_text.py first seen with mtime 1732672609.886956
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\backends.py first seen with mtime 1741498497.0566344
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_async\__init__.py first seen with mtime 1741498917.243512
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\staticfiles\views.py first seen with mtime 1741498499.5347457
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supabase\version.py first seen with mtime 1741498920.3475373
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\_sync\__init__.py first seen with mtime 1741498919.496338
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\message.py first seen with mtime 1741498919.4992788
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\exceptiongroup\__init__.py first seen with mtime 1741498914.8144991
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\version.py first seen with mtime 1741498919.5024545
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_utils.py first seen with mtime 1741498918.2990613
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\cache\backends\base.py first seen with mtime 1741498499.552609
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\util\util.py first seen with mtime 1741501952.1579335
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\aliases.py first seen with mtime 1741498915.7931497
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\hooks.py first seen with mtime 1741501952.9380715
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\os.py first seen with mtime 1732672610.50103
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\contrib\__init__.py first seen with mtime 1741501952.137471
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\engine.py first seen with mtime 1741498499.8816054
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\ast.py first seen with mtime 1732672576.7103739
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\response.py first seen with mtime 1741498499.885117
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\_async\presence.py first seen with mtime 1741498919.4942615
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\util\proxy.py first seen with mtime 1741501952.150447
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\zoneinfo\_common.py first seen with mtime 1732672658.3126316
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\typing_extensions.py first seen with mtime 1741498495.0386107
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\postgrest\version.py first seen with mtime 1741498919.8728
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\cache\__init__.py first seen with mtime 1741498499.5501115
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_sync\__init__.py first seen with mtime 1741498917.2550159
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\deconstruct.py first seen with mtime 1741498499.9333174
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\aggregates.py first seen with mtime 1741498499.722524
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\management\color.py first seen with mtime 1741498499.6098363
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\mime\__init__.py first seen with mtime 1732672523.7822835
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\hashlib.py first seen with mtime 1732672598.5857472
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\charset_normalizer\__init__.py first seen with mtime 1741501952.6644535
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\templatetags\tz.py first seen with mtime 1741498499.9031942
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h11\_events.py first seen with mtime 1741498914.452724
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_model_construction.py first seen with mtime 1741498915.8396719
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h2\windows.py first seen with mtime 1741498917.5787058
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\__init__.py first seen with mtime 1741498917.236511
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic_core\core_schema.py first seen with mtime 1741498913.6982033
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\messages\utils.py first seen with mtime 1741498498.4480546
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\environ\fileaware_mapping.py first seen with mtime 1741498768.1890087
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\selector_events.py first seen with mtime 1732672576.734226
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\decorators\__init__.py first seen with mtime 1741498499.971986
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\DLLs\unicodedata.pyd first seen with mtime 1732672576.4189396
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\encodings\cp1252.py first seen with mtime 1732672586.036527
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\duration.py first seen with mtime 1741498499.935317
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\token.py first seen with mtime 1732672657.697321
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dateutil\tz\_factories.py first seen with mtime 1741498915.534073
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\config.py first seen with mtime 1741498915.7967527
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\exceptions.py first seen with mtime 1741501952.9367993
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\protocol.py first seen with mtime 1741498913.0872128
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\_sync\gotrue_mfa_api.py first seen with mtime 1741498920.061393
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\_core\_subprocesses.py first seen with mtime 1741498917.787699
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\threading.py first seen with mtime 1732672646.5335622
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_std_types_schema.py first seen with mtime 1741498915.8472621
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\lzma.py first seen with mtime 1732672610.354641
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\exceptions.py first seen with mtime 1741501952.132214
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\gzip.py first seen with mtime 1732672598.5826554
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\constraints.py first seen with mtime 1741498499.7258873
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\decorators.py first seen with mtime 1741498497.0621414
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\timer.py first seen with mtime 1741498920.0667408
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\json\__init__.py first seen with mtime 1732672609.9715576
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\DLLs\_queue.pyd first seen with mtime 1732672576.4648342
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\postgrest\_sync\request_builder.py first seen with mtime 1741498919.864669
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\apps.py first seen with mtime 1741498540.5164883
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\_sync\gotrue_admin_api.py first seen with mtime 1741498920.0572653
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\iterators.py first seen with mtime 1732672585.892429
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\importlib\metadata\_meta.py first seen with mtime 1732672609.8859537
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\validators.py first seen with mtime 1741498499.54765
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\urls.py first seen with mtime 1741674152.2858703
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\_sync\__init__.py first seen with mtime 1741498920.0560622
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supabase\_async\__init__.py first seen with mtime 1741498920.33675
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\mixins.py first seen with mtime 1732672576.7271607
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\__init__.py first seen with mtime 1741498499.6461978
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\bz2.py first seen with mtime 1732672585.4751492
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\_markupbase.py first seen with mtime 1732672658.3374052
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\numbers.py first seen with mtime 1732672610.4951115
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\_async\gotrue_base_api.py first seen with mtime 1741498920.0525663
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\hpack\struct.py first seen with mtime 1741498914.3338432
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\sslproto.py first seen with mtime 1732672576.7353015
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\serializers\base.py first seen with mtime 1741498499.6381004
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\templatetags\admin_urls.py first seen with mtime 1741498496.719892
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\certifi\__init__.py first seen with mtime 1741498914.8890219
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\contenttypes\admin.py first seen with mtime 1741498497.3297465
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\migrations\operations\__init__.py first seen with mtime 1741498499.7177098
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_core_metadata.py first seen with mtime 1741498915.8235307
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supafunc\_sync\__init__.py first seen with mtime 1741498919.652486
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\handlers\wsgi.py first seen with mtime 1741498499.5959623
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\exceptions.py first seen with mtime 1741498499.8816054
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\util\wait.py first seen with mtime 1741501952.1589339
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\filters\tokens.py first seen with mtime 1741498495.098621
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\exceptions.py first seen with mtime 1741498499.5441308
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\paginator.py first seen with mtime 1741498499.5452888
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\util\timeout.py first seen with mtime 1741501952.1559334
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\templatetags\i18n.py first seen with mtime 1741498499.8996513
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpertProject\__init__.py first seen with mtime 1741498344.5546124
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_backends\base.py first seen with mtime 1741498917.2509408
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\util\retry.py first seen with mtime 1741501952.1529324
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\urls\exceptions.py first seen with mtime 1741498499.9177935
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\six.py first seen with mtime 1741498913.6668396
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\files\utils.py first seen with mtime 1741498499.583222
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\actions.py first seen with mtime 1741498496.1301332
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\tasks.py first seen with mtime 1732672576.740051
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\enums.py first seen with mtime 1741498499.7278924
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\base_tasks.py first seen with mtime 1732672576.7163653
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_signature.py first seen with mtime 1741498915.8460946
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\subprocess.py first seen with mtime 1732672646.5194209
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\headers.py first seen with mtime 1741498913.0852106
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\templatetags\__init__.py first seen with mtime 1741498496.7148228
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\bisect.py first seen with mtime 1732672585.4751492
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\logging\__init__.py first seen with mtime 1732672610.3408737
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\charset_normalizer\legacy.py first seen with mtime 1741501952.6671188
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\_sync\presence.py first seen with mtime 1741498919.497774
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\constants.py first seen with mtime 1741498499.7248893
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h2\events.py first seen with mtime 1741498917.5734322
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supafunc\utils.py first seen with mtime 1741498919.6534858
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\storage3\constants.py first seen with mtime 1741498919.7428093
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\models.py first seen with mtime 1741690146.1155288
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\pprint.py first seen with mtime 1732672610.521915
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\templatetags\cache.py first seen with mtime 1741498499.898641
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\postgrest\base_request_builder.py first seen with mtime 1741498919.8667507
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\asgiref\current_thread_executor.py first seen with mtime 1741498495.5884488
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\decimal.py first seen with mtime 1732672585.6310647
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\base_user.py first seen with mtime 1741498497.0576544
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\sites\requests.py first seen with mtime 1741498499.2813473
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h2\frame_buffer.py first seen with mtime 1741498917.5744333
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\ctypes\_endian.py first seen with mtime 1732672585.5657163
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\ntpath.py first seen with mtime 1732672610.4924483
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\files\images.py first seen with mtime 1741498499.5778105
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\handlers\exception.py first seen with mtime 1741498499.5949643
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\__init__.py first seen with mtime 1741498499.966319
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supabase\_sync\client.py first seen with mtime 1741498920.3418841
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\difflib.py first seen with mtime 1732672585.6325967
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sniffio\_impl.py first seen with mtime 1741498913.6156096
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\__init__.py first seen with mtime 1741498918.2840588
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\signals.py first seen with mtime 1741498499.734887
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\filters\__init__.py first seen with mtime 1741498495.0945992
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\io.py first seen with mtime 1732672609.9633102
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\importlib\metadata\__init__.py first seen with mtime 1732672609.887956
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\templatetags\admin_modify.py first seen with mtime 1741498496.7188952
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\http\server.py first seen with mtime 1732672605.1633348
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\_os.py first seen with mtime 1741498499.9218004
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\hyperframe\__init__.py first seen with mtime 1741498914.2647781
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\base\base.py first seen with mtime 1741498499.6521974
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\fields\mixins.py first seen with mtime 1741498499.741172
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\fields.py first seen with mtime 1741501952.1332183
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\forms\renderers.py first seen with mtime 1741498499.7705739
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\migrations\migration.py first seen with mtime 1741498499.7102637
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\inspect.py first seen with mtime 1732672609.9613545
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\loaders\cached.py first seen with mtime 1741498499.894457
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\re.py first seen with mtime 1732672615.0779502
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dj_database_url.py first seen with mtime 1741498872.135481
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\environ\compat.py first seen with mtime 1741498768.1867056
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\zoneinfo\__init__.py first seen with mtime 1732672658.3158257
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\base.py first seen with mtime 1741498499.8750236
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\version.py first seen with mtime 1741498913.0945103
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\defaulttags.py first seen with mtime 1741498499.8804166
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\encodings\utf_8.py first seen with mtime 1732672591.788444
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\http2\__init__.py first seen with mtime 1741501952.1458652
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\http11.py first seen with mtime 1741498913.0862114
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\_async\timer.py first seen with mtime 1741498919.4952583
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dateutil\tz\win.py first seen with mtime 1741498915.5372436
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h2\utilities.py first seen with mtime 1741498917.577706
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\middleware\__init__.py first seen with mtime 1741498499.8602805
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\annotated_handlers.py first seen with mtime 1741498915.794671
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\plugin\__init__.py first seen with mtime 1741498915.8633542
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpertProject\settings.py first seen with mtime 1741696903.4705606
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\security\sessions.py first seen with mtime 1741498499.5753365
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\urls\base.py first seen with mtime 1741498499.9154103
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\http.py first seen with mtime 1741498499.941353
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\message.py first seen with mtime 1732672585.8934615
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\helpers.py first seen with mtime 1741498920.0655687
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\lowlevel.py first seen with mtime 1741498917.77017
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\reprlib.py first seen with mtime 1732672615.0793495
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sniffio\_version.py first seen with mtime 1741498913.6166081
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\__init__.py first seen with mtime 1741498499.649197
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\sql\constants.py first seen with mtime 1741498499.7565753
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\handlers\__init__.py first seen with mtime 1741498499.5918806
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\utils.py first seen with mtime 1741498499.735887
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\events.py first seen with mtime 1732672576.7193532
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h11\_receivebuffer.py first seen with mtime 1741498914.4556346
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_async\connection.py first seen with mtime 1741498917.243512
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\streams\tls.py first seen with mtime 1741498917.806914
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\contenttypes\checks.py first seen with mtime 1741498497.3321865
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\migrations\operations\base.py first seen with mtime 1741498499.7186477
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\context.py first seen with mtime 1741498499.8760345
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\loader_tags.py first seen with mtime 1741498499.884117
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\base_events.py first seen with mtime 1732672576.7133543
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\environ\__init__.py first seen with mtime 1741498768.1857107
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\filters\others.py first seen with mtime 1741498495.0960999
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\decorators\csrf.py first seen with mtime 1741498499.9764943
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\DLLs\_lzma.pyd first seen with mtime 1732672576.4548347
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\charset_normalizer\cd.py first seen with mtime 1741501952.6659513
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\tokens.py first seen with mtime 1741498495.0895991
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\psycopg2\__init__.py first seen with mtime 1741498872.0350242
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\hpack\table.py first seen with mtime 1741498914.334843
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\thread.py first seen with mtime 1732672585.5037332
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\conf\urls\__init__.py first seen with mtime 1741498496.125829
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\postgrest\_async\client.py first seen with mtime 1741498919.8615606
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_transports\default.py first seen with mtime 1741498918.3034713
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_urls.py first seen with mtime 1741498918.298061
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supabase\__init__.py first seen with mtime 1741498920.335749
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\functions\comparison.py first seen with mtime 1741498499.748404
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_known_annotated_metadata.py first seen with mtime 1741498915.8384824
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\files\move.py first seen with mtime 1741498499.5801792
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_backends\mock.py first seen with mtime 1741498917.2519789
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\handlers\asgi.py first seen with mtime 1741498499.5928972
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\_parseaddr.py first seen with mtime 1732672585.944061
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\textwrap.py first seen with mtime 1732672646.5315275
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\http\response.py first seen with mtime 1741498499.8602805
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\migrations\operations\fields.py first seen with mtime 1741498499.7186477
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\generic\edit.py first seen with mtime 1741498499.9833584
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h11\_readers.py first seen with mtime 1741498914.4545674
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_sync\connection.py first seen with mtime 1741498917.2560163
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\files\uploadedfile.py first seen with mtime 1741498499.581388
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\defaultfilters.py first seen with mtime 1741498499.879033
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\dataclasses.py first seen with mtime 1732672585.6119497
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\cli.py first seen with mtime 1741498495.08399
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\templatetags\base.py first seen with mtime 1741498496.7219336
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\cache\backends\__init__.py first seen with mtime 1741498499.552609
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\translation\trans_real.py first seen with mtime 1741498499.9654734
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\decorators\cache.py first seen with mtime 1741498499.973304
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\staticfiles\management\commands\__init__.py first seen with mtime 1741498499.5361905
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supabase\_sync\__init__.py first seen with mtime 1741498920.3397515
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\hpack\huffman_constants.py first seen with mtime 1741498914.3306963
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\warnings.py first seen with mtime 1741498915.820523
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h2\errors.py first seen with mtime 1741498917.5734322
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\_strptime.py first seen with mtime 1732672663.1435895
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\packaging\_structures.py first seen with mtime 1741498913.80181
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\wsgiref\__init__.py first seen with mtime 1732672657.9456365
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\base_subprocess.py first seen with mtime 1732672576.7153485
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\views\__init__.py first seen with mtime 1741498496.7243507
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\version.py first seen with mtime 1741498499.959175
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\migrations\utils.py first seen with mtime 1741498499.71519
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\connectionpool.py first seen with mtime 1741501952.132214
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\exceptions.py first seen with mtime 1741498919.497774
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_async\http_proxy.py first seen with mtime 1741498917.247487
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\_internal_utils.py first seen with mtime 1741501952.9301226
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dotenv\variables.py first seen with mtime 1741498785.485451
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\sites.py first seen with mtime 1741498496.1401377
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\apps\__init__.py first seen with mtime 1741498495.7684827
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\urllib\__init__.py first seen with mtime 1732672526.4738674
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\backends\django.py first seen with mtime 1741498499.8891494
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\locale.py first seen with mtime 1732672610.3351934
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dateutil\_version.py first seen with mtime 1741498915.519581
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\keywords.py first seen with mtime 1741498495.0862212
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\database.py first seen with mtime 1741498499.5622227
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\base\introspection.py first seen with mtime 1741498499.6564124
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supabase\lib\__init__.py first seen with mtime 1741498920.343903
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\urllib\request.py first seen with mtime 1732672657.8867362
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\encoders.py first seen with mtime 1732672585.884564
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dateutil\parser\__init__.py first seen with mtime 1741498915.5280643
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\contenttypes\apps.py first seen with mtime 1741498497.3311677
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\__init__.py first seen with mtime 1741498495.082989
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\postgrest\exceptions.py first seen with mtime 1741498919.8697486
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\timezone.py first seen with mtime 1741498499.95718
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\base\operations.py first seen with mtime 1741498499.6577377
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\urls\converters.py first seen with mtime 1741498499.91641
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\psycopg2\sql.py first seen with mtime 1741498872.0527046
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\base\validation.py first seen with mtime 1741498499.659736
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\urls.py first seen with mtime 1741498499.5695808
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\urls\resolvers.py first seen with mtime 1741498499.9188006
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\secrets.py first seen with mtime 1732672615.083968
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\hpack\hpack.py first seen with mtime 1741498914.3293889
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\serializers\python.py first seen with mtime 1741498499.6421
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\json_schema.py first seen with mtime 1741498915.8066883
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\certifi\core.py first seen with mtime 1741498914.8931367
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\DLLs\_asyncio.pyd first seen with mtime 1732672576.4333677
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\util\__init__.py first seen with mtime 1741501952.14799
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_sync\http_proxy.py first seen with mtime 1741498917.259017
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\templatetags\admin_list.py first seen with mtime 1741498496.7158248
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\fractions.py first seen with mtime 1732672598.5722816
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\sql\subqueries.py first seen with mtime 1741498499.7612443
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h11\_abnf.py first seen with mtime 1741498914.4512634
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h11\_connection.py first seen with mtime 1741498914.4512634
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\util\request.py first seen with mtime 1741501952.150447
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supabase\_async\auth_client.py first seen with mtime 1741498920.33775
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\asyncio\client.py first seen with mtime 1741498913.0963736
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\base\client.py first seen with mtime 1741498499.6531963
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_config.py first seen with mtime 1741498915.8225298
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\importlib\metadata\_functools.py first seen with mtime 1732672609.883954
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\opcode.py first seen with mtime 1732672610.4951115
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\functional_validators.py first seen with mtime 1741498915.8032014
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\__init__.py first seen with mtime 1741498496.1301332
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\wsgi.py first seen with mtime 1741498499.5488482
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\calendar.py first seen with mtime 1732672585.4787402
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\backends\__init__.py first seen with mtime 1741498499.8871164
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\staticfiles\utils.py first seen with mtime 1741498499.5347457
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\exceptions.py first seen with mtime 1741498495.0849893
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\speedups.cp310-win_amd64.pyd first seen with mtime 1741498913.0905
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\enum.py first seen with mtime 1732672598.5681689
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\choices.py first seen with mtime 1741498499.927315
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\dispatch\dispatcher.py first seen with mtime 1741498499.7632346
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\client.py first seen with mtime 1741498913.080081
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\abc\_streams.py first seen with mtime 1741498917.7976558
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\dis.py first seen with mtime 1732672585.6339602
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\utils.py first seen with mtime 1732672585.9390192
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\collections\abc.py first seen with mtime 1732672585.4906268
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\text.py first seen with mtime 1741498499.954175
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\importlib\metadata\_adapters.py first seen with mtime 1732672609.8829541
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\asgiref\local.py first seen with mtime 1741498495.589921
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\postgrest\_async\__init__.py first seen with mtime 1741498919.859413
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\string.py first seen with mtime 1732672646.5154428
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\loaders\base.py first seen with mtime 1741498499.894457
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\cache\utils.py first seen with mtime 1741498499.551562
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\wsgiref\util.py first seen with mtime 1732672657.9436333
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\sessions\apps.py first seen with mtime 1741498498.8833897
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\security\csrf.py first seen with mtime 1741498499.5739634
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\files\uploadhandler.py first seen with mtime 1741498499.583222
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\fields\files.py first seen with mtime 1741498499.7378886
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\storage3\_sync\client.py first seen with mtime 1741498919.7413063
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\logging\handlers.py first seen with mtime 1732672610.3388608
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\forms.py first seen with mtime 1741498497.063141
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\staticfiles\checks.py first seen with mtime 1741498499.5299177
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\__version__.py first seen with mtime 1741501952.9291258
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_schema_generation_shared.py first seen with mtime 1741498915.843961
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\DLLs\_overlapped.pyd first seen with mtime 1732672576.4638338
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\abc\_sockets.py first seen with mtime 1741498917.7964125
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\helpers.py first seen with mtime 1741498496.137135
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_backends\__init__.py first seen with mtime 1741498917.2484868
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\compat.py first seen with mtime 1741501952.9341724
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\generic\list.py first seen with mtime 1741498499.9845412
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\functions\datetime.py first seen with mtime 1741498499.7497864
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\DLLs\_zoneinfo.pyd first seen with mtime 1732672576.479884
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\html\entities.py first seen with mtime 1732672598.5908813
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_backends\sync.py first seen with mtime 1741498917.253019
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\hpack\huffman_table.py first seen with mtime 1741498914.3328445
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\importlib\_abc.py first seen with mtime 1732672609.9158814
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\contenttypes\models.py first seen with mtime 1741498497.3341851
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\fnmatch.py first seen with mtime 1732672598.570988
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\types.py first seen with mtime 1741498915.8161016
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\sre_parse.py first seen with mtime 1732672646.5085807
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\serializers\json.py first seen with mtime 1741498499.6401012
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\postgrest\base_client.py first seen with mtime 1741498919.8656652
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\generic\__init__.py first seen with mtime 1741498499.9809241
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\safestring.py first seen with mtime 1741498499.952176
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\sites\__init__.py first seen with mtime 1741498499.2738822
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\middleware\csrf.py first seen with mtime 1741498499.8646743
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\fields\proxy.py first seen with mtime 1741498499.743362
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\pickle.py first seen with mtime 1732672610.5064256
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_trace.py first seen with mtime 1741498917.24053
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dateutil\parser\isoparser.py first seen with mtime 1741498915.530063
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\importlib\metadata\_itertools.py first seen with mtime 1732672609.8849516
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\crypto.py first seen with mtime 1741498499.9293156
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\lexer.py first seen with mtime 1741498495.0872235
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\__init__.py first seen with mtime 1741501952.9281216
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\widget_tweaks\templatetags\widget_tweaks.py first seen with mtime 1741498751.3702528
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\util\ssltransport.py first seen with mtime 1741501952.1549323
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\DLLs\_hashlib.pyd first seen with mtime 1732672576.4518342
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py first seen with mtime 1732672585.5047314
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\templatetags\static.py first seen with mtime 1741498499.9017642
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\utils.py first seen with mtime 1741498499.6481988
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supafunc\version.py first seen with mtime 1741498919.654602
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\__init__.py first seen with mtime 1741501952.1278708
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\sre_constants.py first seen with mtime 1732672646.5075846
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\fields\reverse_related.py first seen with mtime 1741498499.747404
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\ssl.py first seen with mtime 1732672646.510582
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\weakref.py first seen with mtime 1732672657.9391205
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\hpack\__init__.py first seen with mtime 1741498914.3283243
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supafunc\errors.py first seen with mtime 1741498919.6534858
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\packaging\version.py first seen with mtime 1741498913.8072114
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\storage3\types.py first seen with mtime 1741498919.744277
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\hmac.py first seen with mtime 1732672598.5888832
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\parser.py first seen with mtime 1732672585.9345324
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\util\url.py first seen with mtime 1741501952.1569319
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\__init__.py first seen with mtime 1741498496.129026
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\storage3\_async\bucket.py first seen with mtime 1741498919.739233
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\abc\_resources.py first seen with mtime 1741498917.7951145
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\middleware\cache.py first seen with mtime 1741498499.8615806
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\asyncio\__init__.py first seen with mtime 1741498913.0954301
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\sessions\models.py first seen with mtime 1741498498.885397
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\sql\datastructures.py first seen with mtime 1741498499.7575743
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\base\__init__.py first seen with mtime 1741498499.6521974
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\encoding.py first seen with mtime 1741498499.936632
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\header.py first seen with mtime 1732672585.8902261
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\mail\message.py first seen with mtime 1741498499.5985208
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\forms\__init__.py first seen with mtime 1741498499.7645302
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\staticfiles\apps.py first seen with mtime 1741498499.528492
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_exceptions.py first seen with mtime 1741498917.2375128
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\__init__.py first seen with mtime 1741498913.078081
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\sessions.py first seen with mtime 1741501952.9402416
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\_async\gotrue_admin_mfa_api.py first seen with mtime 1741498920.0515628
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\hpack\exceptions.py first seen with mtime 1741498914.3293889
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\functions\mixins.py first seen with mtime 1741498499.7517984
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\streams\__init__.py first seen with mtime 1741498917.801071
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\__init__.py first seen with mtime 1741498499.8738246
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\__init__.py first seen with mtime 1741498499.543121
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\version.py first seen with mtime 1741498915.820523
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\storage3\_sync\__init__.py first seen with mtime 1741498919.7402334
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\__init__.py first seen with mtime 1741498915.791151
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\dateparse.py first seen with mtime 1741498499.9313161
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\psycopg2\_ipaddress.py first seen with mtime 1741498872.0350242
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\registry.py first seen with mtime 1741498499.5659263
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\backends\base.py first seen with mtime 1741498499.8881164
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\urls\__init__.py first seen with mtime 1741498499.9144108
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\traceback.py first seen with mtime 1732672657.7023253
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\apps\config.py first seen with mtime 1741498495.770115
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\__init__.py first seen with mtime 1741498540.5397613
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\_header_value_parser.py first seen with mtime 1732672585.9410613
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_urlparse.py first seen with mtime 1741498918.2970588
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\postgresql\features.py first seen with mtime 1741498499.6877615
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\exceptions.py first seen with mtime 1741498913.083081
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\main.py first seen with mtime 1741498915.8080478
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\packages.py first seen with mtime 1741501952.939072
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\decorators.py first seen with mtime 1741498496.1336067
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\decorators\debug.py first seen with mtime 1741498499.9764943
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\indexes.py first seen with mtime 1741498499.7298872
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\filepost.py first seen with mtime 1741501952.1343806
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sniffio\__init__.py first seen with mtime 1741498913.6145673
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\compatibility\django_4_0.py first seen with mtime 1741498499.570796
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\base\creation.py first seen with mtime 1741498499.6541972
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\mime\nonmultipart.py first seen with mtime 1732672585.9023862
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\random.py first seen with mtime 1732672615.0765004
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\signals.py first seen with mtime 1741498499.6501975
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\windows_utils.py first seen with mtime 1732672576.7480688
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_generics.py first seen with mtime 1741498915.8341181
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\_core\_streams.py first seen with mtime 1741498917.7867014
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\regex_helper.py first seen with mtime 1741498499.952176
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\ddl_references.py first seen with mtime 1741498499.649197
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\wsgiref\handlers.py first seen with mtime 1732672657.9401455
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\status_codes.py first seen with mtime 1741501952.9407468
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_repr.py first seen with mtime 1741498915.8429568
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\dispatch\__init__.py first seen with mtime 1741498499.7632346
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\charset_normalizer\api.py first seen with mtime 1741501952.6644535
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\__version__.py first seen with mtime 1741498918.2850597
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h2\__init__.py first seen with mtime 1741498917.5703616
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supabase\_sync\auth_client.py first seen with mtime 1741498920.3397515
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\library.py first seen with mtime 1741498499.8831103
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\generic\base.py first seen with mtime 1741498499.9809241
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\widgets.py first seen with mtime 1741498496.1421337
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\admin.py first seen with mtime 1741498497.0555685
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\http\cookiejar.py first seen with mtime 1732672605.1605153
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\__init__.py first seen with mtime 1741498499.9208
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\plugin\_loader.py first seen with mtime 1741498915.8643577
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\_core\_sockets.py first seen with mtime 1741498917.7857013
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\fields\generated.py first seen with mtime 1741498499.739038
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\getpass.py first seen with mtime 1732672598.5776348
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\base64mime.py first seen with mtime 1732672585.881566
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\coroutines.py first seen with mtime 1732672576.7183514
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\idna\idnadata.py first seen with mtime 1741498914.1029003
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\_core\_synchronization.py first seen with mtime 1741498917.7887013
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\format_helpers.py first seen with mtime 1732672576.721902
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\DLLs\_ctypes.pyd first seen with mtime 1732672576.4393709
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\messages\__init__.py first seen with mtime 1741498498.4419885
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\util\connection.py first seen with mtime 1741501952.1494453
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\translation.py first seen with mtime 1741498499.568534
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h2\exceptions.py first seen with mtime 1741498917.5744333
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\migrations\state.py first seen with mtime 1741498499.71519
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\tokenize.py first seen with mtime 1732672657.6983285
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\__init__.py first seen with mtime 1732672585.5057306
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\extensions\base.py first seen with mtime 1741498913.1016662
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\pkgutil.py first seen with mtime 1732672610.5129156
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\storage3\_async\file_api.py first seen with mtime 1741498919.7402334
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\postgresql\psycopg_any.py first seen with mtime 1741498499.6921098
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\_core\_eventloop.py first seen with mtime 1741498917.78137
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dotenv\main.py first seen with mtime 1741498785.4833221
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\lorem_ipsum.py first seen with mtime 1741498499.9491765
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\formats.py first seen with mtime 1741498499.9386127
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\glob.py first seen with mtime 1732672598.5806084
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dateutil\__init__.py first seen with mtime 1741498915.5173378
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\inspect.py first seen with mtime 1741498499.942517
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\expressions.py first seen with mtime 1741498499.728887
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\operator.py first seen with mtime 1732672610.4980147
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\_request_methods.py first seen with mtime 1741501952.1298752
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\__init__.py first seen with mtime 1741498920.0493603
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\_async\channel.py first seen with mtime 1741498919.4932585
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\mail\utils.py first seen with mtime 1741498499.599382
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\proactor_events.py first seen with mtime 1732672576.7282035
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\subprocess.py first seen with mtime 1732672576.738468
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\_core\_fileio.py first seen with mtime 1741498917.7837007
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\loaders\filesystem.py first seen with mtime 1741498499.8964474
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\model_checks.py first seen with mtime 1741498499.5648303
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\smartif.py first seen with mtime 1741498499.885117
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\files\storage\base.py first seen with mtime 1741498499.5852418
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\signals.py first seen with mtime 1741498497.0671415
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\abc\__init__.py first seen with mtime 1741498917.793114
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\termcolors.py first seen with mtime 1741498499.9531746
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\_async\storage.py first seen with mtime 1741498920.055063
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\files\temp.py first seen with mtime 1741498499.581388
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\templatetags\l10n.py first seen with mtime 1741498499.9007678
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\filters\aligned_indent.py first seen with mtime 1741498495.0945992
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\_core\_resources.py first seen with mtime 1741498917.7847006
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\argparse.py first seen with mtime 1732672576.708359
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_async\http11.py first seen with mtime 1741498917.2454753
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\translation\reloader.py first seen with mtime 1741498499.9625704
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\threads.py first seen with mtime 1732672576.741091
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\__init__.py first seen with mtime 1732672576.749185
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\query.py first seen with mtime 1741498499.733887
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\_sync\gotrue_base_api.py first seen with mtime 1741498920.0593915
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\nturl2path.py first seen with mtime 1732672610.4937115
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\forms\fields.py first seen with mtime 1741498499.7671027
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\debug.py first seen with mtime 1741498499.968316
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\tree.py first seen with mtime 1741498499.9581757
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\_async\client.py first seen with mtime 1741498919.4932585
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\loaders\__init__.py first seen with mtime 1741498499.8915477
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\staticfiles\management\__init__.py first seen with mtime 1741498499.5361905
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\async_checks.py first seen with mtime 1741498499.5610812
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\_encoded_words.py first seen with mtime 1732672585.940041
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\_policybase.py first seen with mtime 1732672585.9485338
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\runners.py first seen with mtime 1732672576.7321627
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\policy.py first seen with mtime 1732672585.9359903
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\asyncio\messages.py first seen with mtime 1741498913.0986605
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\storage3\utils.py first seen with mtime 1741498919.7456715
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\errors.py first seen with mtime 1732672585.885589
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\fields\related_lookups.py first seen with mtime 1741498499.7464037
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\mime\message.py first seen with mtime 1732672585.9003453
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h2\settings.py first seen with mtime 1741498917.5767012
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\locks.py first seen with mtime 1732672576.7239444
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_decoders.py first seen with mtime 1741498918.2900598
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\loader.py first seen with mtime 1741498499.8831103
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\keyword.py first seen with mtime 1732672609.9890263
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\contextvars.py first seen with mtime 1732672585.533771
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\middleware.py first seen with mtime 1741498497.0651414
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_sync\http11.py first seen with mtime 1741498917.2570155
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\ipv6.py first seen with mtime 1741498499.9438138
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dateutil\tz\_common.py first seen with mtime 1741498915.5330722
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\util\ssl_match_hostname.py first seen with mtime 1741501952.1549323
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\forms\widgets.py first seen with mtime 1741498499.7730105
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\strenum\_version.py first seen with mtime 1741498913.019255
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\exceptions.py first seen with mtime 1732672576.7203543
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\compatibility\__init__.py first seen with mtime 1741498499.5695808
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\contentmanager.py first seen with mtime 1732672585.8835647
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\__init__.py first seen with mtime 1741498919.491257
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\imports.py first seen with mtime 1741498913.0872128
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\shutil.py first seen with mtime 1732672615.088968
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\urllib\error.py first seen with mtime 1732672657.883976
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\filters\output.py first seen with mtime 1741498495.0960999
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_fields.py first seen with mtime 1741498915.831098
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\connection.py first seen with mtime 1741501952.1312149
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\_core\_typedattr.py first seen with mtime 1741498917.7921007
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\manager.py first seen with mtime 1741498499.731887
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\static.py first seen with mtime 1741498499.970586
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\files\locks.py first seen with mtime 1741498499.57893
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\postgrest\deprecated_client.py first seen with mtime 1741498919.8687568
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\copyreg.py first seen with mtime 1732672585.535032
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\quoprimime.py first seen with mtime 1732672585.9371133
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\fields\related_descriptors.py first seen with mtime 1741498499.7454064
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supafunc\__init__.py first seen with mtime 1741498919.6500633
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\postgrest\__init__.py first seen with mtime 1741498919.859413
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\messages\storage\base.py first seen with mtime 1741498498.4517727
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\servers\__init__.py first seen with mtime 1741498499.6451912
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\from_thread.py first seen with mtime 1741498917.77017
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\queue.py first seen with mtime 1732672615.074029
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\idna\intranges.py first seen with mtime 1741498914.1039667
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\sites\shortcuts.py first seen with mtime 1741498499.2813473
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\postgresql\operations.py first seen with mtime 1741498499.6907506
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_mock_val_ser.py first seen with mtime 1741498915.8396719
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\posixpath.py first seen with mtime 1732672610.521915
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\transaction.py first seen with mtime 1741498499.647199
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\_distutils_hack\__init__.py first seen with mtime 1741498230.9512308
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\sql\query.py first seen with mtime 1741498499.7595737
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\__future__.py first seen with mtime 1732672663.146615
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\_compression.py first seen with mtime 1732672658.3361313
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\streams\memory.py first seen with mtime 1741498917.8040707
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\copy.py first seen with mtime 1732672585.535032
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_status_codes.py first seen with mtime 1741498918.2950633
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\decorators.py first seen with mtime 1741498499.9343157
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_docs_extraction.py first seen with mtime 1741498915.8299165
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\http\cookie.py first seen with mtime 1741498499.8582847
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\postgresql\schema.py first seen with mtime 1741498499.6931186
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\_sitebuiltins.py first seen with mtime 1732672663.1425705
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\storage3\_sync\file_api.py first seen with mtime 1741498919.7428093
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\abc\_tasks.py first seen with mtime 1741498917.7986562
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\sql\where.py first seen with mtime 1741498499.7612443
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\DLLs\_bz2.pyd first seen with mtime 1732672576.4353693
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\importlib\readers.py first seen with mtime 1732672609.9122207
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\sessions\base_session.py first seen with mtime 1741498498.8833897
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\numberformat.py first seen with mtime 1741498499.9511764
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\query_utils.py first seen with mtime 1741498499.734887
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\http\__init__.py first seen with mtime 1741498499.8571918
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_migration.py first seen with mtime 1741498915.792152
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\conf\locale\__init__.py first seen with mtime 1741498495.7799613
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\fields\__init__.py first seen with mtime 1741498499.736887
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\asyncio\async_timeout.py first seen with mtime 1741498913.0963736
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\html\parser.py first seen with mtime 1732672598.5918808
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\management\__init__.py first seen with mtime 1741498499.6076744
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\transports.py first seen with mtime 1732672576.7421587
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\collections\__init__.py first seen with mtime 1732672585.4916315
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_transports\base.py first seen with mtime 1741498918.3020623
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h2\config.py first seen with mtime 1741498917.5713656
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\transformers.py first seen with mtime 1741498919.4992788
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\contenttypes\__init__.py first seen with mtime 1741498497.328521
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\loaders\app_directories.py first seen with mtime 1741498499.8930302
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\_async\__init__.py first seen with mtime 1741498919.4922588
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_utils.py first seen with mtime 1741498917.241516
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\charset_normalizer\md__mypyc.cp310-win_amd64.pyd first seen with mtime 1741501952.6705759
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\asyncio.py first seen with mtime 1741498499.9238322
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\_async\push.py first seen with mtime 1741498919.4952583
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\staggered.py first seen with mtime 1732672576.7363017
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\functional.py first seen with mtime 1741498499.9396105
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\options.py first seen with mtime 1741498499.732887
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\hashable.py first seen with mtime 1741498499.9406116
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\_sync\client.py first seen with mtime 1741498919.496338
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\auth.py first seen with mtime 1741501952.9331014
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\apps.py first seen with mtime 1741498497.0566344
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\deprecation.py first seen with mtime 1741498917.7387555
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\signals.py first seen with mtime 1741498499.5465114
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\i18n.py first seen with mtime 1741498499.9693139
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\utils.py first seen with mtime 1741501952.9431677
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\_collections.py first seen with mtime 1741501952.1288748
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dotenv\parser.py first seen with mtime 1741498785.484433
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\extensions\permessage_deflate.py first seen with mtime 1741498913.1016662
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\_base_connection.py first seen with mtime 1741501952.1278708
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\exceptiongroup\_formatting.py first seen with mtime 1741498914.8170354
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\_core\__init__.py first seen with mtime 1741498917.779372
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\engine\grouping.py first seen with mtime 1741498495.092598
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\templatetags\log.py first seen with mtime 1741498496.7231596
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\urls\conf.py first seen with mtime 1741498499.9154103
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\charset_normalizer\utils.py first seen with mtime 1741501952.67343
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\hyperframe\frame.py first seen with mtime 1741498914.268183
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\widget_tweaks\models.py first seen with mtime 1741498751.368824
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\DLLs\_uuid.pyd first seen with mtime 1732672576.4788811
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\postgrest\_sync\client.py first seen with mtime 1741498919.8636694
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_config.py first seen with mtime 1741498918.2890625
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\validators.py first seen with mtime 1741498497.0695295
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\files.py first seen with mtime 1741498499.5632594
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\ctypes\__init__.py first seen with mtime 1732672585.5667372
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\sessions\__init__.py first seen with mtime 1741498498.8822901
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\files\base.py first seen with mtime 1741498499.5778105
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\defaults.py first seen with mtime 1741498499.9693139
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\exceptiongroup\_catch.py first seen with mtime 1741498914.815989
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\sql.py first seen with mtime 1741498495.0885873
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\apps.py first seen with mtime 1741498496.1311378
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\asyncio\compatibility.py first seen with mtime 1741498913.0974002
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\management\commands\runserver.py first seen with mtime 1741498499.6259463
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\encodings\__init__.py first seen with mtime 1732672591.7942438
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\gettext.py first seen with mtime 1732672598.5796347
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_ssl.py first seen with mtime 1741498917.2395158
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\storage3\exceptions.py first seen with mtime 1741498919.744277
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dateutil\_common.py first seen with mtime 1741498915.5185802
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_generate_schema.py first seen with mtime 1741498915.8331144
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_content.py first seen with mtime 1741498918.2900598
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\socket.py first seen with mtime 1732672646.4914224
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\filters\right_margin.py first seen with mtime 1741498495.0972607
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\utils.py first seen with mtime 1741498499.8861163
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\deprecation.py first seen with mtime 1741498499.9343157
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\socketserver.py first seen with mtime 1732672646.4924228
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\functions\text.py first seen with mtime 1741498499.7531676
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\concurrent\__init__.py first seen with mtime 1732672585.525861
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\typing.py first seen with mtime 1732672657.815256
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\abc\_eventloop.py first seen with mtime 1741498917.793114
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\widget_tweaks\templatetags\__init__.py first seen with mtime 1741498751.3702528
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\http\cookies.py first seen with mtime 1732672605.162026
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\exceptiongroup\_exceptions.py first seen with mtime 1741498914.8170354
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\_async\__init__.py first seen with mtime 1741498920.0503602
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\files\storage\filesystem.py first seen with mtime 1741498499.5862603
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\futures.py first seen with mtime 1732672576.7229393
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\charset_normalizer\constant.py first seen with mtime 1741501952.6671188
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\messages\constants.py first seen with mtime 1741498498.4439864
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\urls\utils.py first seen with mtime 1741498499.9197998
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\dateformat.py first seen with mtime 1741498499.9303164
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\module_loading.py first seen with mtime 1741498499.9501753
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\importlib\abc.py first seen with mtime 1732672609.879933
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\__init__.py first seen with mtime 1741498495.7669673
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\asgiref\__init__.py first seen with mtime 1741498495.5864477
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dateutil\tz\__init__.py first seen with mtime 1741498915.5310636
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_utils.py first seen with mtime 1741498915.849715
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_forward_ref.py first seen with mtime 1741498915.8321176
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\management\__init__.py first seen with mtime 1741498497.3099852
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\models.py first seen with mtime 1741498497.066142
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\asgiref\sync.py first seen with mtime 1741498495.5919218
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\extensions\__init__.py first seen with mtime 1741498913.100662
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\functions\math.py first seen with mtime 1741498499.7508001
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\constants.py first seen with mtime 1741498920.0624387
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\certs.py first seen with mtime 1741501952.9341724
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\DLLs\select.pyd first seen with mtime 1732672540.8480215
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\migrations\exceptions.py first seen with mtime 1741498499.7061696
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\management\base.py first seen with mtime 1741498499.6087909
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\contenttypes\management\__init__.py first seen with mtime 1741498497.5624437
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\files\storage\__init__.py first seen with mtime 1741498499.5852418
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_async\connection_pool.py first seen with mtime 1741498917.2445974
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\psycopg2\errors.py first seen with mtime 1741498872.0495105
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_transports\wsgi.py first seen with mtime 1741498918.3048155
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\encodings\idna.py first seen with mtime 1732672591.7159977
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_backends\anyio.py first seen with mtime 1741498917.2499428
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\queues.py first seen with mtime 1732672576.7311625
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_transports\mock.py first seen with mtime 1741498918.3048155
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\ipaddress.py first seen with mtime 1732672609.9647646
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\models.py first seen with mtime 1741498496.137135
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\engine\filter_stack.py first seen with mtime 1741498495.0915987
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\hyperframe\flags.py first seen with mtime 1741498914.2671468
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\constants.py first seen with mtime 1732672576.7173536
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\http\client.py first seen with mtime 1732672605.158514
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\_core\_tasks.py first seen with mtime 1741498917.7887013
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\staticfiles\__init__.py first seen with mtime 1741498499.528492
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\views.py first seen with mtime 1741696738.697664
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\postgresql\creation.py first seen with mtime 1741498499.6867466
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\importlib\util.py first seen with mtime 1732672609.914686
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\errors.py first seen with mtime 1741498915.800934
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h11\_version.py first seen with mtime 1741498914.4576385
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\hpack\huffman.py first seen with mtime 1741498914.3306963
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h11\_util.py first seen with mtime 1741498914.456637
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\__init__.py first seen with mtime 1732672585.949553
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\postgrest\_sync\__init__.py first seen with mtime 1741498919.8626502
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\base.py first seen with mtime 1741498499.7238815
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\headerregistry.py first seen with mtime 1732672585.8912466
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\fields.py first seen with mtime 1741498915.8022003
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_sync\connection_pool.py first seen with mtime 1741498917.2570155
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\timesince.py first seen with mtime 1741498499.955184
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\contenttypes\fields.py first seen with mtime 1741498497.3321865
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\ctypes\wintypes.py first seen with mtime 1732672585.5633705
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\storage3\version.py first seen with mtime 1741498919.7466724
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\json\scanner.py first seen with mtime 1732672609.9691653
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\http_clients.py first seen with mtime 1741498920.0655687
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\apps\registry.py first seen with mtime 1741498495.7710292
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\api.py first seen with mtime 1741501952.9319136
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\importlib\metadata\_collections.py first seen with mtime 1732672609.8829541
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_models.py first seen with mtime 1741498917.2385125
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_backends\auto.py first seen with mtime 1741498917.2509408
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\psycopg2\_psycopg.cp310-win_amd64.pyd first seen with mtime 1741498872.047509
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\forms\forms.py first seen with mtime 1741498499.7681098
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\messages.py first seen with mtime 1741498499.5648303
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\sre_compile.py first seen with mtime 1732672646.506587
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\DLLs\_socket.pyd first seen with mtime 1732672576.4686222
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\views\main.py first seen with mtime 1741498496.7281451
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\conf\__init__.py first seen with mtime 1741498495.7720313
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\functions\window.py first seen with mtime 1741498499.7531676
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\conf\global_settings.py first seen with mtime 1741498495.773031
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\idna\__init__.py first seen with mtime 1741498914.0964868
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\trsock.py first seen with mtime 1732672576.7432761
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\strenum\__init__.py first seen with mtime 1741498913.0158997
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supafunc\_async\functions_client.py first seen with mtime 1741498919.6514897
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\postgrest\constants.py first seen with mtime 1741498919.867754
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\uuid.py first seen with mtime 1732672657.9146087
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\datastructures.py first seen with mtime 1741498913.083081
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\dateutil\tz\tz.py first seen with mtime 1741498915.5360765
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\encodings\aliases.py first seen with mtime 1732672586.0197742
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\engine\__init__.py first seen with mtime 1741498495.0915987
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\models.py first seen with mtime 1741501952.9380715
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\files\storage\handler.py first seen with mtime 1741498499.587402
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\decorators\common.py first seen with mtime 1741498499.9753044
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\messages\storage\__init__.py first seen with mtime 1741498498.4505548
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\psycopg2\extras.py first seen with mtime 1741498872.0516942
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_validators.py first seen with mtime 1741498915.8510542
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\_weakrefset.py first seen with mtime 1732672663.145612
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\templates.py first seen with mtime 1741498499.5670469
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\feedparser.py first seen with mtime 1732672585.886569
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\postgresql\base.py first seen with mtime 1741498499.6857407
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\environ\environ.py first seen with mtime 1741498768.187703
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_serializers.py first seen with mtime 1741498915.843961
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\forms.py first seen with mtime 1741694572.340851
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\sysconfig.py first seen with mtime 1732672646.523756
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\zoneinfo\_tzpath.py first seen with mtime 1732672658.3137996
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\autoreload.py first seen with mtime 1741498499.8738246
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\codecs.py first seen with mtime 1732672585.488626
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\pathlib.py first seen with mtime 1732672610.5020504
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\http2\probe.py first seen with mtime 1741501952.14799
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_core_utils.py first seen with mtime 1741498915.8248978
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\charset_normalizer\models.py first seen with mtime 1741501952.671804
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\csv.py first seen with mtime 1732672585.5387836
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h11\_headers.py first seen with mtime 1741498914.4535477
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\utils.py first seen with mtime 1741498499.6511974
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\fields\related.py first seen with mtime 1741498499.7444036
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\storage3\_sync\bucket.py first seen with mtime 1741498919.7413063
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpertProject\urls.py first seen with mtime 1741502042.884884
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\_collections_abc.py first seen with mtime 1732672658.3340938
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\_async\gotrue_client.py first seen with mtime 1741498920.0540504
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\importlib\_adapters.py first seen with mtime 1732672609.9158814
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\formatter.py first seen with mtime 1741498495.0862212
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\adapters.py first seen with mtime 1741501952.9311254
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\migrations\operations\special.py first seen with mtime 1741498499.7200027
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\mimetypes.py first seen with mtime 1732672610.3587997
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\forms\formsets.py first seen with mtime 1741498499.7681098
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\forms\models.py first seen with mtime 1741498499.7691164
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\http\__init__.py first seen with mtime 1732672605.1654212
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\warnings.py first seen with mtime 1732672657.93709
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\servers\basehttp.py first seen with mtime 1741498499.6451912
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\filters\reindent.py first seen with mtime 1741498495.0972607
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\zipfile.py first seen with mtime 1732672658.311151
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\json\encoder.py first seen with mtime 1732672609.968553
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\exceptiongroup\_version.py first seen with mtime 1741498914.8190882
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_transports\__init__.py first seen with mtime 1741498918.3010612
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\_sync\gotrue_admin_mfa_api.py first seen with mtime 1741498920.0582664
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\base\features.py first seen with mtime 1741498499.6554098
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\charset.py first seen with mtime 1732672585.8825808
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_exceptions.py first seen with mtime 1741498918.2920644
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\graphlib.py first seen with mtime 1732672598.5816078
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\utils.py first seen with mtime 1741498919.5014558
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\functions\__init__.py first seen with mtime 1741498499.748404
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\h11\_state.py first seen with mtime 1741498914.4556346
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\__init__.py first seen with mtime 1741498915.8215277
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\psycopg2\extensions.py first seen with mtime 1741498872.0505803
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_decorators.py first seen with mtime 1741498915.826917
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\__init__.py first seen with mtime 1741498917.7691705
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\generic\dates.py first seen with mtime 1741498499.981923
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\importlib\_common.py first seen with mtime 1732672609.921057
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\urllib3\_version.py first seen with mtime 1741501952.1298752
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\messages\apps.py first seen with mtime 1741498498.4439864
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_discriminated_union.py first seen with mtime 1741498915.828916
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\postgrest\utils.py first seen with mtime 1741498919.8717997
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_transports\asgi.py first seen with mtime 1741498918.3010612
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\hashers.py first seen with mtime 1741498497.0641425
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\wsgiref\simple_server.py first seen with mtime 1732672657.9426496
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\datastructures.py first seen with mtime 1741498499.9293156
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\abc\_testing.py first seen with mtime 1741498917.8000717
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\migrations\operations\models.py first seen with mtime 1741498499.7200027
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\base_futures.py first seen with mtime 1732672576.7143624
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\utils\autoreload.py first seen with mtime 1741498499.925306
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\mime\base.py first seen with mtime 1732672585.8984694
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\signal.py first seen with mtime 1732672615.0909758
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\selectors.py first seen with mtime 1732672615.0849686
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\checks\security\__init__.py first seen with mtime 1741498499.5718145
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\charset_normalizer\version.py first seen with mtime 1741501952.6744375
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\asyncio\windows_events.py first seen with mtime 1732672576.7470465
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\DLLs\_ssl.pyd first seen with mtime 1732672576.4745662
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_internal_dataclass.py first seen with mtime 1741498915.8374853
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_models.py first seen with mtime 1741498918.2940583
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\files\__init__.py first seen with mtime 1741498499.5764666
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\deletion.py first seen with mtime 1741498499.7268946
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\sqlparse\utils.py first seen with mtime 1741498495.0895991
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\filters.py first seen with mtime 1741498496.1346748
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\streams.py first seen with mtime 1741498913.0915155
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\importlib\machinery.py first seen with mtime 1732672609.8819551
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\abc.py first seen with mtime 1732672576.7039177
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\messages\api.py first seen with mtime 1741498498.4429877
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\forms\boundfield.py first seen with mtime 1741498499.765996
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\signing.py first seen with mtime 1741498499.54765
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\exceptiongroup\_suppress.py first seen with mtime 1741498914.8190882
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\checks.py first seen with mtime 1741498497.0586526
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\postgresql\introspection.py first seen with mtime 1741498499.6897538
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\urllib\parse.py first seen with mtime 1732672657.885327
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\utils.py first seen with mtime 1741498496.1421337
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\hyperframe\exceptions.py first seen with mtime 1741498914.2661452
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\asyncio\connection.py first seen with mtime 1741498913.0986605
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_api.py first seen with mtime 1741498917.236511
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\packaging\__init__.py first seen with mtime 1741498913.7967877
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\linecache.py first seen with mtime 1732672610.3339143
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\struct.py first seen with mtime 1732672646.518419
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\generic\detail.py first seen with mtime 1741498499.9833584
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\staticfiles\management\commands\runserver.py first seen with mtime 1741498499.5398307
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\files\storage\memory.py first seen with mtime 1741498499.588882
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_client.py first seen with mtime 1741498918.2880604
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\idna\package_data.py first seen with mtime 1741498914.10507
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\staticfiles\finders.py first seen with mtime 1741498499.5308099
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\psycopg2\_json.py first seen with mtime 1741498872.0365107
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\structures.py first seen with mtime 1741501952.9417539
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\tempfile.py first seen with mtime 1732672646.5304015
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\types.py first seen with mtime 1732672657.8128338
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_types.py first seen with mtime 1741498918.2960603
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_synchronization.py first seen with mtime 1741498917.2395158
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\_sync\gotrue_client.py first seen with mtime 1741498920.0603914
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\base64.py first seen with mtime 1732672585.4707706
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\tokens.py first seen with mtime 1741498497.068523
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_async\http2.py first seen with mtime 1741498917.2464805
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\storage3\_async\client.py first seen with mtime 1741498919.739233
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\websockets\typing.py first seen with mtime 1741498913.0925105
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\anyio\to_thread.py first seen with mtime 1741498917.7752092
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\checks.py first seen with mtime 1741498496.132134
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\_compat_pickle.py first seen with mtime 1732672658.3351145
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\staticfiles\handlers.py first seen with mtime 1741498499.531695
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\backends\postgresql\client.py first seen with mtime 1741498499.6857407
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpx\_auth.py first seen with mtime 1741498918.287063
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\shortcuts.py first seen with mtime 1741498495.7684827
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\mime\text.py first seen with mtime 1732672585.9033778
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\stat.py first seen with mtime 1732672646.5125816
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\stringprep.py first seen with mtime 1732672646.5174003
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\realtime\_sync\channel.py first seen with mtime 1741498919.496338
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\mail\__init__.py first seen with mtime 1741498499.5972557
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\httpcore\_async\interfaces.py first seen with mtime 1741498917.247487
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\contenttypes\views.py first seen with mtime 1741498497.3361847
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\platform.py first seen with mtime 1732672610.5159178
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\pydantic\_internal\_namespace_utils.py first seen with mtime 1741498915.8419144
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\requests\cookies.py first seen with mtime 1741501952.9356601
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\postgrest\deprecated_get_request_builder.py first seen with mtime 1741498919.8687568
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\urllib\response.py first seen with mtime 1732672657.887767
+File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\Lib\email\mime\multipart.py first seen with mtime 1732672585.901376
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\widget_tweaks\__init__.py first seen with mtime 1741498751.368824
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\types.py first seen with mtime 1741498920.0677414
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\admin.py first seen with mtime 1741498540.5073698
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\http\request.py first seen with mtime 1741498499.8592808
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\charset_normalizer\md.cp310-win_amd64.pyd first seen with mtime 1741501952.668538
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\gotrue\_sync\storage.py first seen with mtime 1741498920.0624387
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\supafunc\_sync\functions_client.py first seen with mtime 1741498919.652486
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\adminako first seen with mtime 1741608056.792407
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\email first seen with mtime 1741661948.3228078
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\expert first seen with mtime 1741575031.3639102
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\farmer first seen with mtime 1741512049.333722
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\landing.html first seen with mtime 1741533762.3242612
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\login.html first seen with mtime 1741692432.7837265
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\signup.html first seen with mtime 1741693722.1992142
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\adminako\admin_experts.html first seen with mtime 1741613966.1649783
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\adminako\admin_farmers.html first seen with mtime 1741613962.0812368
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\adminako\admin_library.html first seen with mtime 1741613957.8664937
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\adminako\admin_profile.html first seen with mtime 1741613953.7824478
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\adminako\admin_reports.html first seen with mtime 1741613949.4033835
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\adminako\base_admin.html first seen with mtime 1741614780.7640855
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\adminako\dashboard.html first seen with mtime 1741696535.3662388
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\email\password_confirm.html first seen with mtime 1741680577.0663316
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\email\password_reset.html first seen with mtime 1741689772.337543
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\email\password_reset_complete.html first seen with mtime 1741679595.7329688
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\email\password_reset_done.html first seen with mtime 1741679118.7235343
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\expert\home.html first seen with mtime 1741575489.5419424
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\templates\farmer\home.html first seen with mtime 1741599180.2054517
+(0.094) 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        ; args=None; alias=default
+(0.094) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\migrations\0002_initial.py first seen with mtime 1741511558.7020235
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\migrations\0008_alter_user_username_max_length.py first seen with mtime 1741498497.319897
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\sessions\migrations\__init__.py first seen with mtime 1741498499.2682602
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\migrations\0001_initial.py first seen with mtime 1741498496.532819
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\migrations\0011_update_proxy_permissions.py first seen with mtime 1741498497.3226948
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\contenttypes\migrations\0001_initial.py first seen with mtime 1741498497.5634558
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\migrations\loader.py first seen with mtime 1741498499.709264
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\sessions\migrations\0001_initial.py first seen with mtime 1741498499.2665453
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\migrations\graph.py first seen with mtime 1741498499.7082653
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\middleware\security.py first seen with mtime 1741498499.8718235
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\migrations\__init__.py first seen with mtime 1741498496.5348196
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\views.py first seen with mtime 1741498497.0715349
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\middleware\clickjacking.py first seen with mtime 1741498499.8615806
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\migrations\__init__.py first seen with mtime 1741498497.3237095
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\contenttypes\migrations\__init__.py first seen with mtime 1741498497.5658765
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\migrations\0010_alter_group_name_max_length.py first seen with mtime 1741498497.3212144
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\migrations\0005_alter_user_last_login_null.py first seen with mtime 1741498497.3175218
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\views\csrf.py first seen with mtime 1741498499.9673088
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\migrations\0006_require_contenttypes_0002.py first seen with mtime 1741498497.318751
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\sessions\backends\base.py first seen with mtime 1741498498.8893101
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\migrations\0002_alter_permission_name_max_length.py first seen with mtime 1741498497.315445
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\migrations\0003_admin_alter_expert_role_alter_farmer_role.py first seen with mtime 1741587623.6043758
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\migrations\0001_initial.py first seen with mtime 1741498497.313882
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\core\cache\backends\locmem.py first seen with mtime 1741498499.5561335
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\migrations\0003_logentry_add_action_flag_choices.py first seen with mtime 1741498496.53382
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\migrations\0009_alter_user_last_name_max_length.py first seen with mtime 1741498497.319897
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\sessions\backends\__init__.py first seen with mtime 1741498498.8881216
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\contenttypes\migrations\0002_remove_content_type_name.py first seen with mtime 1741498497.5648637
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\migrations\0004_alter_user_username_opts.py first seen with mtime 1741498497.3165207
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\migrations\0012_alter_user_first_name_max_length.py first seen with mtime 1741498497.3237095
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\migrations\__init__.py first seen with mtime 1741510605.5999742
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\sessions\exceptions.py first seen with mtime 1741498498.884396
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\admin\migrations\0002_logentry_remove_auto_add.py first seen with mtime 1741498496.532819
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\migrations\0004_expert_position_expert_status_alter_expert_table_and_more.py first seen with mtime 1741690288.7383757
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\messages\middleware.py first seen with mtime 1741498498.4469023
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\migrations\0007_alter_validators_add_error_messages.py first seen with mtime 1741498497.318751
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpert\migrations\0001_initial.py first seen with mtime 1741511540.4129782
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\migrations\0003_alter_user_email_max_length.py first seen with mtime 1741498497.3165207
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\migrations\recorder.py first seen with mtime 1741498499.7127514
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\migrations\executor.py first seen with mtime 1741498499.707266
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\middleware\common.py first seen with mtime 1741498499.8630702
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\sessions\middleware.py first seen with mtime 1741498498.885397
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\sessions\backends\db.py first seen with mtime 1741498498.8922527
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\db\models\sql\compiler.py first seen with mtime 1741498499.7551727
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpertProject\wsgi.py first seen with mtime 1741498344.5535421
+"GET / HTTP/1.1" 200 31864
+- Broken pipe from ('127.0.0.1', 60117)
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\template\context_processors.py first seen with mtime 1741498499.8780339
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\messages\context_processors.py first seen with mtime 1741498498.445846
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\sessions\serializers.py first seen with mtime 1741498498.8867283
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\auth\context_processors.py first seen with mtime 1741498497.061141
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\staticfiles\storage.py first seen with mtime 1741498499.531695
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\messages\storage\cookie.py first seen with mtime 1741498498.4517727
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\messages\storage\fallback.py first seen with mtime 1741498498.4528427
+File C:\laragon\www\CapstoneAgriExpertvenv\Lib\site-packages\django\contrib\messages\storage\session.py first seen with mtime 1741498498.4538586
+- Broken pipe from ('127.0.0.1', 60118)
+Exception while resolving variable 'username' in template 'login.html'.
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\utils\datastructures.py", line 84, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'username'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\utils\datastructures.py", line 86, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'username'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'QueryDict' object has no attribute 'username'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 899, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'username'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 906, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [username] in <QueryDict: {}>
+Exception while resolving variable 'role' in template 'login.html'.
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\utils\datastructures.py", line 84, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'role'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\utils\datastructures.py", line 86, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'role'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'QueryDict' object has no attribute 'role'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 899, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'role'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 906, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [role] in <QueryDict: {}>
+Exception while resolving variable 'role' in template 'login.html'.
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\utils\datastructures.py", line 84, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'role'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\utils\datastructures.py", line 86, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'role'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'QueryDict' object has no attribute 'role'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 899, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'role'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 906, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [role] in <QueryDict: {}>
+Exception while resolving variable 'role' in template 'login.html'.
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\utils\datastructures.py", line 84, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'role'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\utils\datastructures.py", line 86, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'role'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'QueryDict' object has no attribute 'role'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 899, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'role'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 906, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [role] in <QueryDict: {}>
+"GET /login/ HTTP/1.1" 200 4593
+(0.110) SELECT "AgriExpert_admin"."id", "AgriExpert_admin"."username", "AgriExpert_admin"."email", "AgriExpert_admin"."first_name", "AgriExpert_admin"."middle_name", "AgriExpert_admin"."last_name", "AgriExpert_admin"."organization", "AgriExpert_admin"."position", "AgriExpert_admin"."password" FROM "AgriExpert_admin" WHERE "AgriExpert_admin"."username" = 'admin' LIMIT 21; args=('admin',); alias=default
+(0.156) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2025-03-11T12:42:11.392284+00:00'::timestamptz AND "django_session"."session_key" = '7277a809gplb5x4fn2np26142yenma9m') LIMIT 21; args=(datetime.datetime(2025, 3, 11, 12, 42, 11, 392284, tzinfo=datetime.timezone.utc), '7277a809gplb5x4fn2np26142yenma9m'); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.359) UPDATE "django_session" SET "session_data" = 'eyJ1c2VyX2lkIjoxLCJyb2xlIjoiQWRtaW4ifQ:1tryvz:lm_IoKvdi5IOUkhza1cUjSqRQ5pqqPcEAI7Hq_uCsxE', "expire_date" = '2025-03-25T12:42:11.553578+00:00'::timestamptz WHERE "django_session"."session_key" = '7277a809gplb5x4fn2np26142yenma9m'; args=('eyJ1c2VyX2lkIjoxLCJyb2xlIjoiQWRtaW4ifQ:1tryvz:lm_IoKvdi5IOUkhza1cUjSqRQ5pqqPcEAI7Hq_uCsxE', datetime.datetime(2025, 3, 25, 12, 42, 11, 553578, tzinfo=datetime.timezone.utc), '7277a809gplb5x4fn2np26142yenma9m'); alias=default
+(0.110) COMMIT; args=None; alias=default
+"POST /login/ HTTP/1.1" 302 0
+(0.157) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2025-03-11T12:42:12.045731+00:00'::timestamptz AND "django_session"."session_key" = '7277a809gplb5x4fn2np26142yenma9m') LIMIT 21; args=(datetime.datetime(2025, 3, 11, 12, 42, 12, 45731, tzinfo=datetime.timezone.utc), '7277a809gplb5x4fn2np26142yenma9m'); alias=default
+Exception while resolving variable 'farmer_count' in template 'adminako/dashboard.html'.
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\context.py", line 85, in __getitem__
+    raise KeyError(key)
+KeyError: 'farmer_count'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'farmer_count'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 899, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'farmer_count'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 906, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [farmer_count] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x000002245223FF40>>, 'request': <WSGIRequest: GET '/adminako/dashboard/'>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x000002245227C670>>, 'perms': PermWrapper(<SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x000002245227C670>>), 'messages': <FallbackStorage: request=<WSGIRequest: GET '/adminako/dashboard/'>>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container mt'>, <Variable Node: farmer_count|default:"0">, <TextNode: '</p>  <!-- FIXED -->\n    '>, <Variable Node: expert_count|default:"0">, <TextNode: '</p>  <!-- FIXED -->\n    '>]>}]
+Exception while resolving variable 'expert_count' in template 'adminako/dashboard.html'.
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\context.py", line 85, in __getitem__
+    raise KeyError(key)
+KeyError: 'expert_count'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'expert_count'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 899, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'expert_count'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\laragon\www\CapstoneAgriExpertvenv\lib\site-packages\django\template\base.py", line 906, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [expert_count] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x000002245223FF40>>, 'request': <WSGIRequest: GET '/adminako/dashboard/'>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x000002245227C670>>, 'perms': PermWrapper(<SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x000002245227C670>>), 'messages': <FallbackStorage: request=<WSGIRequest: GET '/adminako/dashboard/'>>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container mt'>, <Variable Node: farmer_count|default:"0">, <TextNode: '</p>  <!-- FIXED -->\n    '>, <Variable Node: expert_count|default:"0">, <TextNode: '</p>  <!-- FIXED -->\n    '>]>}]
+"GET /adminako/dashboard/ HTTP/1.1" 200 4348
+File C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpertProject\settings.py previous mtime: 1741696903.4705606, current mtime: 1741696945.1191669
+C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpertProject\settings.py notified as changed. Signal results: [(<function template_changed at 0x000002244DB4A0E0>, None), (<function translation_file_changed at 0x000002244F387D00>, None)].
+C:\laragon\www\CapstoneAgriExpertvenv\AgriExpertProject\AgriExpertProject\settings.py changed, reloading.

@@ -1,0 +1,136 @@
+{% extends 'farmer/base_farmer.html' %}
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4">Farmer Collaboration</h1>
+    
+    <!-- Search Bar for Posts -->
+    <div id="post-search-bar" class="mb-4">
+        <input type="text" id="postSearchInput" class="form-control" placeholder="Search posts by title, caption, or farmer name...">
+    </div>
+
+    <!-- Posts -->
+    <div id="post-list">
+        {% for post in posts %}
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <!-- Farmer Info -->
+                <div class="d-flex align-items-center mb-3">
+                    <img src="{{ post.farmer.profile_picture }}" alt="Profile Picture" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                    <div>
+                        <h5 class="mb-0">
+                            {{ post.farmer.first_name }} 
+                            {% if post.farmer.middle_name %}{{ post.farmer.middle_name }}{% endif %} 
+                            {{ post.farmer.last_name }}
+                        </h5>
+                        <small class="text-muted">{{ post.farmer.farm_name }}</small><br>
+                        <small class="text-muted">{{ post.created_at|date:"F j, Y - g:i A" }}</small>
+                    </div>
+                </div>
+
+                <!-- Post Title & Caption -->
+                <h4>{{ post.title }}</h4>
+                <p>{{ post.caption|linebreaksbr }}</p>
+                <!-- Post Images with Modal View -->
+                <div class="d-flex flex-wrap">
+                    {% for image in post.images.all %}
+                    <div class="me-3 mb-3">
+                        <img src="{{ image.image_url }}" alt="Post Image" class="img-thumbnail" style="width: 200px; height: 200px; object-fit: cover; cursor: pointer;" 
+                             data-bs-toggle="modal" data-bs-target="#imageModal{{ forloop.parentloop.counter }}{{ forloop.counter }}">
+                    </div>
+
+                    <!-- Modal for full image -->
+                    <div class="modal fade" id="imageModal{{ forloop.parentloop.counter }}{{ forloop.counter }}" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <img src="{{ image.image_url }}" class="img-fluid w-100" alt="Full Image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Edit Button -->
+                <a href="{% url 'edit_farmer_post' post.id %}" class="btn btn-warning mt-3">Edit</a>
+            </div>
+        </div>
+        {% empty %}
+        <p>No posts available.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Floating Create Post Button -->
+<a href="{% url 'create_farmer_post' %}" class="btn btn-success rounded-circle position-fixed bottom-0 end-0 mb-4 me-4" 
+   style="width: 70px; height: 70px; font-size: 30px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: all 0.3s ease-in-out; z-index: 1000;">
+    <span class="text-white">+</span>
+</a>
+
+<!-- Curved text label "CREATE A POST!" -->
+<div class="create-post-label position-fixed bottom-0 end-0 mb-5 me-5 d-none d-md-block" 
+     style="font-size: 18px; color:rgb(5, 94, 27); font-weight: bold; white-space: nowrap; 
+            transform: translate(25px, -50px) rotate(-30deg); 
+            transition: transform 0.3s ease-in-out;">
+    CREATE A POST!
+</div>
+
+<style>
+    /* Adjust button size for smaller screens */
+    @media (max-width: 767px) {
+        .btn-success {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+
+        .create-post-label {
+            display: none;
+        }
+    }
+
+    /* On larger screens, show and apply curve effect to the label */
+    @media (min-width: 768px) {
+        .create-post-label {
+            display: block;
+        }
+
+        /* Apply curve effect on hover */
+        .btn-success:hover + .create-post-label {
+            transform: translate(25px, -70px) rotate(0deg);
+        }
+    }
+</style>
+
+<script>
+    // Show the label when the button is hovered
+    const createButton = document.querySelector(".btn-success");
+    const createLabel = document.querySelector(".create-post-label");
+
+    createButton.addEventListener("mouseenter", function() {
+        createLabel.style.transform = "translate(25px, -70px) rotate(0deg)";
+    });
+
+    createButton.addEventListener("mouseleave", function() {
+        createLabel.style.transform = "translate(25px, -50px) rotate(-30deg)";
+    });
+
+    document.getElementById("postSearchInput").addEventListener("keyup", function () {
+        let filter = this.value.toLowerCase();
+        let posts = document.querySelectorAll("#post-list .card");
+
+        posts.forEach(function (post) {
+            let title = post.querySelector("h4").textContent.toLowerCase();
+            let caption = post.querySelector("p").textContent.toLowerCase();
+            let farmerName = post.querySelector("h5").textContent.toLowerCase();
+
+            if (title.includes(filter) || caption.includes(filter) || farmerName.includes(filter)) {
+                post.style.display = "";
+            } else {
+                post.style.display = "none";
+            }
+        });
+    });
+</script>
+
+{% endblock %}

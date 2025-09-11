@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Expert Panel | AgriExpert</title>
+    
+    <!-- FontAwesome & Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+    <style>
+        body, html {
+            overflow-x: hidden;
+        }
+        /* Navbar */
+        .navbar {
+            background-color: #198754 !important;
+            padding: 10px 15px;
+        }
+        .navbar-brand {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: white !important;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+        .navbar-brand img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-size: 1rem;
+            padding: 8px 12px;
+        }
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        /* Real-time clock */
+        .real-time {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            margin-left: 15px;
+            white-space: nowrap;
+        }
+
+        /* Navbar responsiveness */
+        @media (max-width: 991px) {
+            .real-time {
+                display: block;
+                text-align: center;
+                margin: 5px 0;
+            }
+            .navbar-nav {
+                text-align: center;
+            }
+        }
+
+        /* Fix Right Gap Issue */
+        .navbar-toggler {
+            margin-left: auto;
+        }
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+        /* Ensure navbar and content don't exceed the screen width */
+        .container-fluid, .navbar {
+            max-width: 100%;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        /* Adjust real-time clock on small screens */
+        @media (max-width: 320px) {
+            .real-time {
+                font-size: 0.85rem; /* Reduce font size */
+                text-align: center;
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'expert_home' %}">
+            <img src="{% static 'css/images/newlogo.png' %}" alt="Logo">
+            AGRIEXPERT
+        </a>
+        
+        <span class="real-time">
+            <i class="fas fa-clock"></i> <span id="date-time"></span>
+        </span>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'expert_home' %}"><i class="fas fa-home"></i> Dashboard</a></li>
+                {% comment %} <li class="nav-item"><a class="nav-link" href="{% url 'expert_scan' %}"><i class="fas fa-camera"></i> Scan</a></li> {% endcomment %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'expert_library' %}"><i class="fas fa-book-open"></i> Library</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'expert_experts' %}"><i class="fas fa-user-graduate"></i> Eksperto</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'expert_farmers' %}"><i class="fas fa-tractor"></i> Magsasaka</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'expert_collab' %}"><i class="fas fa-comments"></i> Konsultasyon</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'expert_collaboration' %}"><i class="fas fa-handshake"></i> Collaboration</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'expert_report' %}"><i class="fas fa-chart-bar"></i> Reports</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-label="User menu">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{% url 'expert_profile' %}"><i class="fas fa-user"></i> Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-4">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<!-- JavaScript for Real-Time Date & Time -->
+<script>
+    function updateDateTime() {
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const dateString = now.toLocaleDateString('tl-PH', options);
+        const timeString = now.toLocaleTimeString('tl-PH');
+        document.getElementById("date-time").innerHTML = `${dateString} | ${timeString}`;
+    }
+
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+</script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

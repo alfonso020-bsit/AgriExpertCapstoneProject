@@ -1,0 +1,408 @@
+{% extends 'farmer/base_farmer.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Back Button -->
+    <div class="mb-3">
+        <a href="{% url 'farmer_farmers' %}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Community Posts
+        </a>
+    </div>
+
+    <!-- Post Content -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <!-- Farmer Info -->
+            <div class="post-header d-flex align-items-center mb-3">
+                <img src="{{ post.farmer.profile_picture }}" class="post-profile rounded-circle me-3" alt="Farmer Profile">
+                <div>
+                    <h5 class="mb-0">
+                        {{ post.farmer.first_name }}{% if post.farmer.middle_name %} {{ post.farmer.middle_name }}{% endif %} {{ post.farmer.last_name }}
+                    </h5>
+                    <span class="badge bg-success">Farmer</span>
+                    <br>
+                    <small class="text-muted">{{ post.farmer.farm_name }}</small>
+                    <br>
+                    <small class="text-muted">Posted on {{ post.created_at|date:"M d, Y H:i" }}</small>
+                </div>
+            </div>
+
+            <!-- Post Title & Caption -->
+            <h3 class="mb-3">{{ post.title }}</h3>
+            <p class="caption-text mb-4">{{ post.caption|linebreaksbr }}</p>
+
+            <!-- Post Images -->
+            {% with post.get_images as images %}
+                {% if images %}
+                    <div class="post-images mb-4">
+                        {% if images|length == 1 %}
+                            <img src="{{ images.0.image_url }}" class="img-fluid rounded single-image" alt="Post Image" 
+                                 data-bs-toggle="modal" data-bs-target="#imageModal_1">
+                            
+                            <!-- Modal for single image -->
+                            <div class="modal fade" id="imageModal_1" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <img src="{{ images.0.image_url }}" class="img-fluid w-100" alt="Full Image">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="row g-2">
+                                {% for image in images %}
+                                    <div class="col-md-6">
+                                        <img src="{{ image.image_url }}" class="img-fluid rounded multi-image" alt="Post Image"
+                                             data-bs-toggle="modal" data-bs-target="#imageModal_{{ forloop.counter }}"
+                                             style="cursor: pointer;">
+                                    </div>
+                                    
+                                    <!-- Modal for each image -->
+                                    <div class="modal fade" id="imageModal_{{ forloop.counter }}" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                                            <div class="modal-content">
+                                                <div class="modal-body p-0">
+                                                    <img src="{{ image.image_url }}" class="img-fluid w-100" alt="Full Image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <!-- Post Actions -->
+            <div class="post-actions d-flex align-items-center mb-4">
+                <button class="btn {% if user_has_upvoted %}btn-success{% else %}btn-outline-success{% endif %} me-3 upvote-btn" 
+                        data-post-id="{{ post.id }}">
+                    <i class="far fa-thumbs-up"></i> 
+                    <span class="upvote-count">{{ post.get_upvotes_count }}</span> Upvotes
+                </button>
+                
+                <span class="text-muted">
+                    <i class="far fa-comment"></i> {{ comments.count }} Comments
+                </span>
+            </div>
+
+            <hr>
+
+            <!-- Comments Section -->
+            <div class="comments-section">
+                <h5 class="mb-3">
+                    <i class="far fa-comments"></i> Comments ({{ comments.count }})
+                </h5>
+
+                <!-- Add Comment Form -->
+                <div class="add-comment-form mb-4 p-3 bg-light rounded">
+                    <h6>Add a comment:</h6>
+                    <div class="d-flex">
+                        <textarea class="form-control me-2" id="comment-textarea" rows="2" 
+                                  placeholder="Share your thoughts or ask questions..."></textarea>
+                        <button class="btn btn-primary submit-comment-btn" data-post-id="{{ post.id }}">
+                            Post Comment
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Solution Comment (if exists) -->
+                {% if solution_comment %}
+                    <div class="solution-comment mb-4 p-3 border-start border-success border-3 bg-light rounded">
+                        <div class="d-flex align-items-start">
+                            {% if solution_comment.farmer %}
+                                <img src="{{ solution_comment.farmer.profile_picture }}" class="rounded-circle me-2" alt="Profile" style="width: 50px; height: 50px; object-fit: cover;">
+                                <div class="flex-grow-1">
+                                    <strong>
+                                        {{ solution_comment.farmer.first_name }} {{ solution_comment.farmer.last_name }}
+                                        <span class="badge bg-success ms-2">✓ Solution</span>
+                                        <span class="badge bg-success ms-1">Farmer</span>
+                                    </strong>
+                                    <small class="text-muted d-block">• {{ solution_comment.created_at|date:"M d, Y H:i" }}</small>
+                                    <p class="mb-0 mt-2">{{ solution_comment.content|linebreaksbr }}</p>
+                                </div>
+                            {% elif solution_comment.expert %}
+                                <img src="{{ solution_comment.expert.profile_picture }}" class="rounded-circle me-2" alt="Profile" style="width: 50px; height: 50px; object-fit: cover;">
+                                <div class="flex-grow-1">
+                                    <strong>
+                                        {{ solution_comment.expert.first_name }} {{ solution_comment.expert.last_name }}
+                                        <span class="badge bg-success ms-2">✓ Solution</span>
+                                        <span class="badge bg-primary ms-1">Expert</span>
+                                    </strong>
+                                    <small class="text-muted d-block">• {{ solution_comment.created_at|date:"M d, Y H:i" }}</small>
+                                    <p class="mb-0 mt-2">{{ solution_comment.content|linebreaksbr }}</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                <!-- Regular Comments -->
+                <div class="comments-list">
+                    {% for comment in comments %}
+                        {% if not comment.is_solution %}
+                            <div class="comment mb-3 p-3 bg-white border rounded">
+                                <div class="d-flex align-items-start">
+                                    {% if comment.farmer %}
+                                        <img src="{{ comment.farmer.profile_picture }}" class="rounded-circle me-2" alt="Profile" style="width: 45px; height: 45px; object-fit: cover;">
+                                        <div class="flex-grow-1">
+                                            <strong>
+                                                {{ comment.farmer.first_name }}{% if comment.farmer.middle_name %} {{ comment.farmer.middle_name }}{% endif %} {{ comment.farmer.last_name }}
+                                                <span class="badge bg-success ms-1">Farmer</span>
+                                            </strong>
+                                            <small class="text-muted d-block">• {{ comment.created_at|date:"M d, Y H:i" }}</small>
+                                            <p class="mb-0 mt-2">{{ comment.content|linebreaksbr }}</p>
+                                        </div>
+                                    {% elif comment.expert %}
+                                        <img src="{{ comment.expert.profile_picture }}" class="rounded-circle me-2" alt="Profile" style="width: 45px; height: 45px; object-fit: cover;">
+                                        <div class="flex-grow-1">
+                                            <strong>
+                                                {{ comment.expert.first_name }} {{ comment.expert.last_name }}
+                                                <span class="badge bg-primary ms-1">Expert</span>
+                                            </strong>
+                                            <small class="text-muted d-block">• {{ comment.created_at|date:"M d, Y H:i" }}</small>
+                                            <p class="mb-0 mt-2">{{ comment.content|linebreaksbr }}</p>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% empty %}
+                        {% if not solution_comment %}
+                            <div class="text-center p-4 bg-light rounded">
+                                <i class="far fa-comment fa-3x text-secondary mb-3"></i>
+                                <p class="text-muted">No comments yet. Be the first to comment!</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.post-profile {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border: 3px solid #28a745;
+}
+
+.single-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.multi-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.caption-text {
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+.post-actions .btn {
+    transition: all 0.3s ease;
+}
+
+.post-actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.comment {
+    transition: background-color 0.2s;
+}
+
+.comment:hover {
+    background-color: #f8f9fa !important;
+}
+
+.solution-comment {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    border-left: 5px solid #28a745 !important;
+}
+
+.add-comment-form {
+    background: linear-gradient(135deg, #e9ecef, #f8f9fa);
+}
+
+.add-comment-form textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+.comments-list {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+/* Scrollbar styling */
+.comments-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.comments-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.comments-list::-webkit-scrollbar-thumb {
+    background: #28a745;
+    border-radius: 3px;
+}
+
+.comments-list::-webkit-scrollbar-thumb:hover {
+    background: #218838;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .post-profile {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .multi-image {
+        height: 200px;
+    }
+    
+    .single-image {
+        max-height: 300px;
+    }
+}
+</style>
+
+<script>
+    // Upvote functionality
+    document.querySelector('.upvote-btn').addEventListener('click', function() {
+        const postId = this.dataset.postId;
+        
+        fetch(`/farmer/post/${postId}/upvote/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken'),
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.upvoted) {
+                this.classList.remove('btn-outline-success');
+                this.classList.add('btn-success');
+            } else {
+                this.classList.remove('btn-success');
+                this.classList.add('btn-outline-success');
+            }
+            this.querySelector('.upvote-count').textContent = data.upvote_count;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error updating upvote. Please try again.');
+        });
+    });
+
+    // Submit comment
+    document.querySelector('.submit-comment-btn').addEventListener('click', function() {
+        const postId = this.dataset.postId;
+        const commentTextarea = document.getElementById('comment-textarea');
+        const content = commentTextarea.value.trim();
+        
+        if (!content) {
+            alert('Please enter a comment.');
+            return;
+        }
+        
+        // Disable button during request
+        this.disabled = true;
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Posting...';
+        
+        fetch(`/farmer/post/${postId}/comment/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken'),
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({content: content})
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Clear the textarea
+                commentTextarea.value = '';
+                // Show success message
+                showNotification('Comment added successfully!', 'success');
+                // Reload page to show new comment
+                setTimeout(() => {
+                    location.reload();
+                }, 1000);
+            } else {
+                alert('Error adding comment: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error adding comment. Please try again.');
+        })
+        .finally(() => {
+            // Re-enable button
+            this.disabled = false;
+            this.innerHTML = 'Post Comment';
+        });
+    });
+
+    // Enter key for comment submission (Ctrl+Enter)
+    document.getElementById('comment-textarea').addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.key === 'Enter') {
+            document.querySelector('.submit-comment-btn').click();
+        }
+    });
+
+    // Get CSRF token function
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    // Notification function
+    function showNotification(message, type = 'success') {
+        const notification = document.createElement('div');
+        notification.className = `alert alert-${type} position-fixed top-0 start-50 translate-middle-x mt-3`;
+        notification.style.zIndex = '9999';
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+
+    // Auto-resize textarea
+    const textarea = document.getElementById('comment-textarea');
+    textarea.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+    });
+</script>
+
+{% endblock %}

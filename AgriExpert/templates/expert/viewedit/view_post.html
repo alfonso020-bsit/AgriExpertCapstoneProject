@@ -1,0 +1,177 @@
+{% extends 'expert/base_expert.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="feed-post shadow-sm p-4 rounded bg-white">
+        <a href="{% url 'expert_experts' %}" class="back-float-btn" title="Bumalik">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <div class="post-header d-flex align-items-center mb-3">
+            <img src="{{ post.expert.profile_picture }}" class="post-profile rounded-circle me-2">
+            <div>
+                <strong>{{ post.expert.first_name }} {{ post.expert.last_name }}</strong><br>
+                <small class="text-muted">Posted on {{ post.created_at }}</small>
+            </div>
+        </div>
+
+        <h4 class="fw-bold">{{ post.title }}</h4>
+        <p class="caption-text">{{ post.caption|linebreaksbr }}</p>
+
+        {% if images %}
+            {% if images|length == 1 %}
+                <img src="{{ images.0.image_url }}" class="img-fluid rounded mb-2 single-image" alt="Post Image">
+            {% else %}
+                <div class="row g-2">
+                    {% for image in images %}
+                        <div class="col-6 col-md-4">
+                            <img src="{{ image.image_url }}" class="img-fluid rounded multi-image" alt="Post Image">
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endif %}
+
+        <div class="post-actions mt-3 d-flex gap-3">
+            <form method="POST" action="{% url 'upvote_post' post.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-sm {% if already_upvoted %}btn-success{% else %}btn-outline-secondary{% endif %}">
+                    👍 <span class="upvote-count">{{ post.get_upvotes_count }}</span>
+                </button>
+            </form>
+        </div>
+
+        <hr>
+
+        {% comment %} <h6>Mga Komento</h6>
+        {% for comment in comments %}
+        <div class="mb-2 p-2 bg-light rounded position-relative">
+            <div class="d-flex align-items-start">
+                <img src="{{ comment.expert.profile_picture }}" class="rounded-circle me-2" alt="Expert Profile" style="width: 40px; height: 40px; object-fit: cover; border: 2px solid #28a745;">
+                <div>
+                    <strong>{{ comment.expert.first_name }} {{ comment.expert.last_name }}</strong>
+                    <small class="text-muted d-block">• {{ comment.created_at|date:"M d, Y H:i" }}</small>
+                    <p style="text-align: justify;" class="mb-0">
+                        {{ comment.content|linebreaksbr }}
+                    </p>
+
+                    {% if is_owner %}
+                        <form method="POST" action="{% url 'mark_comment_as_solution' comment.id %}" class="mt-2">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm {% if comment.is_solution %}btn-success{% else %}btn-outline-success{% endif %}" 
+                                    {% if comment.is_solution %}disabled{% endif %}>
+                                ✅ Mark as Solution
+                            </button>
+                        </form>
+                    {% endif %}
+
+                    {% if comment.is_solution %}
+                        <span class="badge bg-success mt-1">Marked as Solution</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+            <p class="text-muted">Wala pang komento sa post na ito.</p>
+        {% endfor %} {% endcomment %}
+        <h6>Mga Komento</h6>
+
+            {% if solution_comment %}
+            <div class="mb-3 p-3 bg-success bg-opacity-10 border border-success rounded position-relative">
+                <div class="d-flex align-items-start">
+                    <img src="{{ solution_comment.expert.profile_picture }}" class="rounded-circle me-2" alt="Expert Profile" style="width: 40px; height: 40px; object-fit: cover; border: 2px solid #28a745;">
+                    <div>
+                        <strong>{{ solution_comment.expert.first_name }} {{ solution_comment.expert.last_name }}</strong>
+                        <small class="text-muted d-block">• {{ solution_comment.created_at|date:"M d, Y h:i A"  }}</small>
+                        <p style="text-align: justify;" class="mb-0">
+                            {{ solution_comment.content|linebreaksbr }}
+                        </p>
+                        <span class="badge bg-success mt-1">✅ Marked as Solution</span>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% for comment in other_comments %}
+            <div class="mb-2 p-2 bg-light rounded position-relative">
+                <div class="d-flex align-items-start">
+                    <img src="{{ comment.expert.profile_picture }}" class="rounded-circle me-2" alt="Expert Profile" style="width: 40px; height: 40px; object-fit: cover; border: 2px solid #28a745;">
+                    <div>
+                        <strong>{{ comment.expert.first_name }} {{ comment.expert.last_name }}</strong>
+                        <small class="text-muted d-block">• {{ comment.created_at|date:"M d, Y h:i A" }}</small>
+                        <p style="text-align: justify;" class="mb-0">
+                            {{ comment.content|linebreaksbr }}
+                        </p>
+
+                        {% if is_owner %}
+                            <form method="POST" action="{% url 'mark_comment_as_solution' comment.id %}" class="mt-2">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm btn-outline-success">
+                                    ✅ Mark as Solution
+                                </button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-muted">Wala pang komento sa post na ito.</p>
+            {% endfor %}
+
+
+
+        {% if allow_commenting %}
+        <form id="comment-form" method="POST" action="{% url 'comment_post' post.id %}" class="mt-3">
+            {% csrf_token %}
+            <div class="mb-2">
+                <textarea name="content" class="form-control" rows="2" placeholder="Mag-iwan ng komento..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-sm btn-success">I-submit ang Komento</button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+.post-profile {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 2px solid #28a745;
+}
+.single-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+}
+.multi-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+</style>
+
+<style>
+    .back-float-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background-color: #6c757d; /* Bootstrap secondary color */
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 50px;
+        font-size: 20px;
+        z-index: 999;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s ease;
+    }
+    
+    .back-float-btn:hover {
+        background-color: #5a6268;
+        text-decoration: none;
+    }
+</style>
+
+{% endblock %}

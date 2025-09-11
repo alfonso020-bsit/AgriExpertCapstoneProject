@@ -1,0 +1,102 @@
+{% extends 'farmer/base_farmer.html' %}
+
+{% comment %} {% extends 'farmer/base_farmer.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center fw-bold">Makipag-ugnayan kay {{ expert.first_name }}</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="message" class="form-label">Mensahe:</label>
+            <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Ipadala</button>
+    </form>
+</div>
+{% endblock %} {% endcomment %}
+
+{% comment %} {% block content %}
+<div class="container mt-4">
+    <h2 class="text-center fw-bold">Makipag-ugnayan kay {{ expert.first_name }}</h2>
+
+    <form method="POST" enctype="multipart/form-data" action="{% url 'send_message' expert.id %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="message" class="form-label">Mensahe:</label>
+            <textarea id="message" name="message_text" class="form-control" rows="4" required></textarea>
+        </div>
+    
+        <div class="mb-3">
+            <label for="image" class="form-label">Mag-upload ng larawan (Opsyonal):</label>
+            <input type="file" id="image" name="image" class="form-control">
+        </div>
+    
+        <button type="submit" class="btn btn-success">Ipadala</button>
+    </form>
+</div>
+{% endblock %} {% endcomment %}
+{% comment %} {% block content %}
+<div class="container mt-4">
+    <h2 class="text-center fw-bold">Makipag-ugnayan kay {{ expert.first_name }}</h2>
+
+    {% if existing_messages %}
+        <!-- If conversation exists, redirect to chat_detail -->
+        <div class="text-center">
+            <a href="{% url 'chat_detail' expert.id %}" class="btn btn-primary">Tingnan ang Chat</a>
+        </div>
+    {% else %}
+        <!-- Otherwise, show the message form -->
+        <form method="POST" enctype="multipart/form-data" action="{% url 'send_message' expert.id %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="message" class="form-label">Mensahe:</label>
+                <textarea id="message" name="message_text" class="form-control" rows="4" required></textarea>
+            </div>
+        
+            <div class="mb-3">
+                <label for="image" class="form-label">Mag-upload ng larawan (Opsyonal):</label>
+                <input type="file" id="image" name="image" class="form-control">
+            </div>
+        
+            <button type="submit" class="btn btn-success">Ipadala</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %} {% endcomment %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center fw-bold">Makipag-ugnayan kay {{ expert.first_name }}</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-info">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    {% if existing_messages %}
+        <!-- ✅ Redirect to chat if conversation exists -->
+        <div class="text-center">
+            <a href="{% url 'chat_detail' expert.id %}" class="btn btn-primary">Tingnan ang Chat</a>
+        </div>
+    {% else %}
+        <!-- ✅ Show the message form -->
+        <form method="POST" enctype="multipart/form-data" action="{% url 'send_message' expert.id %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="message" class="form-label">Mensahe:</label>
+                <textarea id="message" name="message_text" class="form-control" rows="4" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Mag-upload ng larawan (Opsyonal):</label>
+                <input type="file" id="image" name="image" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-success">Ipadala</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

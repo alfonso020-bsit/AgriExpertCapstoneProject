@@ -1,0 +1,142 @@
+{% extends 'adminako/base_admin.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <!-- Back button -->
+            <a href="{% url 'admin_experts' %}" class="btn btn-outline-secondary mb-3">
+                <i class="fas fa-arrow-left"></i> Back to Expert Management
+            </a>
+            
+            <!-- Post Details Card -->
+            <div class="card shadow mb-4">
+                <div class="card-header bg-white">
+                    <div class="d-flex align-items-center">
+                        <img src="{{ post.expert.profile_picture }}" class="rounded-circle me-3" alt="Expert Profile" style="width: 50px; height: 50px; object-fit: cover; border: 2px solid #28a745;">
+                        <div>
+                            <h5 class="mb-0">{{ post.expert.first_name }} {{ post.expert.last_name }}</h5>
+                            <small class="text-muted">{{ post.created_at|date:"F d, Y h:i A" }}</small>
+                        </div>
+                        <!-- Admin Actions -->
+                        <div class="ms-auto">
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePostModal">
+                                <i class="fas fa-trash"></i> Remove Post
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-body">
+                    <h4 class="card-title fw-bold">{{ post.title }}</h4>
+                    <p class="card-text">{{ post.caption|linebreaksbr }}</p>
+                    
+                    <!-- Post Images -->
+                    {% if images %}
+                        <div class="post-images mb-4">
+                            {% if images|length == 1 %}
+                                <img src="{{ images.0.image_url }}" class="img-fluid rounded" alt="Post Image">
+                            {% else %}
+                                <div class="row g-2">
+                                    {% for image in images %}
+                                        <div class="col-md-6">
+                                            <img src="{{ image.image_url }}" class="img-fluid rounded" alt="Post Image">
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    
+                    <!-- Post Stats -->
+                    <div class="d-flex align-items-center text-muted mb-3">
+                        <span class="me-3"><i class="far fa-thumbs-up"></i> {{ post.get_upvotes_count }} Upvotes</span>
+                        <span><i class="far fa-comment"></i> {{ post.get_comments.count }} Comments</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comments Section -->
+            <div class="card shadow">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0">Comments</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Solution Comment -->
+                    {% if solution_comment %}
+                        <div class="solution-comment mb-4 p-3 border-start border-success border-3 bg-light rounded">
+                            <div class="d-flex">
+                                <img src="{{ solution_comment.expert.profile_picture }}" class="rounded-circle me-2" alt="Expert Profile" style="width: 45px; height: 45px; object-fit: cover; border: 2px solid #28a745;">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>{{ solution_comment.expert.first_name }} {{ solution_comment.expert.last_name }}</strong>
+                                            <span class="badge bg-success ms-2">✓ Solution</span>
+                                        </div>
+                                        <small class="text-muted">{{ solution_comment.created_at|date:"M d, Y h:i A" }}</small>
+                                    </div>
+                                    <p class="mt-2 mb-0">{{ solution_comment.content|linebreaksbr }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    
+                    <!-- Regular Comments -->
+                    {% if other_comments %}
+                        {% for comment in other_comments %}
+                            <div class="comment mb-3 p-3 border-start border-secondary border-3 bg-light rounded">
+                                <div class="d-flex">
+                                    <img src="{{ comment.expert.profile_picture }}" class="rounded-circle me-2" alt="Expert Profile" style="width: 40px; height: 40px; object-fit: cover;">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <strong>{{ comment.expert.first_name }} {{ comment.expert.last_name }}</strong>
+                                            <small class="text-muted">{{ comment.created_at|date:"M d, Y h:i A" }}</small>
+                                        </div>
+                                        <p class="mt-2 mb-0">{{ comment.content|linebreaksbr }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% if not solution_comment %}
+                            <div class="text-center p-4">
+                                <i class="far fa-comment-dots fa-3x text-muted mb-3"></i>
+                                <p class="text-muted">No comments on this post yet.</p>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Post Modal -->
+<div class="modal fade" id="deletePostModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Post Removal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to remove this post? This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="POST" action="#">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Remove Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .post-images img {
+        max-height: 500px;
+        object-fit: contain;
+    }
+</style>
+{% endblock %}

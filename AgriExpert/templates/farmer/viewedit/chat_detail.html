@@ -1,0 +1,237 @@
+{% extends 'farmer/base_farmer.html' %}
+{% comment %} {% extends 'farmer/base_farmer.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex align-items-center mb-3">
+        <img src="{{ expert.profile_image.url }}" alt="{{ expert.first_name }}" class="rounded-circle me-3" width="50" height="50">
+        <h4>{{ expert.first_name }} {{ expert.last_name }}</h4>
+    </div>
+
+    <div class="chat-box p-3 border rounded bg-light" style="height: 400px; overflow-y: auto;">
+        {% for message in messages %}
+            <div class="d-flex {% if message.sender_farmer.id == request.session.user_id %}justify-content-end{% else %}justify-content-start{% endif %}">
+                <div class="p-2 mb-2 rounded {% if message.sender_farmer.id == request.session.user_id %}bg-success text-white{% else %}bg-secondary text-white{% endif %}">
+                    <p class="mb-0">
+                        <strong>{% if message.sender_farmer.id == request.session.user_id %}You{% else %}{{ expert.first_name }}{% endif %}:</strong>
+                        {{ message.message_text }}
+                    </p>
+                    {% if message.image %}
+                        <img src="{{ message.image }}" alt="Sent Image" class="img-fluid mt-2" style="max-width: 200px;">
+                    {% endif %}
+                    <small class="d-block text-end">{{ message.timestamp|date:"M d, Y - H:i" }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <form method="POST" enctype="multipart/form-data" action="{% url 'send_message' expert.id %}" class="mt-3">
+        {% csrf_token %}
+        <div class="input-group">
+            <textarea name="message" class="form-control" rows="1" required placeholder="Type a message..."></textarea>
+            <input type="file" name="image" class="form-control">
+            <button type="submit" class="btn btn-success">Send</button>
+        </div>
+    </form>
+</div>
+{% endblock %} {% endcomment %}
+
+
+
+{% comment %} <div class="container mt-4">
+    <h2>Chat with {{ expert.first_name }} {{ expert.last_name }}</h2>
+    <div class="chat-box border rounded p-3" style="max-height: 400px; overflow-y: auto;">
+        {% for message in messages %}
+            <div class="d-flex {% if message.sender_farmer.id == request.session.user_id %}justify-content-end{% else %}justify-content-start{% endif %}">
+                <div class="message-box p-2 rounded {% if message.sender_farmer.id == request.session.user_id %}bg-success text-white{% else %}bg-light{% endif %}" style="max-width: 75%;">
+                    <strong>
+                        {% if message.sender_farmer.id == request.session.user_id %}
+                            You:
+                        {% else %}
+                            {{ expert.first_name }}:
+                        {% endif %}
+                    </strong>
+                    <p>{{ message.message_text }}</p>
+                    
+                    {% if message.image %}
+                        <img src="{{ message.image }}" alt="Sent Image" class="img-fluid mt-2 rounded" style="max-width: 100%;">
+                    {% endif %}
+                </div>
+            </div>
+            <br> <!-- Add space between messages -->
+        {% empty %}
+        <p>No messages yet.</p>
+        {% endfor %}
+    </div>
+
+    <form action="{% url 'send_message' expert.id %}" method="POST" class="mt-3" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="text" name="message_text" class="form-control" placeholder="Type your message...">
+            <input type="file" name="image" class="form-control">
+            <button type="submit" class="btn btn-success">Send</button>
+        </div>
+    </form>
+</div> {% endcomment %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Pag-uusap Kay {{ expert.first_name }} {{ expert.last_name }}</h2>
+    <div class="chat-box border rounded p-3" style="max-height: 400px; overflow-y: auto;">
+        {% for message in messages %}
+            <div class="d-flex {% if message.sender_farmer.id == request.session.user_id %}justify-content-end{% else %}justify-content-start{% endif %}">
+                <div class="message-box p-2 rounded {% if message.sender_farmer.id == request.session.user_id %}bg-success text-white{% else %}bg-light{% endif %}" style="max-width: 75%; position: relative;">
+                    <strong>
+                        {% if message.sender_farmer.id == request.session.user_id %}
+                            Ikaw:
+                        {% else %}
+                            {{ expert.first_name }}:
+                        {% endif %}
+                    </strong>
+                    <p id="message-text-{{ message.id }}">{{ message.message_text }}</p>
+
+                    {% if message.image %}
+                        <img src="{{ message.image }}" alt="Sent Image" class="img-fluid mt-2 rounded" style="max-width: 100%;">
+                    {% endif %}
+
+                    <!-- Three-dot menu for options -->
+                    {% if message.sender_farmer.id == request.session.user_id %}
+                        <div class="dropdown" style="position: absolute; top: 5px; right: 5px;">
+                            <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                &#x22EE;
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" onclick="editMessage({{ message.id }}, '{{ message.message_text }}')">Baguhin</a></li>
+                                <li><a class="dropdown-item text-danger" href="#" onclick="deleteMessage({{ message.id }})">Burahin</a></li>
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <br>
+        {% empty %}
+        <p>Wala pang mensahe</p>
+        {% endfor %}
+    </div>
+
+    <!-- Edit Message Modal (Now in Tagalog) -->
+    <div class="modal fade" id="editMessageModal" tabindex="-1" aria-labelledby="editMessageLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editMessageLabel">I-edit ang Mensahe</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editMessageForm">
+                        {% csrf_token %}
+                        <input type="hidden" id="editMessageId">
+                        <div class="mb-3">
+                            <label for="editMessageText" class="form-label">Baguhin ang mensahe</label>
+                            <textarea class="form-control" id="editMessageText" rows="3"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="saveMessage()">I-save ang Pagbabago</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Message Modal (New Feature) -->
+    <div class="modal fade" id="deleteMessageModal" tabindex="-1" aria-labelledby="deleteMessageLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="deleteMessageLabel">Kumpirmahin ang Pag-delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    Sigurado ka bang gusto mong burahin ang mensaheng ito?
+                    <input type="hidden" id="deleteMessageId">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hindi</button>
+                    <button type="button" class="btn btn-danger" onclick="confirmDelete()">Oo, Burahin</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form action="{% url 'send_message' expert.id %}" method="POST" class="mt-3" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="text" name="message_text" class="form-control" placeholder="I-type ang iyong mensahe">
+            <input type="file" name="image" class="form-control">
+            <button type="submit" class="btn btn-success">Send</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    {% comment %} function editMessage(messageId, messageText) {
+        document.getElementById("editMessageId").value = messageId;
+        document.getElementById("editMessageText").value = messageText;
+        new bootstrap.Modal(document.getElementById('editMessageModal')).show();
+    } {% endcomment %}
+    function editMessage(messageId) {
+        // Fetch the latest message text from the DOM
+        let updatedText = document.getElementById(`message-text-${messageId}`).innerText;
+    
+        // Set the values in the modal
+        document.getElementById("editMessageId").value = messageId;
+        document.getElementById("editMessageText").value = updatedText; // Use updated text
+    
+        // Show the modal
+        new bootstrap.Modal(document.getElementById('editMessageModal')).show();
+    }
+    
+    
+    function saveMessage() {
+        let messageId = document.getElementById("editMessageId").value;
+        let newText = document.getElementById("editMessageText").value;
+        
+        fetch(`/edit_message/${messageId}/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            body: JSON.stringify({ message_text: newText })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById(`message-text-${messageId}`).innerText = newText;
+                bootstrap.Modal.getInstance(document.getElementById('editMessageModal')).hide();
+            } else {
+                alert("Hindi ma-update ang mensahe.");
+            }
+        });
+    }
+    
+    function deleteMessage(messageId) {
+        document.getElementById("deleteMessageId").value = messageId;
+        new bootstrap.Modal(document.getElementById('deleteMessageModal')).show();
+    }
+    
+    function confirmDelete() {
+        let messageId = document.getElementById("deleteMessageId").value;
+    
+        fetch(`/delete_message/${messageId}/`, {
+            method: "DELETE",
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}"
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById(`message-text-${messageId}`).parentElement.remove();
+                bootstrap.Modal.getInstance(document.getElementById('deleteMessageModal')).hide();
+            } else {
+                alert("Hindi mabura ang mensahe.");
+            }
+        });
+    }
+    </script>
+
+{% endblock %}

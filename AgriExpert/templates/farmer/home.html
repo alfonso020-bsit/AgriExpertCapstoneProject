@@ -1,0 +1,96 @@
+{% extends 'farmer/base_farmer.html' %}
+
+{% block content %}
+<h2 style="text-align: center;">Kalendaryo ng Prediksyon ng Sakit at Peste</h2>
+
+<!-- FullCalendar CSS -->
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet" />
+
+<!-- Calendar container -->
+<div id="calendar" style="max-width: 900px; margin: 20px auto;"></div>
+<div style="text-align: center; margin-top: 20px;">
+    <span style="display: inline-block; width: 20px; height: 20px; background-color: green; margin-right: 5px;"></span> Peste
+    <span style="display: inline-block; width: 20px; height: 20px; background-color: red; margin-left: 20px; margin-right: 5px;"></span> Sakit
+</div>
+
+<hr style="margin: 40px 0;">
+<h3 style="text-align: center;">📈 Kabuuang Paghahambing: Peste vs Sakit</h3>
+
+<!-- Chart Container -->
+<canvas id="pestDiseaseChart" width="400" height="200" style="display: block; margin: 0 auto;"></canvas>
+<!-- FullCalendar JS -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<hr style="margin: 40px 0;">
+
+<h3 style="text-align: center;">📊 History ng Prediksyon at Aktibidad</h3>
+
+<canvas id="consultationChart" style="max-width: 600px; margin: 0 auto;"></canvas>
+
+<script>
+    const consultationChart = document.getElementById('consultationChart');
+    new Chart(consultationChart, {
+        type: 'bar',
+        data: {
+            labels: ['Unique Expert Consultations'],
+            datasets: [{
+                label: 'Number of Experts You Consulted',
+                data: [{{ consultation_count }}],
+                backgroundColor: ['#36A2EB'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    precision: 0
+                }
+            }
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const calendarEl = document.getElementById('calendar');
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            height: 'auto',
+            eventDisplay: 'block',  // Makes titles fully visible
+            events: {{ calendar_events|safe }}
+        });
+        calendar.render();
+    });
+</script>
+
+<script>
+    // Chart code
+    const pestDiseaseChart = document.getElementById('pestDiseaseChart').getContext('2d');
+    const chart = new Chart(pestDiseaseChart, {
+        type: 'bar',
+        data: {
+            labels: ['Peste', 'Sakit'],
+            datasets: [{
+                label: 'Kabuuang Dami',
+                data: [{{ pest_count }}, {{ disease_count }}],
+                backgroundColor: ['green', 'red'],
+                borderColor: ['#0f0', '#f00'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    stepSize: 1
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

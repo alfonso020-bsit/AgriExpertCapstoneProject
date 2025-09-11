@@ -1,0 +1,347 @@
+/* General Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  position: relative;
+}
+
+#Landing {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 50px; 
+}
+
+.video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#Services, #Team, #About {
+  padding: 100px 20px;
+}
+
+#Services {
+  padding: 100px 20px;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: rgb(40, 139, 0); 
+  height: auto;
+}
+
+
+
+/* .bg-success, .bg-dark {
+  color: white;
+} */
+
+/* Sticky Navigation */
+.navbar {
+  z-index: 1000;
+  color: #1c7430;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 20px;
+}
+
+.navbar-nav .nav-link:hover {
+  border-bottom: 2px solid #FFD700;
+  transition: all 0.3s ease-in-out;
+}
+
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.project {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.project img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.project:hover img {
+  transform: scale(1.1); /* Adds a zoom effect */
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.layer h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.layer a {
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  color: white;
+  background-color: #28a745;
+  transition: background-color 0.3s;
+}
+
+.layer a:hover {
+  background-color: #218838;
+}
+
+.project:hover .layer {
+  opacity: 1;
+}
+
+
+
+
+
+/* Team */
+
+.team-img {
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover; 
+  border-radius: 10px 10px 0 0; 
+}
+
+.card {
+  border: none; 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  border-radius: 10px; 
+}
+
+.card-footer {
+  background-color: #28a745; 
+  border-top: none; 
+}
+
+.card-footer a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#Team .card-text {
+  color: black; 
+}
+
+#Team .card-text b {
+  color: black; 
+}
+
+#Team .card-text i {
+  color: black; 
+}
+
+#Team .card-text a {
+  color: #28a745; 
+}
+
+#Team .card-text a:hover {
+  color: #218838; 
+}
+/* About */
+
+#About {
+  background: linear-gradient(135deg, #ffdb39, #28a745);
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 80px 20px;
+}
+
+.mission-text, .vision-text {
+  color: #000; 
+}
+
+.mission-card, .vision-card {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mission-card .card-title, .vision-card .card-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.mission-card .card-text, .vision-card .card-text {
+  font-size: 1.2rem;
+  color: #000; 
+}
+
+#About .sub-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #28a745;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+#About .lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+#About .row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background-color: #555555;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: #28a745;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #f1f1f1;
+}
+
+.cta-container {
+  margin-top: 40px;
+  padding: 40px;
+  background-color: #28a745;
+  border-radius: 8px;
+  color: white;
+}
+
+.cta-container h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.cta-container p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.cta-container .btn {
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  background-color: #218838;
+  border-radius: 30px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.cta-container .btn:hover {
+  background-color: #1c7430;
+}
+
+@media (max-width: 768px) {
+  .cta-container h3 {
+    font-size: 1.5rem;
+  }
+  .cta-container p {
+    font-size: 1rem;
+  }
+}
+
+/* Service Container Styles */
+.service-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap; /* Ensures wrapping of items */
+  padding: 0 20px; /* Adds padding for better spacing on small screens */
+}
+
+.service-box {
+  width: 30%; /* Default for desktop - 3 items per row */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.service-video {
+  width: 100%; /* Ensures the video takes up the full width of the container */
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-top: 10px;
+}
+
+p {
+  font-size: 1em;
+  color: #555;
+}
+
+/* Responsive Styles */
+
+/* For Tablets */
+@media (max-width: 1024px) {
+  .service-box {
+    width: 48%; /* 2 items per row for tablets */
+  }
+}
+
+/* For Mobile Devices */
+@media (max-width: 768px) {
+  .service-box {
+    width: 100%; /* 1 item per row for mobile */
+  }
+}

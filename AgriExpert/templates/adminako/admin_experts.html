@@ -1,0 +1,271 @@
+{% extends 'adminako/base_admin.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h4 class="text-center">List of Experts</h4>
+
+    <!-- Horizontal Scrollable Expert List -->
+    <div class="expert-scroll-container d-flex align-items-center">
+        {% for expert in experts %}
+            {% if expert.status != 'Rejected' %}
+                <div class="expert-card text-center {% if expert.status == 'Approved' %}approved{% elif expert.status == 'Pending' %}pending{% endif %}">
+                    <a href="{% url 'view_expert' expert.id %}" class="text-decoration-none text-dark">
+                        <div class="profile-container">
+                            <img src="{{ expert.profile_picture }}" class="rounded-circle expert-profile">
+                            {% if expert.status == 'Approved' %}
+                                <span class="badge verified-badge"><i class="fas fa-check-circle"></i></span>
+                            {% endif %}
+                        </div>
+                        <div class="expert-details">
+                            <strong>{{ expert.first_name }}{% if expert.middle_name %} {{ expert.middle_name }}{% endif %} {{ expert.last_name }}</strong>
+                            <br>
+                            <small>{{ expert.position }}</small>
+                        </div>
+                    </a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+    <!-- Posts by Experts -->
+    <h3 class="text-center my-4">Expert Posts Management</h3>
+    <div class="feed-container">
+        {% for post in expert_posts %}
+        <div class="feed-post mb-4 shadow-sm p-3 rounded bg-white">
+            <div class="post-header d-flex align-items-center mb-3">
+                <img src="{{ post.expert.profile_picture }}" class="post-profile rounded-circle me-2">
+                <div>
+                    <strong>{{ post.expert.first_name }} {{ post.expert.last_name }}</strong>
+                    <span class="badge bg-primary ms-2">Expert</span>
+                    <br>
+                    <small class="text-muted">Posted on {{ post.created_at|date:"M d, Y H:i" }}</small>
+                </div>
+                <!-- Admin Actions Dropdown -->
+                <div class="ms-auto">
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton{{ post.id }}" data-bs-toggle="dropdown" aria-expanded="false">
+                            Admin Actions
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ post.id }}">
+                            <li><a class="dropdown-item" href="{% url 'view_post_asadmin' post.id %}">Review Post</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><form method="POST" action="#" class="m-0 p-0">
+                                {% csrf_token %}
+                                <button type="submit" class="dropdown-item text-danger">Remove Post</button>
+                            </form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    
+            <h5 class="fw-bold">{{ post.title }}</h5>
+            <p class="caption-text">{{ post.caption|linebreaksbr }}</p>
+    
+            {% with post.get_images as images %}
+                {% if images|length == 1 %}
+                    <img src="{{ images.0.image_url }}" class="img-fluid rounded mb-2 single-image" alt="Post Image">
+                {% elif images|length > 1 %}
+                    <div class="row g-2">
+                        {% for image in images %}
+                            <div class="col-6 col-md-4">
+                                <img src="{{ image.image_url }}" class="img-fluid rounded multi-image" alt="Post Image">
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+    
+            <div class="post-stats mt-3 d-flex align-items-center">
+                <span class="me-3"><i class="far fa-thumbs-up"></i> {{ post.get_upvotes_count }} Upvotes</span>
+                <span><i class="far fa-comment"></i> {{ post.get_comments.count }} Comments</span>
+            </div>
+            
+            <hr>
+            
+            <!-- Comments Section -->
+            <h6 class="fw-bold mb-3">Comments</h6>
+            <div class="comments">
+                {% if post.solution_comment %}
+                    <div class="solution-comment mb-3 p-2 border-start border-success border-3 bg-light rounded">
+                        <div class="d-flex align-items-start">
+                            <img src="{{ post.solution_comment.expert.profile_picture }}" class="rounded-circle me-2" alt="Expert Profile" style="width: 40px; height: 40px; object-fit: cover; border: 2px solid #28a745;">
+                            <div>
+                                <strong>
+                                    {{ post.solution_comment.expert.first_name }} {{ post.solution_comment.expert.last_name }}
+                                    <span class="badge bg-success ms-2">✔ Solution</span>
+                                </strong>
+                                <small class="text-muted d-block">• {{ post.solution_comment.created_at|date:"M d, Y H:i" }}</small>
+                                <p class="mb-0 mt-1">{{ post.solution_comment.content|linebreaksbr }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                
+                {% for comment in post.latest_comments %}
+                    {% if not comment.is_solution %}
+                        <div class="regular-comment mb-2 p-2 border-start border-secondary border-3 bg-light rounded">
+                            <div class="d-flex align-items-start">
+                                <img src="{{ comment.expert.profile_picture }}" class="rounded-circle me-2" alt="Expert Profile" style="width: 35px; height: 35px; object-fit: cover;">
+                                <div>
+                                    <strong>{{ comment.expert.first_name }} {{ comment.expert.last_name }}</strong>
+                                    <small class="text-muted d-block">• {{ comment.created_at|date:"M d, Y H:i" }}</small>
+                                    <p class="mb-0 mt-1">{{ comment.content|linebreaksbr }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% empty %}
+                    {% if not post.solution_comment %}
+                        <p class="text-muted">No comments on this post yet.</p>
+                    {% endif %}
+                {% endfor %}
+                
+                {% if post.get_comments.count > 3 %}
+                    <div class="mt-2">
+                        <a href="{% url 'view_post' post.id %}" class="btn btn-sm btn-outline-secondary">
+                            View All {{ post.get_comments.count }} Comments
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+            <div class="text-center p-4 bg-light rounded">
+                <i class="fas fa-newspaper fa-3x text-secondary mb-3"></i>
+                <p>No expert posts available at this time.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<style>
+/* Horizontal Scrollable Container */
+.expert-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Expert Card */
+.expert-card {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+}
+
+/* Circular Profile */
+.expert-profile {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ccc;
+    transition: transform 0.2s ease-in-out;
+}
+
+.expert-profile:hover {
+    transform: scale(1.1);
+}
+
+/* Name & Position */
+.expert-details {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/* Approved - Green */
+.approved .expert-profile {
+    border-color: #28a745;
+}
+
+/* Pending - Yellow */
+.pending .expert-profile {
+    border-color: #ffc107;
+}
+
+/* Verified Badge */
+.verified-badge {
+    position: absolute;
+    top: 50px;
+    right: 5px;
+    background-color: #28a745;
+    color: white;
+    font-size: 14px;
+    padding: 3px 6px;
+    
+    border-radius: 50%;
+}
+
+/* Post Styling */
+.feed-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.feed-post {
+    border: 1px solid #ddd;
+    transition: box-shadow 0.3s;
+}
+
+.feed-post:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.post-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.post-profile {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 2px solid #28a745;
+}
+
+.caption-text {
+    white-space: pre-wrap;
+}
+
+.single-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.multi-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* For smaller screens */
+@media (max-width: 576px) {
+    .expert-profile {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .expert-details {
+        font-size: 12px;
+    }
+}
+</style>
+
+<script>
+    // Enable Bootstrap tooltips if needed
+    document.addEventListener('DOMContentLoaded', function() {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,248 @@
+{% extends 'expert/base_expert.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2> Pag-uusap kay {{ farmer.first_name }} {{ farmer.last_name }}</h2>
+    <div class="chat-box border rounded p-3" style="max-height: 400px; overflow-y: auto;">
+        {% for message in messages %}
+            <div class="d-flex {% if message.sender_expert.id == request.session.user_id %}justify-content-end{% else %}justify-content-start{% endif %}">
+                <div class="message-box p-2 rounded {% if message.sender_expert.id == request.session.user_id %}bg-success text-white{% else %}bg-light{% endif %}" style="max-width: 75%; position: relative;">
+                    <strong>
+                        {% if message.sender_expert.id == request.session.user_id %}
+                            Ikaw:
+                        {% else %}
+                            {{ farmer.first_name }}:
+                        {% endif %}
+                    </strong>
+                    <p id="message-text-{{ message.id }}">{{ message.message_text }}</p>
+
+                    {% if message.image %}
+                        <img src="{{ message.image }}" alt="Sent Image" class="img-fluid mt-2 rounded" style="max-width: 100%;">
+                    {% endif %}
+
+                    {% if message.sender_farmer %}
+                    <span id="solved-icon-{{ message.id }}" class="text-success small" style="cursor: pointer;"
+                    onclick="openSolveModal({{ message.id }})">
+                    {% if message.is_solved %}
+                        ✅ Solved
+                    {% else %}
+                        ✔ Mark as Solved
+                    {% endif %}
+                    {% if message.is_solved %}
+                    <div class="alert alert-success mt-2">
+                        <strong>Solution ({{ message.classification }}):</strong> {{ message.solution_description }}
+                    </div>
+                    {% endif %} 
+                    </span>
+                {% endif %}
+
+                    {% if message.sender_expert.id == request.session.user_id %}
+                        <div class="dropdown" style="position: absolute; top: 5px; right: 5px;">
+                            <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                &#x22EE;
+                            </button>
+                            <ul class="dropdown-menu">
+                                {% comment %} <li><a class="dropdown-item" href="#" onclick="editMessage({{ message.id }}, '{{ message.message_text }}')">Edit</a></li> {% endcomment %}
+                                <li><a class="dropdown-item" href="#" onclick="editMessage({{ message.id }}, '{{ message.message_text|escapejs }}')">Edit</a></li>
+                                <li><a class="dropdown-item text-danger" href="#" onclick="deleteMessage({{ message.id }})">I-Delete</a></li>
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <br>
+        {% empty %}
+        <p>No messages yet.</p>
+        {% endfor %}
+    </div>
+
+    <form action="{% url 'send_message_expert' farmer.id %}" method="POST" class="mt-3" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="text" name="message_text" class="form-control" placeholder="I-type ang iyong mensahe...">
+            <input type="file" name="image" class="form-control">
+            <button type="submit" class="btn btn-success">Send</button>
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="solveMessageModal" tabindex="-1" aria-labelledby="solveMessageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Mark as Solved - Provide Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="solveMessageId">
+                
+                <label for="classificationType" class="form-label">Classification:</label>
+                <select id="classificationType" class="form-select" required>
+                    <option value="">-- Select Classification --</option>
+                    <option value="Sakit">Sakit (Disease)</option>
+                    <option value="Peste">Peste (Pest)</option>
+                </select>
+
+                <label for="solutionText" class="form-label mt-2">Solution Description:</label>
+                <textarea id="solutionText" class="form-control" placeholder="Describe the solution..." required></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" onclick="markAsSolved()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="editMessageModal" tabindex="-1" aria-labelledby="editMessageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editMessageModalLabel">I-edit ang Mensahe</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="editMessageId">
+                <textarea id="editMessageText" class="form-control"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kanselahin</button>
+                <button type="button" class="btn btn-primary" onclick="saveMessage()">I-save ang Mga Pagbabago</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteMessageModal" tabindex="-1" aria-labelledby="deleteMessageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteMessageModalLabel">Kumpirmahin</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="deleteMessageId">
+                <p>Sigurado ka bang nais mong tanggalin ang mensaheng ito?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kanselahin</button>
+                <button type="button" class="btn btn-danger" onclick="confirmDelete()">Kumpirmahin</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function editMessage(messageId) {
+        // Fetch the latest message text from the DOM
+        let updatedText = document.getElementById(`message-text-${messageId}`).innerText;
+    
+        // Set the values in the modal
+        document.getElementById("editMessageId").value = messageId;
+        document.getElementById("editMessageText").value = updatedText; // Use updated text
+    
+        // Show the modal
+        new bootstrap.Modal(document.getElementById('editMessageModal')).show();
+    }
+    
+
+    function saveMessage() {
+        let messageId = document.getElementById("editMessageId").value;
+        let newText = document.getElementById("editMessageText").value;
+    
+        fetch(`/edit_message_expert/${messageId}/`, {  // Use expert-specific endpoint
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            body: JSON.stringify({ message_text: newText })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById(`message-text-${messageId}`).innerText = newText;
+                bootstrap.Modal.getInstance(document.getElementById('editMessageModal')).hide();
+            } else {
+                alert("Failed to update message.");
+            }
+        });
+    }
+
+    function deleteMessage(messageId) {
+        document.getElementById("deleteMessageId").value = messageId;
+        new bootstrap.Modal(document.getElementById('deleteMessageModal')).show();
+    }
+    
+    
+    function confirmDelete() {
+        let messageId = document.getElementById("deleteMessageId").value;
+    
+        fetch(`/delete_message_expert/${messageId}/`, {  // Use expert-specific endpoint
+            method: "DELETE",
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}"
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById(`message-text-${messageId}`).parentElement.remove();
+                bootstrap.Modal.getInstance(document.getElementById('deleteMessageModal')).hide();
+            } else {
+                alert("Failed to delete message.");
+            }
+        });
+    }
+    function openSolveModal(messageId) {
+        document.getElementById("solveMessageId").value = messageId;
+        document.getElementById("solutionText").value = "";
+        document.getElementById("classificationType").value = ""; // Reset selection
+        new bootstrap.Modal(document.getElementById('solveMessageModal')).show();
+    }
+    
+    function markAsSolved() {
+        let messageId = document.getElementById("solveMessageId").value;
+        let solutionText = document.getElementById("solutionText").value.trim();
+        let classification = document.getElementById("classificationType").value;
+    
+        if (!classification) {
+            alert("Please select a classification (Sakit or Peste).");
+            return;
+        }
+    
+        if (!solutionText) {
+            alert("Please provide a solution description.");
+            return;
+        }
+    
+        fetch(`/chat/mark-solved/${messageId}/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            body: JSON.stringify({
+                solution_description: solutionText,
+                classification: classification
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                let solvedIcon = document.getElementById(`solved-icon-${messageId}`);
+                solvedIcon.innerHTML = `✅ Solved`;
+    
+                let solutionDiv = document.createElement("div");
+                solutionDiv.classList.add("alert", "alert-success", "mt-2");
+                solutionDiv.innerHTML = `<strong>Solution (${data.classification}):</strong> ${data.solution_description}`;
+    
+                solvedIcon.parentElement.appendChild(solutionDiv);
+    
+                bootstrap.Modal.getInstance(document.getElementById('solveMessageModal')).hide();
+            } else {
+                alert("Failed to mark as solved: " + data.error);
+            }
+        });
+    }
+</script>
+{% endblock %}

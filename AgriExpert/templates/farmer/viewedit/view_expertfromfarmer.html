@@ -1,0 +1,35 @@
+{% extends 'farmer/base_farmer.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    {% if expert %}
+    <div class="card shadow-lg border-0 rounded-4 p-4">
+        <div class="text-center">
+            <!-- Profile Picture -->
+            <img src="{{ expert.profile_picture }}" alt="Profile Picture" class="img-fluid rounded-circle mb-3" style="width: 120px; height: 120px;">
+            
+            <!-- Expert Full Name -->
+            <h3 class="fw-bold">
+                {{ expert.first_name }}{% if expert.middle_name %} {{ expert.middle_name }}{% endif %} {{ expert.last_name }}
+            </h3>
+
+            <!-- Badge -->
+            <span class="badge bg-success"><i class="fas fa-check-circle"></i> Aprubadong Eksperto</span>
+        </div>
+
+        <hr>
+
+        <!-- Expert Details -->
+        <p><strong>Posisyon:</strong> {{ expert.position }}</p>
+        <p><strong>Lisensya:</strong> {{ expert.license_number }}</p>
+        <p><strong>📧 Email:</strong> {{ expert.email }}</p>
+        <p><strong>📞 Telepono:</strong> {{ expert.phone_number }}</p>
+
+        <!-- Back Button -->
+        <a href="{% url 'farmer_experts' %}" class="btn btn-secondary mt-3">Bumalik</a>
+    </div>
+    {% else %}
+    <p class="text-center text-danger">Hindi mahanap ang eksperto.</p>
+    {% endif %}
+</div>
+{% endblock %}

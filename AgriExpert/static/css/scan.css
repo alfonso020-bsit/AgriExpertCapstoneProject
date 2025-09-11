@@ -1,0 +1,47 @@
+ /* Add your custom styles here */
+ .scan-section {
+    background-color: rgba(255, 255, 255, 0.774);
+    padding: 40px;
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+  }
+  .scan-section h1 {
+    font-size: 2.5rem;
+    color: rgb(179, 179, 18);
+  }
+  .scan-section .upload-section {
+    margin-top: 30px;
+  }
+  .scan-section .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .scan-section input[type="file"] {
+    display: none;
+  }
+  .scan-section label, .scan-section button {
+    padding: 15px 20px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  .scan-section button:hover, .scan-section label:hover {
+    background-color: #45a049;
+  }
+
+  .result-card {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  
+  .image-preview img {
+    max-width: 100%;
+    height: auto;
+  }

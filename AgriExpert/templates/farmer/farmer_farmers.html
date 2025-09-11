@@ -1,0 +1,722 @@
+{% extends 'farmer/base_farmer.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h4 class="text-center">Fellow Farmers</h4>
+
+    <!-- Horizontal Scrollable Farmer List -->
+    <div class="farmer-scroll-container d-flex align-items-center">
+        {% for farmer in farmers %}
+            <div class="farmer-card text-center">
+                <div class="profile-container">
+                    <img src="{{ farmer.profile_picture }}" class="rounded-circle farmer-profile" alt="Profile Picture">
+                </div>
+                <div class="farmer-details">
+                    <strong>{{ farmer.first_name }}{% if farmer.middle_name %} {{ farmer.middle_name }}{% endif %} {{ farmer.last_name }}</strong>
+                    <br>
+                    <small>{{ farmer.farm_name }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Posts by Farmers -->
+    <h3 class="text-center my-4">Community Posts</h3>
+    
+    <!-- Search Bar for Posts -->
+    <div class="mb-4">
+        <input type="text" id="postSearchInput" class="form-control" placeholder="Search posts by title, caption, or farmer name...">
+    </div>
+
+    <div class="feed-container">
+        {% for post in farmer_posts %}
+        <div class="feed-post mb-4 shadow-sm p-3 rounded bg-white">
+            <div class="post-header d-flex align-items-center mb-3">
+                <img src="{{ post.farmer.profile_picture }}" class="post-profile rounded-circle me-2" alt="Farmer Profile">
+                <div>
+                    <strong>{{ post.farmer.first_name }}{% if post.farmer.middle_name %} {{ post.farmer.middle_name }}{% endif %} {{ post.farmer.last_name }}</strong>
+                    <span class="badge bg-success ms-2">Farmer</span>
+                    <br>
+                    <small class="text-muted">{{ post.farmer.farm_name }}</small>
+                    <br>
+                    <small class="text-muted">Posted on {{ post.created_at|date:"M d, Y H:i" }}</small>
+                </div>
+            </div>
+    
+            <h5 class="fw-bold">{{ post.title }}</h5>
+            <p class="caption-text">{{ post.caption|linebreaksbr }}</p>
+    
+            <!-- Post Images -->
+            {% with post.get_images as images %}
+                {% if images|length == 1 %}
+                    <img src="{{ images.0.image_url }}" class="img-fluid rounded mb-2 single-image" alt="Post Image" 
+                         data-bs-toggle="modal" data-bs-target="#imageModal{{ post.id }}_1">
+                    
+                    <!-- Modal for single image -->
+                    <div class="modal fade" id="imageModal{{ post.id }}_1" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <img src="{{ images.0.image_url }}" class="img-fluid w-100" alt="Full Image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% elif images|length > 1 %}
+                    <div class="row g-2">
+                        {% for image in images %}
+                            <div class="col-6 col-md-4">
+                                <img src="{{ image.image_url }}" class="img-fluid rounded multi-image" alt="Post Image"
+                                     data-bs-toggle="modal" data-bs-target="#imageModal{{ post.id }}_{{ forloop.counter }}"
+                                     style="cursor: pointer;">
+                            </div>
+                            
+                            <!-- Modal for each image -->
+                            <div class="modal fade" id="imageModal{{ post.id }}_{{ forloop.counter }}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <img src="{{ image.image_url }}" class="img-fluid w-100" alt="Full Image">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+    
+            <!-- Post Actions -->
+            <div class="post-actions mt-3 d-flex align-items-center">
+                <!-- Upvote Button -->
+                <button class="btn btn-sm {% if post.user_has_upvoted %}btn-success{% else %}btn-outline-success{% endif %} me-3 upvote-btn" 
+                        data-post-id="{{ post.id }}">
+                    <i class="far fa-thumbs-up"></i> 
+                    <span class="upvote-count">{{ post.get_upvotes_count }}</span> Upvotes
+                </button>
+                
+                <!-- View Post Button -->
+                <a href="{% url 'view_farmer_post' post.id %}" class="btn btn-sm btn-outline-primary me-3">
+                    <i class="far fa-comment"></i> {{ post.get_comments.count }} Comments
+                </a>
+                
+                <!-- Quick Comment Button -->
+                <button class="btn btn-sm btn-outline-secondary comment-toggle-btn" data-post-id="{{ post.id }}">
+                    <i class="far fa-edit"></i> Quick Comment
+                </button>
+            </div>
+            
+            <!-- Quick Comment Form (initially hidden) -->
+            <div class="quick-comment-form mt-3" id="comment-form-{{ post.id }}" style="display: none;">
+                <div class="d-flex">
+                    <input type="text" class="form-control me-2" placeholder="Add a comment..." 
+                           id="comment-input-{{ post.id }}">
+                    <button class="btn btn-primary submit-comment-btn" data-post-id="{{ post.id }}">Post</button>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <!-- Comments Section -->
+            {% if post.get_comments.count > 0 %}
+                <h6 class="fw-bold mb-3">Recent Comments</h6>
+                <div class="comments">
+                    {% for comment in post.latest_comments %}
+                        <div class="regular-comment mb-2 p-2 border-start border-secondary border-3 bg-light rounded">
+                            <div class="d-flex align-items-start">
+                                {% if comment.farmer %}
+                                    <img src="{{ comment.farmer.profile_picture }}" class="rounded-circle me-2" alt="Farmer Profile" style="width: 35px; height: 35px; object-fit: cover;">
+                                    <div>
+                                        <strong>{{ comment.farmer.first_name }}{% if comment.farmer.middle_name %} {{ comment.farmer.middle_name }}{% endif %} {{ comment.farmer.last_name }}</strong>
+                                        <span class="badge bg-success ms-1">Farmer</span>
+                                        <small class="text-muted d-block">• {{ comment.created_at|date:"M d, Y H:i" }}</small>
+                                        <p class="mb-0 mt-1">{{ comment.content|linebreaksbr }}</p>
+                                    </div>
+                                {% elif comment.expert %}
+                                    <img src="{{ comment.expert.profile_picture }}" class="rounded-circle me-2" alt="Expert Profile" style="width: 35px; height: 35px; object-fit: cover;">
+                                    <div>
+                                        <strong>{{ comment.expert.first_name }} {{ comment.expert.last_name }}</strong>
+                                        <span class="badge bg-primary ms-1">Expert</span>
+                                        <small class="text-muted d-block">• {{ comment.created_at|date:"M d, Y H:i" }}</small>
+                                        <p class="mb-0 mt-1">{{ comment.content|linebreaksbr }}</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    
+                    {% if post.get_comments.count > 3 %}
+                        <div class="mt-2">
+                            <button class="btn btn-sm btn-outline-secondary">
+                                View All {{ post.get_comments.count }} Comments
+                            </button>
+                        </div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <p class="text-muted">No comments on this post yet.</p>
+            {% endif %}
+        </div>
+        {% empty %}
+            <div class="text-center p-4 bg-light rounded">
+                <i class="fas fa-seedling fa-3x text-secondary mb-3"></i>
+                <p>No farmer posts available at this time.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+/* Horizontal Scrollable Container */
+.farmer-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+/* Farmer Card */
+.farmer-card {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+}
+
+/* Circular Profile */
+.farmer-profile {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #28a745;
+    transition: transform 0.2s ease-in-out;
+}
+
+.farmer-profile:hover {
+    transform: scale(1.1);
+}
+
+/* Name & Farm Details */
+.farmer-details {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/* Post Styling */
+.feed-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.feed-post {
+    border: 1px solid #ddd;
+    transition: box-shadow 0.3s;
+}
+
+.feed-post:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.post-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.post-profile {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 2px solid #28a745;
+}
+
+.caption-text {
+    white-space: pre-wrap;
+}
+
+.single-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.multi-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* For smaller screens */
+@media (max-width: 576px) {
+    .farmer-profile {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .farmer-details {
+        font-size: 12px;
+    }
+}
+
+/* Post Stats */
+.post-stats {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.post-stats i {
+    margin-right: 5px;
+}
+
+/* Comments styling */
+.comments {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.regular-comment {
+    transition: background-color 0.2s;
+}
+
+.regular-comment:hover {
+    background-color: #f8f9fa !important;
+}
+</style>
+
+<script>
+    // Search functionality
+    document.getElementById("postSearchInput").addEventListener("keyup", function () {
+        let filter = this.value.toLowerCase();
+        let posts = document.querySelectorAll(".feed-post");
+
+        posts.forEach(function (post) {
+            let title = post.querySelector("h5").textContent.toLowerCase();
+            let caption = post.querySelector(".caption-text").textContent.toLowerCase();
+            let farmerName = post.querySelector(".post-header strong").textContent.toLowerCase();
+
+            if (title.includes(filter) || caption.includes(filter) || farmerName.includes(filter)) {
+                post.style.display = "";
+            } else {
+                post.style.display = "none";
+            }
+        });
+    });
+
+    // Upvote functionality
+    document.querySelectorAll('.upvote-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const postId = this.dataset.postId;
+            
+            fetch(`/farmer/post/${postId}/upvote/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken'),
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.upvoted) {
+                    this.classList.remove('btn-outline-success');
+                    this.classList.add('btn-success');
+                } else {
+                    this.classList.remove('btn-success');
+                    this.classList.add('btn-outline-success');
+                }
+                this.querySelector('.upvote-count').textContent = data.upvote_count;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error updating upvote. Please try again.');
+            });
+        });
+    });
+
+    // Quick comment toggle
+    document.querySelectorAll('.comment-toggle-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const postId = this.dataset.postId;
+            const commentForm = document.getElementById(`comment-form-${postId}`);
+            
+            if (commentForm.style.display === 'none') {
+                commentForm.style.display = 'block';
+                document.getElementById(`comment-input-${postId}`).focus();
+            } else {
+                commentForm.style.display = 'none';
+            }
+        });
+    });
+
+    // Submit comment
+    document.querySelectorAll('.submit-comment-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const postId = this.dataset.postId;
+            const commentInput = document.getElementById(`comment-input-${postId}`);
+            const content = commentInput.value.trim();
+            
+            if (!content) {
+                alert('Please enter a comment.');
+                return;
+            }
+            
+            fetch(`/farmer/post/${postId}/comment/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken'),
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({content: content})
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    commentInput.value = '';
+                    document.getElementById(`comment-form-${postId}`).style.display = 'none';
+                    alert('Comment added successfully!');
+                    // Optionally reload the page to show the new comment
+                    location.reload();
+                } else {
+                    alert('Error adding comment: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error adding comment. Please try again.');
+            });
+        });
+    });
+
+    // Enter key for quick comment
+    document.querySelectorAll('[id^="comment-input-"]').forEach(function(input) {
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const postId = this.id.split('-')[2];
+                document.querySelector(`.submit-comment-btn[data-post-id="${postId}"]`).click();
+            }
+        });
+    });
+
+    // Get CSRF token
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    // Enable Bootstrap tooltips if needed
+    document.addEventListener('DOMContentLoaded', function() {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+</script>
+
+{% endblock %}
+
+{% comment %} {% block content %}
+<div class="container mt-4">
+    <h4 class="text-center">Fellow Farmers</h4>
+
+    <!-- Horizontal Scrollable Farmer List -->
+    <div class="farmer-scroll-container d-flex align-items-center">
+        {% for farmer in farmers %}
+            <div class="farmer-card text-center">
+                <div class="profile-container">
+                    <img src="{{ farmer.profile_picture }}" class="rounded-circle farmer-profile" alt="Profile Picture">
+                </div>
+                <div class="farmer-details">
+                    <strong>{{ farmer.first_name }}{% if farmer.middle_name %} {{ farmer.middle_name }}{% endif %} {{ farmer.last_name }}</strong>
+                    <br>
+                    <small>{{ farmer.farm_name }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Posts by Farmers -->
+    <h3 class="text-center my-4">Community Posts</h3>
+    
+    <!-- Search Bar for Posts -->
+    <div class="mb-4">
+        <input type="text" id="postSearchInput" class="form-control" placeholder="Search posts by title, caption, or farmer name...">
+    </div>
+
+    <div class="feed-container">
+        {% for post in farmer_posts %}
+        <div class="feed-post mb-4 shadow-sm p-3 rounded bg-white">
+            <div class="post-header d-flex align-items-center mb-3">
+                <img src="{{ post.farmer.profile_picture }}" class="post-profile rounded-circle me-2" alt="Farmer Profile">
+                <div>
+                    <strong>{{ post.farmer.first_name }}{% if post.farmer.middle_name %} {{ post.farmer.middle_name }}{% endif %} {{ post.farmer.last_name }}</strong>
+                    <span class="badge bg-success ms-2">Farmer</span>
+                    <br>
+                    <small class="text-muted">{{ post.farmer.farm_name }}</small>
+                    <br>
+                    <small class="text-muted">Posted on {{ post.created_at|date:"M d, Y H:i" }}</small>
+                </div>
+            </div>
+    
+            <h5 class="fw-bold">{{ post.title }}</h5>
+            <p class="caption-text">{{ post.caption|linebreaksbr }}</p>
+    
+            <!-- Post Images -->
+            {% with post.get_images as images %}
+                {% if images|length == 1 %}
+                    <img src="{{ images.0.image_url }}" class="img-fluid rounded mb-2 single-image" alt="Post Image" 
+                         data-bs-toggle="modal" data-bs-target="#imageModal{{ post.id }}_1">
+                    
+                    <!-- Modal for single image -->
+                    <div class="modal fade" id="imageModal{{ post.id }}_1" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <img src="{{ images.0.image_url }}" class="img-fluid w-100" alt="Full Image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% elif images|length > 1 %}
+                    <div class="row g-2">
+                        {% for image in images %}
+                            <div class="col-6 col-md-4">
+                                <img src="{{ image.image_url }}" class="img-fluid rounded multi-image" alt="Post Image"
+                                     data-bs-toggle="modal" data-bs-target="#imageModal{{ post.id }}_{{ forloop.counter }}"
+                                     style="cursor: pointer;">
+                            </div>
+                            
+                            <!-- Modal for each image -->
+                            <div class="modal fade" id="imageModal{{ post.id }}_{{ forloop.counter }}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <img src="{{ image.image_url }}" class="img-fluid w-100" alt="Full Image">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+    
+            <div class="post-stats mt-3 d-flex align-items-center">
+                <span class="me-3"><i class="far fa-thumbs-up"></i> {{ post.get_upvotes_count }} Upvotes</span>
+                <span><i class="far fa-comment"></i> {{ post.get_comments.count }} Comments</span>
+            </div>
+            
+            <hr>
+            
+            <!-- Comments Section -->
+            {% if post.get_comments.count > 0 %}
+                <h6 class="fw-bold mb-3">Recent Comments</h6>
+                <div class="comments">
+                    {% for comment in post.latest_comments %}
+                        <div class="regular-comment mb-2 p-2 border-start border-secondary border-3 bg-light rounded">
+                            <div class="d-flex align-items-start">
+                                {% if comment.farmer %}
+                                    <img src="{{ comment.farmer.profile_picture }}" class="rounded-circle me-2" alt="Farmer Profile" style="width: 35px; height: 35px; object-fit: cover;">
+                                    <div>
+                                        <strong>{{ comment.farmer.first_name }}{% if comment.farmer.middle_name %} {{ comment.farmer.middle_name }}{% endif %} {{ comment.farmer.last_name }}</strong>
+                                        <span class="badge bg-success ms-1">Farmer</span>
+                                        <small class="text-muted d-block">• {{ comment.created_at|date:"M d, Y H:i" }}</small>
+                                        <p class="mb-0 mt-1">{{ comment.content|linebreaksbr }}</p>
+                                    </div>
+                                {% elif comment.expert %}
+                                    <img src="{{ comment.expert.profile_picture }}" class="rounded-circle me-2" alt="Expert Profile" style="width: 35px; height: 35px; object-fit: cover;">
+                                    <div>
+                                        <strong>{{ comment.expert.first_name }} {{ comment.expert.last_name }}</strong>
+                                        <span class="badge bg-primary ms-1">Expert</span>
+                                        <small class="text-muted d-block">• {{ comment.created_at|date:"M d, Y H:i" }}</small>
+                                        <p class="mb-0 mt-1">{{ comment.content|linebreaksbr }}</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    
+                    {% if post.get_comments.count > 3 %}
+                        <div class="mt-2">
+                            <button class="btn btn-sm btn-outline-secondary">
+                                View All {{ post.get_comments.count }} Comments
+                            </button>
+                        </div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <p class="text-muted">No comments on this post yet.</p>
+            {% endif %}
+        </div>
+        {% empty %}
+            <div class="text-center p-4 bg-light rounded">
+                <i class="fas fa-seedling fa-3x text-secondary mb-3"></i>
+                <p>No farmer posts available at this time.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+/* Horizontal Scrollable Container */
+.farmer-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+/* Farmer Card */
+.farmer-card {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+}
+
+/* Circular Profile */
+.farmer-profile {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #28a745;
+    transition: transform 0.2s ease-in-out;
+}
+
+.farmer-profile:hover {
+    transform: scale(1.1);
+}
+
+/* Name & Farm Details */
+.farmer-details {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/* Post Styling */
+.feed-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.feed-post {
+    border: 1px solid #ddd;
+    transition: box-shadow 0.3s;
+}
+
+.feed-post:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.post-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.post-profile {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 2px solid #28a745;
+}
+
+.caption-text {
+    white-space: pre-wrap;
+}
+
+.single-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.multi-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* For smaller screens */
+@media (max-width: 576px) {
+    .farmer-profile {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .farmer-details {
+        font-size: 12px;
+    }
+}
+
+/* Post Stats */
+.post-stats {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.post-stats i {
+    margin-right: 5px;
+}
+
+/* Comments styling */
+.comments {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.regular-comment {
+    transition: background-color 0.2s;
+}
+
+.regular-comment:hover {
+    background-color: #f8f9fa !important;
+}
+</style>
+
+<script>
+    // Search functionality
+    document.getElementById("postSearchInput").addEventListener("keyup", function () {
+        let filter = this.value.toLowerCase();
+        let posts = document.querySelectorAll(".feed-post");
+
+        posts.forEach(function (post) {
+            let title = post.querySelector("h5").textContent.toLowerCase();
+            let caption = post.querySelector(".caption-text").textContent.toLowerCase();
+            let farmerName = post.querySelector(".post-header strong").textContent.toLowerCase();
+
+            if (title.includes(filter) || caption.includes(filter) || farmerName.includes(filter)) {
+                post.style.display = "";
+            } else {
+                post.style.display = "none";
+            }
+        });
+    });
+
+    // Enable Bootstrap tooltips if needed
+    document.addEventListener('DOMContentLoaded', function() {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+</script>
+
+{% endblock %} {% endcomment %}
+

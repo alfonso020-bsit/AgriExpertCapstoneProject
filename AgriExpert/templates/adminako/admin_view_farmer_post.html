@@ -1,0 +1,148 @@
+{% extends 'adminako/base_admin.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Post Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <h2>{{ post.title }}</h2>
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="{{ post.farmer.profile_picture }}" class="rounded-circle me-3" 
+                             style="width: 50px; height: 50px; object-fit: cover;">
+                        <div>
+                            <strong>{{ post.farmer.first_name }}{% if post.farmer.middle_name %} {{ post.farmer.middle_name }}{% endif %} {{ post.farmer.last_name }}</strong>
+                            <span class="badge bg-success ms-2">Farmer</span>
+                            <br>
+                            <small class="text-muted">{{ post.farmer.barangay }} • {{ post.created_at|date:"M d, Y H:i" }}</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- Admin Actions -->
+                <div>
+                    <form method="POST" action="{% url 'admin_remove_farmer_post' post.id %}" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger" 
+                                onclick="return confirm('Are you sure you want to remove this post?')">
+                            Remove Post
+                        </button>
+                    </form>
+                    <a href="{% url 'admin_farmers' %}" class="btn btn-secondary">Back to Farmers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Content -->
+    <div class="row">
+        <div class="col-md-8">
+            <!-- Post Caption -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Post Description</h5>
+                    <p class="card-text">{{ post.caption|linebreaksbr }}</p>
+                </div>
+            </div>
+
+            <!-- Post Images -->
+            {% if post_images %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Images ({{ post_images.count }})</h5>
+                    <div class="row g-3">
+                        {% for image in post_images %}
+                        <div class="col-md-6">
+                            <img src="{{ image.image.url }}" class="img-fluid rounded" 
+                                 data-bs-toggle="modal" data-bs-target="#imageModal{{ forloop.counter }}"
+                                 style="cursor: pointer; width: 100%; height: 200px; object-fit: cover;">
+                            
+                            <!-- Image Modal -->
+                            <div class="modal fade" id="imageModal{{ forloop.counter }}" tabindex="-1">
+                                <div class="modal-dialog modal-lg modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <img src="{{ image.image.url }}" class="img-fluid w-100">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Comments Section -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Comments ({{ comments.count }})</h5>
+                    {% for comment in comments %}
+                    <div class="border-bottom pb-3 mb-3">
+                        <div class="d-flex align-items-start">
+                            {% if comment.farmer %}
+                                <img src="{{ comment.farmer.profile_picture }}" class="rounded-circle me-3" 
+                                     style="width: 40px; height: 40px; object-fit: cover;">
+                                <div class="flex-grow-1">
+                                    <strong>{{ comment.farmer.first_name }}{% if comment.farmer.middle_name %} {{ comment.farmer.middle_name }}{% endif %} {{ comment.farmer.last_name }}</strong>
+                                    <span class="badge bg-success ms-2">Farmer</span>
+                                    <small class="text-muted d-block">{{ comment.created_at|date:"M d, Y H:i" }}</small>
+                                    <p class="mt-2 mb-0">{{ comment.content|linebreaksbr }}</p>
+                                </div>
+                            {% elif comment.expert %}
+                                <img src="{{ comment.expert.profile_picture }}" class="rounded-circle me-3" 
+                                     style="width: 40px; height: 40px; object-fit: cover;">
+                                <div class="flex-grow-1">
+                                    <strong>{{ comment.expert.first_name }} {{ comment.expert.last_name }}</strong>
+                                    <span class="badge bg-primary ms-2">Expert</span>
+                                    <small class="text-muted d-block">{{ comment.created_at|date:"M d, Y H:i" }}</small>
+                                    <p class="mt-2 mb-0">{{ comment.content|linebreaksbr }}</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="text-muted text-center">No comments on this post yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Post Statistics Sidebar -->
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Post Statistics</h5>
+                    <ul class="list-unstyled">
+                        <li><strong>Upvotes:</strong> {{ upvotes_count }}</li>
+                        <li><strong>Comments:</strong> {{ comments.count }}</li>
+                        <li><strong>Images:</strong> {{ post_images.count }}</li>
+                        <li><strong>Posted:</strong> {{ post.created_at|date:"M d, Y H:i" }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Farmer Info -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Farmer Information</h5>
+                    <div class="text-center mb-3">
+                        <img src="{{ post.farmer.profile_picture }}" class="rounded-circle" 
+                             style="width: 80px; height: 80px; object-fit: cover;">
+                    </div>
+                    <ul class="list-unstyled">
+                        <li><strong>Name:</strong> {{ post.farmer.first_name }}{% if post.farmer.middle_name %} {{ post.farmer.middle_name }}{% endif %} {{ post.farmer.last_name }}</li>
+                        <li><strong>Barangay:</strong> {{ post.farmer.barangay }}</li>
+                        <li><strong>Farm Size:</strong> {{ post.farmer.farm_size|default:"Not specified" }}</li>
+                        <li><strong>ID:</strong> {{ post.farmer.id }}</li>
+                    </ul>
+                    <a href="{% url 'admin_view_farmer' post.farmer.id %}" class="btn btn-primary btn-sm w-100">
+                        View Farmer Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

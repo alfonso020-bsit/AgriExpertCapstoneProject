@@ -1,0 +1,9 @@
+{
+    "python.pythonPath": "../CapstoneAgriExpertvenv/Scripts/python.exe",
+    "python.analysis.extraPaths": [
+      "../CapstoneAgriExpertvenv/Lib/site-packages"
+    ],
+    "python.analysis.typeCheckingMode": "off",
+    "python.languageServer": "Pylance"
+  }
+  

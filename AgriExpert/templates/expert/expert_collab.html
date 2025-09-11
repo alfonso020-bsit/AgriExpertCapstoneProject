@@ -1,0 +1,61 @@
+{% extends 'expert/base_expert.html' %}
+
+{% comment %} {% extends 'expert/base_expert.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Inbox</h2>
+    <div class="list-group">
+        {% for item in farmer_messages %}
+        <a href="{% url 'chat_detailexpert' item.farmer.id %}" class="list-group-item list-group-item-action d-flex align-items-center">
+            <img src="{{ item.farmer.profile_picture }}" alt="{{ item.farmer.first_name }}" class="rounded-circle me-3" width="50" height="50">
+            <div>
+                <strong>{{ item.farmer.first_name }} {{ item.farmer.last_name }}</strong><br>
+                {% if item.latest_message %}
+                    {% if item.latest_message.sender_expert.id == request.session.user_id %}
+                        You: 
+                    {% else %}
+                        {{ item.farmer.first_name }}: 
+                    {% endif %}
+                    {{ item.latest_message.message_text|truncatechars:50 }}
+                {% else %}
+                    No messages yet
+                {% endif %}
+            </div>
+        </a>
+        {% empty %}
+        <p>No conversations yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %} {% endcomment %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Inbox</h2>
+    <div class="list-group">
+        {% for item in farmer_messages %}
+        <a href="{% url 'chat_detailexpert' item.farmer.id %}" class="list-group-item list-group-item-action d-flex align-items-center">
+            <img src="{{ item.farmer.profile_picture }}" alt="{{ item.farmer.first_name }}" class="rounded-circle me-3" width="50" height="50">
+            <div>
+                <strong>{{ item.farmer.first_name }} {{ item.farmer.last_name }}</strong><br>
+                {% if item.latest_message %}
+                    {% if item.latest_message.sender_expert.id == request.session.user_id %}
+                        You: 
+                    {% else %}
+                        {{ item.farmer.first_name }}: 
+                    {% endif %}
+                    <span {% if item.is_unread %}style="font-weight: bold;"{% endif %}>
+                        {{ item.latest_message.message_text|truncatechars:50 }}
+                    </span>
+                {% else %}
+                    No messages yet
+                {% endif %}
+            </div>
+        </a>
+        {% empty %}
+        <p>No conversations yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

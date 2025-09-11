@@ -1,0 +1,847 @@
+{% extends 'adminako/base_admin.html' %}
+{% load static %}
+{% comment %} {% extends 'adminako/base_admin.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">
+        <span>Magandang Araw, <strong>{{ request.user.username }}</strong>! 🌾</span>
+        <br>
+        <span id="flipping-text" class="flipping-text">Masaganang Ani sa Victoreños!</span>
+    </h2>
+
+    <div class="row justify-content-center">
+        <!-- Farmers Count Card -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-success shadow-lg rounded-4 border-0">
+                <div class="card-body text-center py-4">
+                    <i class="fas fa-seedling fa-3x mb-3"></i> <!-- 🌱 Farmer Icon -->
+                    <h5 class="card-title fw-bold text-uppercase">Magsasaka</h5>
+                    <h1 class="display-4 fw-bold">{{ farmer_count }}</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experts Count Card -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-primary shadow-lg rounded-4 border-0">
+                <div class="card-body text-center py-4">
+                    <i class="fas fa-user-tie fa-3x mb-3"></i> <!-- 👔 Expert Icon -->
+                    <h5 class="card-title fw-bold text-uppercase">Eksperto</h5>
+                    <h1 class="display-4 fw-bold">{{ expert_count }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<!-- Custom CSS for Flipping Text -->
+<style>
+    .flipping-text {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #28a745;
+        display: inline-block;
+        position: relative;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<!-- JavaScript for Flipping Text -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const phrases = [
+            "Masaganang Ani sa Victoreños! 🌾",
+            "Malusog na Palay! 🌱",
+            "Alamin ang Peste! 🐛",
+            "Handa na ba ang Pananim mo? 🌿",
+            "Gabay sa Magsasaka! 🚜"
+        ];
+
+        let index = 0;
+        const flippingText = document.getElementById("flipping-text");
+
+        setInterval(() => {
+            index = (index + 1) % phrases.length;
+            flippingText.style.opacity = 0; 
+            setTimeout(() => {
+                flippingText.innerText = phrases[index];
+                flippingText.style.opacity = 1; 
+            }, 500);
+        }, 3000); // Change text every 3 seconds
+    });
+</script>
+{% endblock %} {% endcomment %}
+
+{% comment %} 
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">
+        <span>Magandang Araw, <strong>{{ request.user.username }}</strong>! 🌾</span>
+        <br>
+        <span id="flipping-text" class="flipping-text">Masaganang Ani sa Victoreños!</span>
+    </h2>
+
+    <div class="row justify-content-center">
+        <!-- Farmers Count Card -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-success shadow-lg rounded-4 border-0">
+                <div class="card-body text-center py-4">
+                    <i class="fas fa-seedling fa-3x mb-3"></i> <!-- 🌱 Farmer Icon -->
+                    <h5 class="card-title fw-bold text-uppercase">Magsasaka</h5>
+                    <h1 class="display-4 fw-bold">{{ farmer_count }}</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Eksperto Count Card -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-primary shadow-lg rounded-4 border-0">
+                <div class="card-body text-center py-4">
+                    <i class="fas fa-user-tie fa-3x mb-3"></i> <!-- 👔 Expert Icon -->
+                    <h5 class="card-title fw-bold text-uppercase">Eksperto</h5>
+                    <h1 class="display-4 fw-bold">{{ expert_count }}</h1>  <!-- Ensure this variable is working -->
+                </div>
+            </div>
+        </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-6">
+            <div class="card shadow-lg rounded-4 border-0 p-3">
+                <div class="card-body">
+                    <h6 class="card-title text-center fw-bold">Paghahambing ng Bilang</h6>
+                    <div style="width: 100%; height: 250px;"> <!-- Fixed Size -->
+                        <canvas id="comparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ctx = document.getElementById("comparisonChart").getContext("2d");
+    
+            new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: ["Magsasaka", "Eksperto"],
+                    datasets: [
+                        {
+                            label: "Magsasaka",
+                            data: [{{ farmer_count }}, 0],
+                            backgroundColor: "#28a745"
+                        },
+                        {
+                            label: "Eksperto - Approved",
+                            data: [0, {{ expert_approved }}],
+                            backgroundColor: "#007bff"
+                        },
+                        {
+                            label: "Eksperto - Pending",
+                            data: [0, {{ expert_pending }}],
+                            backgroundColor: "#ffc107"
+                        },
+                        {
+                            label: "Eksperto - Rejected",
+                            data: [0, {{ expert_rejected }}],
+                            backgroundColor: "#dc3545"
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: Math.max({{ farmer_count }}, {{ expert_approved }}, {{ expert_pending }}, {{ expert_rejected }}) + 2,
+                            ticks: { stepSize: 1 }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: "top" }
+                    }
+                }
+            });
+        });
+    </script>
+
+<!-- Custom CSS for Flipping Text -->
+<style>
+    .flipping-text {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #28a745;
+        display: inline-block;
+        position: relative;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<!-- JavaScript for Flipping Text -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const phrases = [
+            "Masaganang Ani sa Victoreños! 🌾",
+            "Malusog na Palay! 🌱",
+            "Alamin ang Peste! 🐛",
+            "Handa na ba ang Pananim mo? 🌿",
+            "Gabay sa Magsasaka! 🚜"
+        ];
+
+        let index = 0;
+        const flippingText = document.getElementById("flipping-text");
+
+        setInterval(() => {
+            index = (index + 1) % phrases.length;
+            flippingText.style.opacity = 0; 
+            setTimeout(() => {
+                flippingText.innerText = phrases[index];
+                flippingText.style.opacity = 1; 
+            }, 500);
+        }, 3000); // Change text every 3 seconds
+    });
+</script>
+
+
+{% endblock %} {% endcomment %}
+{% comment %} {% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">
+        <span>Magandang Araw, <strong>{{ request.user.username }}</strong>! 🌾</span>
+        <br>
+        <span id="flipping-text" class="flipping-text">Masaganang Ani sa Victoreños!</span>
+    </h2>
+
+    <div class="row justify-content-center">
+        <!-- Farmers Count Card -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-success shadow-lg rounded-4 border-0">
+                <div class="card-body text-center py-4">
+                    <i class="fas fa-seedling fa-3x mb-3"></i>
+                    <h5 class="card-title fw-bold text-uppercase">Magsasaka</h5>
+                    <h1 class="display-4 fw-bold">{{ farmer_count }}</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experts Count Card -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-primary shadow-lg rounded-4 border-0">
+                <div class="card-body text-center py-4">
+                    <i class="fas fa-user-tie fa-3x mb-3"></i>
+                    <h5 class="card-title fw-bold text-uppercase">Eksperto</h5>
+                    <h1 class="display-4 fw-bold">{{ expert_count }}</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Consultations Count Card -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-warning shadow-lg rounded-4 border-0">
+                <div class="card-body text-center py-4">
+                    <i class="fas fa-comments fa-3x mb-3"></i>
+                    <h5 class="card-title fw-bold text-uppercase">Konsultasyon</h5>
+                    <h1 class="display-4 fw-bold">{{ consultation_count }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comparison Chart -->
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-6">
+            <div class="card shadow-lg rounded-4 border-0 p-3">
+                <div class="card-body">
+                    <h6 class="card-title text-center fw-bold">Paghahambing ng Bilang</h6>
+                    <div style="width: 100%; height: 250px;">
+                        <canvas id="comparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Solved vs Unsolved Consultation Chart -->
+<div class="col-md-6 col-lg-6 mb-4">
+    <div class="card shadow-lg rounded-4 border-0 p-3">
+        <div class="card-body">
+            <h6 class="card-title text-center fw-bold">Solved vs Unsolved Consultations</h6>
+            <div style="width: 100%; height: 250px;">
+                <canvas id="consultationStatusChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Barangay Consultation Distribution -->
+<div class="col-md-6 col-lg-6 mb-4">
+    <div class="card shadow-lg rounded-4 border-0 p-3">
+        <div class="card-body">
+            <h6 class="card-title text-center fw-bold">Consultation Records per Barangay</h6>
+            <div style="width: 100%; height: 250px;">
+                <canvas id="barangayConsultationChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Monthly Consultation Trends -->
+<div class="col-12 mb-4">
+    <div class="card shadow-lg rounded-4 border-0 p-3">
+        <div class="card-body">
+            <h6 class="card-title text-center fw-bold">Monthly Consultation Trends</h6>
+            <div style="width: 100%; height: 250px;">
+                <canvas id="monthlyConsultationChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Put these right before your <script> that contains Chart.js setup -->
+    {{ barangay_data|json_script:"barangay-data" }}
+    {{ consultation_trends_data|json_script:"trend-data" }}
+
+    <!-- ChartJS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ctx = document.getElementById("comparisonChart").getContext("2d");
+
+            new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: ["Magsasaka", "Eksperto", "Konsultasyon"],
+                    datasets: [
+                        {
+                            label: "Magsasaka",
+                            data: [{{ farmer_count }}, 0, 0],
+                            backgroundColor: "#28a745"
+                        },
+                        {
+                            label: "Eksperto - Approved",
+                            data: [0, {{ expert_approved }}, 0],
+                            backgroundColor: "#007bff"
+                        },
+                        {
+                            label: "Eksperto - Pending",
+                            data: [0, {{ expert_pending }}, 0],
+                            backgroundColor: "#ffc107"
+                        },
+                        {
+                            label: "Eksperto - Rejected",
+                            data: [0, {{ expert_rejected }}, 0],
+                            backgroundColor: "#dc3545"
+                        },
+                        {
+                            label: "Konsultasyon",
+                            data: [0, 0, {{ consultation_count }}],
+                            backgroundColor: "#fd7e14"
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: Math.max({{ farmer_count }}, {{ expert_approved }}, {{ expert_pending }}, {{ expert_rejected }}, {{ consultation_count }}) + 2,
+                            ticks: { stepSize: 1 }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: "top" }
+                    }
+                }
+            });
+        });
+    </script>
+
+    <!-- Flipping Text Style -->
+    <style>
+        .flipping-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #28a745;
+            display: inline-block;
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+    <!-- Flipping Text JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const phrases = [
+                "Masaganang Ani sa Victoreños! 🌾",
+                "Malusog na Palay! 🌱",
+                "Alamin ang Peste! 🐛",
+                "Handa na ba ang Pananim mo? 🌿",
+                "Gabay sa Magsasaka! 🚜"
+            ];
+
+            let index = 0;
+            const flippingText = document.getElementById("flipping-text");
+
+            setInterval(() => {
+                index = (index + 1) % phrases.length;
+                flippingText.style.opacity = 0;
+                setTimeout(() => {
+                    flippingText.innerText = phrases[index];
+                    flippingText.style.opacity = 1;
+                }, 500);
+            }, 3000);
+        });
+
+
+        {% comment %} consultation charts {% endcomment %}
+        {% comment %} document.addEventListener("DOMContentLoaded", function () {
+            // 1. Solved vs Unsolved Consultation
+            new Chart(document.getElementById("consultationStatusChart"), {
+                type: "bar",
+                data: {
+                    labels: ["Solved", "Unsolved"],
+                    datasets: [{
+                        label: "Consultation Cases",
+                        data: [{{ consultation_solved }}, {{ consultation_unsolved }}],
+                        backgroundColor: ["#28a745", "#dc3545"]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+    
+            // 2. Consultations per Barangay
+            const barangayData = JSON.parse(document.getElementById("barangay-data").textContent);
+            new Chart(document.getElementById("barangayConsultationChart"), {
+                type: "pie",
+                data: {
+                    labels: Object.keys(barangayData),
+                    datasets: [{
+                        data: Object.values(barangayData),
+                        backgroundColor: [
+                            "#007bff", "#ffc107", "#28a745", "#dc3545", "#17a2b8",
+                            "#6610f2", "#fd7e14", "#6f42c1", "#20c997", "#e83e8c"
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+    
+            // 3. Monthly Consultation Trends
+            const trendData = JSON.parse(document.getElementById("trend-data").textContent);
+            new Chart(document.getElementById("monthlyConsultationChart"), {
+                type: "line",
+                data: {
+                    labels: Object.keys(trendData),
+                    datasets: [{
+                        label: "Consultations per Month",
+                        data: Object.values(trendData),
+                        fill: false,
+                        borderColor: "#007bff",
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        });
+    </script>
+
+</div>
+{% endblock %} {% endcomment %} 
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">
+        <span>Magandang Araw, <strong>{{ request.user.username }}</strong>! 🌾</span><br>
+        <span id="flipping-text" class="flipping-text">Masaganang Ani sa Victoreños!</span>
+    </h2>
+
+    <div class="row justify-content-center">
+        <!-- Farmers -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-success shadow-lg rounded-4 border-0 text-center py-4">
+                <i class="fas fa-seedling fa-3x mb-3"></i>
+                <h5 class="text-uppercase fw-bold">Magsasaka</h5>
+                <h1 class="display-4 fw-bold">{{ farmer_count }}</h1>
+            </div>
+        </div>
+
+        <!-- Experts -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-primary shadow-lg rounded-4 border-0 text-center py-4">
+                <i class="fas fa-user-tie fa-3x mb-3"></i>
+                <h5 class="text-uppercase fw-bold">Eksperto</h5>
+                <h1 class="display-4 fw-bold">{{ expert_count }}</h1>
+            </div>
+        </div>
+
+        <!-- Consultations -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-warning shadow-lg rounded-4 border-0 text-center py-4">
+                <i class="fas fa-comments fa-3x mb-3"></i>
+                <h5 class="text-uppercase fw-bold">Konsultasyon</h5>
+                <h1 class="display-4 fw-bold">{{ consultation_count }}</h1>
+            </div>
+        </div>
+    </div>
+
+<!-- Calendar section with explicit styling -->
+<div class="col-12 my-5">
+    <div class="card shadow rounded-4 p-3">
+        <h6 class="text-center fw-bold mb-3">Paganib ng Prediksyon</h6>
+        <!-- Add explicit dimensions to the calendar container -->
+        <div id="calendar" style="height: 600px; width: 100%;"></div>
+    </div>
+</div>
+
+<!-- Ensure all required FullCalendar files are included -->
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+
+<!-- DEBUG: Add this div to check if events are available -->
+<div id="debug-calendar-events" style="display: none;"></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        try {
+            // Debug events data - Add proper error handling for template variable
+            let eventsData = [];
+            try {
+                eventsData = {{ calendar_events_json|safe }};
+                console.log("Calendar events loaded:", eventsData);
+            } catch (error) {
+                console.error("Failed to parse calendar events:", error);
+                // Provide fallback empty array if data isn't available
+                eventsData = [];
+            }
+            
+            // Get calendar element
+            const calendarEl = document.getElementById('calendar');
+            
+            if (!calendarEl) {
+                console.error("Calendar element not found!");
+                return;
+            }
+            
+            // Create calendar with explicit options
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: eventsData,
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,listWeek'
+                },
+                // Use explicit height instead of percentage
+                height: 600,
+                // Only use bootstrap theme if you've included the proper plugin
+                // themeSystem: 'bootstrap5',
+                eventDidMount: function(info) {
+                    console.log("Event mounted:", info.event.title);
+                }
+            });
+            
+            // Render the calendar
+            calendar.render();
+            console.log("Calendar render method called");
+            
+        } catch (err) {
+            console.error("Error in calendar initialization:", err);
+            // Display error message in calendar container for easier debugging
+            const calendarEl = document.getElementById('calendar');
+            if (calendarEl) {
+                calendarEl.innerHTML = '<div class="alert alert-danger">Failed to load calendar: ' + err.message + '</div>';
+            }
+        }
+    });
+</script>
+    <!-- Charts Grid -->
+    <div class="row g-4 justify-content-center">
+        <!-- Comparison Chart -->
+        <div class="col-md-6">
+            <div class="card shadow rounded-4 p-3">
+                <h6 class="text-center fw-bold mb-3">Paghahambing ng Bilang</h6>
+                <div style="height: 250px;">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solved vs Unsolved -->
+        <div class="col-md-6">
+            <div class="card shadow rounded-4 p-3">
+                <h6 class="text-center fw-bold mb-3">Nalutas vs Hindi Nalutas na Konsultasyon</h6>
+                <div style="height: 250px;">
+                    <canvas id="consultationStatusChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card shadow rounded-4 p-3 h-100">
+                    <h6 class="text-center fw-bold mb-3">Nakasolusyunan na mga Konsultasyon: Sakit laban sa Peste</h6>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <canvas id="consultationTypeChart" style="width:100%; height:auto;"></canvas>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Barangay Consultation Pie Chart -->
+            <div class="col-md-6 mb-4">
+                <div class="card shadow rounded-4 p-3 h-100">
+                    <h6 class="text-center fw-bold mb-3">Mga Rekord ng Konsultasyon kada Barangay</h6>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <canvas id="barangayConsultationChart" style="width:100%; height:auto;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Monthly Trends with Scroll -->
+        <div class="col-12">
+            <div class="card shadow rounded-4 p-3">
+                <h6 class="text-center fw-bold mb-3">Mga Trend ng Buwanang Konsultasyon</h6>
+                <div style="overflow-x: auto;">
+                    <div style="min-width: 600px; height: 250px;">
+                        <canvas id="monthlyConsultationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{ barangay_data|json_script:"barangay-data" }}
+    {{ consultation_trends_data|json_script:"trend-data" }}
+
+    <!-- ChartJS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Comparison Chart
+            new Chart(document.getElementById("comparisonChart"), {
+                type: "bar",
+                data: {
+                    labels: ["Magsasaka", "Eksperto", "Konsultasyon"],
+                    datasets: [
+                        {
+                            label: "Magsasaka",
+                            data: [{{ farmer_count }}, 0, 0],
+                            backgroundColor: "#28a745"
+                        },
+                        {
+                            label: "Eksperto - Approved",
+                            data: [0, {{ expert_approved }}, 0],
+                            backgroundColor: "#007bff"
+                        },
+                        {
+                            label: "Eksperto - Pending",
+                            data: [0, {{ expert_pending }}, 0],
+                            backgroundColor: "#ffc107"
+                        },
+                        {
+                            label: "Eksperto - Rejected",
+                            data: [0, {{ expert_rejected }}, 0],
+                            backgroundColor: "#dc3545"
+                        },
+                        {
+                            label: "Konsultasyon",
+                            data: [0, 0, {{ consultation_count }}],
+                            backgroundColor: "#fd7e14"
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { stepSize: 1 }
+                        }
+                    },
+                    plugins: { legend: { position: "top" } }
+                }
+            });
+
+            // Solved vs Unsolved
+            new Chart(document.getElementById("consultationStatusChart"), {
+                type: "bar",
+                data: {
+                    labels: ["Solved", "Unsolved"],
+                    datasets: [{
+                        label: "Consultation Cases",
+                        data: [{{ consultation_solved }}, {{ consultation_unsolved }}],
+                        backgroundColor: ["#28a745", "#dc3545"]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+
+            // Barangay Distribution
+            const barangayData = JSON.parse(document.getElementById("barangay-data").textContent);
+            new Chart(document.getElementById("barangayConsultationChart"), {
+                type: "pie",
+                data: {
+                    labels: Object.keys(barangayData),
+                    datasets: [{
+                        data: Object.values(barangayData),
+                        backgroundColor: [
+                            "#007bff", "#ffc107", "#28a745", "#dc3545", "#17a2b8",
+                            "#6610f2", "#fd7e14", "#6f42c1", "#20c997", "#e83e8c"
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+
+            // Monthly Trend Chart
+            const trendData = JSON.parse(document.getElementById("trend-data").textContent);
+            new Chart(document.getElementById("monthlyConsultationChart"), {
+                type: "line",
+                data: {
+                    labels: Object.keys(trendData),
+                    datasets: [{
+                        label: "Consultations per Month",
+                        data: Object.values(trendData),
+                        fill: false,
+                        borderColor: "#007bff",
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        });
+    </script>
+
+    <!-- Flipping Text Animation -->
+    <style>
+        .flipping-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #28a745;
+            display: inline-block;
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const phrases = [
+                "Masaganang Ani sa Victoreños! 🌾",
+                "Malusog na Palay! 🌱",
+                "Alamin ang Peste! 🐛",
+                "Handa na ba ang Pananim mo? 🌿",
+                "Gabay sa Magsasaka! 🚜"
+            ];
+            let index = 0;
+            const flippingText = document.getElementById("flipping-text");
+
+            setInterval(() => {
+                index = (index + 1) % phrases.length;
+                flippingText.style.opacity = 0;
+                setTimeout(() => {
+                    flippingText.innerText = phrases[index];
+                    flippingText.style.opacity = 1;
+                }, 500);
+            }, 3000);
+        });
+    </script>
+
+    {% comment %} SCRIPT SA CHART NG SAKIT VS PESTE {% endcomment %}
+    <script>
+        const consultationTypeCtx = document.getElementById("consultationTypeChart").getContext("2d");
+    
+        const consultationTypeChart = new Chart(consultationTypeCtx, {
+            type: "pie",
+            data: {
+                labels: ["Sakit", "Peste"],
+                datasets: [{
+                    data: [
+                        {{ consultation_type_chart_data.solved_sakit|default:0 }},
+                        {{ consultation_type_chart_data.solved_peste|default:0 }}
+                    ],
+                    backgroundColor: [
+                        "#f94144",  // red for Sakit
+                        "#43aa8b"   // green for Peste
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Solved Consultations by Classification'
+                    }
+                }
+            }
+        });
+    </script>
+</div>
+{% endblock %}
+
+
+

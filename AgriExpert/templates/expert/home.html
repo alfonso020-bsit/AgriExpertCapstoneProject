@@ -1,0 +1,184 @@
+{% extends 'expert/base_expert.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center fw-bold mb-4">Konsultasyon</h2>
+    
+    <div class="row justify-content-center">
+        <!-- Farmers Contacted Card -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-primary shadow-lg rounded-4 border-0">
+                <div class="card-header text-center fw-bold">Kabuuang Mga Magsasaka na Nakipag-ugnay</div>
+                <div class="card-body text-center py-4">
+                    <h1 class="display-4 fw-bold">{{ unique_farmers }}</h1>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Solved Consultations Card -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-success shadow-lg rounded-4 border-0">
+                <div class="card-header text-center fw-bold">Nalutas na Mga Konsultasyon</div>
+                <div class="card-body text-center py-4">
+                    <h1 class="display-4 fw-bold">{{ solved_consultations }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart Section -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg rounded-4 border-0 p-3">
+                <div class="card-body">
+                    <h6 class="card-title text-center fw-bold">Mga Istatistika ng Eksperto</h6>
+                    <div style="width: 100%; height: 300px;">
+                        <canvas id="expertChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Solved vs Unsolved Consultations -->
+<div class="row mt-5">
+    <div class="col-md-6">
+        <div class="card shadow-lg rounded-4 border-0 p-3">
+            <div class="card-body">
+                <h6 class="card-title text-center fw-bold">Solved vs Unsolved Consultations</h6>
+                <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+                    <canvas id="solvedChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Consultations Per Barangay -->
+    <div class="col-md-6">
+        <div class="card shadow-lg rounded-4 border-0 p-3">
+            <div class="card-body">
+                <h6 class="card-title text-center fw-bold">Consultations per Barangay</h6>
+                <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+                    <canvas id="barangayChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Monthly Trends -->
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card shadow-lg rounded-4 border-0 p-3">
+            <div class="card-body">
+                <h6 class="card-title text-center fw-bold">Monthly Consultation Trends</h6>
+                <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+                    <canvas id="monthlyChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var ctx = document.getElementById("expertChart").getContext("2d");
+        new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: ["Farmers Contacted", "Solved Consultations"],
+                datasets: [{
+                    label: "Expert Stats",
+                    data: [{{ unique_farmers }}, {{ solved_consultations }}],
+                    backgroundColor: ["#007bff", "#28a745"],
+                    borderColor: ["#0056b3", "#1e7e34"],
+                    borderWidth: 1,
+                    barThickness: 50
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: Math.max({{ unique_farmers }}, {{ solved_consultations }}) + 2,
+                        ticks: { stepSize: 1 }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    // Solved vs Unsolved Bar Chart
+    const solvedChart = new Chart(document.getElementById("solvedChart"), {
+        type: "bar",
+        data: {
+            labels: ["Solved", "Unsolved"],
+            datasets: [{
+                label: "Consultations",
+                data: [{{ solved_consultations }}, {{ unsolved_consultations }}],
+                backgroundColor: ["#28a745", "#dc3545"]
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { beginAtZero: true, stepSize: 1 }
+            }
+        }
+    });
+
+    // Consultations per Barangay Pie Chart
+    const barangayChart = new Chart(document.getElementById("barangayChart"), {
+        type: "pie",
+        data: {
+            labels: {{ barangay_labels|safe }},
+            datasets: [{
+                label: "Consultations",
+                data: {{ barangay_counts|safe }},
+                backgroundColor: [
+                    "#4e73df", "#1cc88a", "#36b9cc", "#f6c23e", "#e74a3b", "#858796", "#fd7e14", "#20c997"
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+
+    // Monthly Trend Line Chart
+    const monthlyChart = new Chart(document.getElementById("monthlyChart"), {
+        type: "line",
+        data: {
+            labels: {{ month_labels|safe }},
+            datasets: [{
+                label: "Consultations",
+                data: {{ month_counts|safe }},
+                fill: false,
+                borderColor: "#007bff",
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: { beginAtZero: true, stepSize: 1 }
+            }
+        }
+    });
+</script>
+
+{% endblock %}
