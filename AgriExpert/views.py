@@ -40,7 +40,7 @@ from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 import random
 import base64
 
-
+# THIS IS A SAMPLE COMMENT TO COMMIT CHANGES
 # Supabase Setup
 SUPABASE_URL = settings.SUPABASE_URL
 SUPABASE_KEY = settings.SUPABASE_KEY
